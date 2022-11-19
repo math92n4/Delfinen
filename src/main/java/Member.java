@@ -4,7 +4,7 @@ public abstract class Member {
     private String lastName;
     private int age;
     private boolean isActive;
-    private boolean isCompetitive = false;
+    private boolean isCompetitive;
     private boolean hasPaid;
 
     public Member(String firstName, String lastName, int age,
