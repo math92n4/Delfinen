@@ -38,6 +38,44 @@ public class UserInterface {
                 "3) List of competetive swimmer\n" +
                 "4) List of normalswimmer");
 
+        int chairmanChoice = scanner.nextInt();
+
+        switch (chairmanChoice) {
+            case 1:
+                registerMember();
+            case 2:
+                // List of all swimmers
+            case 3:
+                // List of competitive member
+            case 4:
+                // List of normal simmers
+        }
+
+
+    }
+
+    private void registerMember() {
+
+        System.out.println("You have selected register member\n" +
+                "Enter first name: ");
+
+        String firstName = scanner.nextLine();
+
+        System.out.println("Enter last name");
+
+        String lastName = scanner.nextLine();
+
+        System.out.println("Enter the member's age");
+        //TODO: TRY CATCH
+        int age = scanner.nextInt();
+
+        // isActive
+
+        // isCompetitive
+
+        // hasPaid
+
+
 
     }
 
