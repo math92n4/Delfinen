@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -6,7 +7,7 @@ public class UserInterface {
     Controller controller = new Controller();
     Scanner scanner = new Scanner(System.in);
 
-    public void start() {
+    public void start() throws FileNotFoundException {
 
         System.out.println("\nTHE DOPLHIN SWIMCLUB\n" + "-------------------\n" +
                 "Please enter your password: ");
@@ -30,12 +31,14 @@ public class UserInterface {
 
     }
 
-    private void chairmanUI() {
+    private void chairmanUI() throws FileNotFoundException {
 
         int chairmanChoice;
         System.out.println("Chairman password identified!");
 
         do {
+            controller.loadData();
+
             System.out.println("1) Register swimmer\n" +
                     "2) List of all swimmers\n" +
                     "3) List of competetive swimmers\n" +
@@ -62,7 +65,7 @@ public class UserInterface {
 
     }
 
-    private void registerMember() {
+    private void registerMember() throws FileNotFoundException {
 
         System.out.println("You have selected register member\n" +
                 "Enter first name: ");
@@ -122,7 +125,7 @@ public class UserInterface {
         }
 
         controller.createMember(firstName,lastName,age,isActive,isCompetitive,hasPaid);
-
+        controller.saveData();
     }
 
     private void listOfAllSwimmers() {

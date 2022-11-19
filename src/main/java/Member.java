@@ -1,4 +1,4 @@
-public abstract class Member {
+public class Member {
 
     private String firstName;
     private String lastName;
@@ -14,6 +14,10 @@ public abstract class Member {
         this.age = age;
         this.isActive = isActive;
         this.hasPaid = hasPaid;
+    }
+
+    public Member() {
+
     }
 
     //GETTERS
