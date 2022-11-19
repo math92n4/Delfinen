@@ -1,23 +1,68 @@
-public class Member {
+public abstract class Member {
 
-    private String name;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private int age;
-    private boolean membershipIsActive;
-    private boolean ageIsOver18;
-    private boolean swimsCompetitively;
+    private boolean isActive;
+    private boolean isCompetitive = false;
+    private boolean hasPaid;
 
-    public Member(String name, String lastname, int age,
-                  boolean membershipIsActive, boolean ageIsOver18, boolean swimsCompetitively) {
-        this.name = name;
-        this.lastname = lastname;
+    public Member(String firstName, String lastName, int age,
+                  boolean isActive, boolean hasPaid) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.age = age;
-        this.membershipIsActive = membershipIsActive;
-        this.ageIsOver18 = ageIsOver18;
-        this.swimsCompetitively = swimsCompetitively;
+        this.isActive = isActive;
+        this.hasPaid = hasPaid;
     }
 
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
 
 
+    public boolean isCompetitive() {
+        return isCompetitive;
+    }
+
+    public boolean isHasPaid() {
+        return hasPaid;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public void setCompetitive(boolean competitive) {
+        isCompetitive = competitive;
+    }
+
+    public void setHasPaid(boolean hasPaid) {
+        this.hasPaid = hasPaid;
+    }
 }
