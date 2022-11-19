@@ -13,18 +13,32 @@ public class UserInterface {
 
         String chairmanPassword = "chairman";
         String cashierPassword = "cashier";
-        String password = scanner.nextLine();
+        String password;
 
-        if (password.toLowerCase().equals(chairmanPassword)) {
-            chairmanUI();
-        } else if (password.toLowerCase().equals(cashierPassword)) {
-            cashierUI();
-        }
+        do {
+
+            password = scanner.nextLine();
+
+            if (password.equals(chairmanPassword)) {
+                chairmanUI();
+            } else if (password.equals(cashierPassword)) {
+                cashierUI();
+            } else
+                System.out.println("Password doesn't match. Please try again!");
+
+        } while (!password.equals(chairmanPassword) && !password.equals(cashierPassword));
 
     }
 
     private void chairmanUI() {
-        System.out.println("Chairman password identified!");
+
+        System.out.println("Chairman password identified!\n" +
+                "1) Register swimmer\n" +
+                "2) List of all swimmer\n" +
+                "3) List of competetive swimmer\n" +
+                "4) List of normalswimmer");
+
+
     }
 
 
