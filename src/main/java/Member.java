@@ -16,6 +16,7 @@ public abstract class Member {
         this.hasPaid = hasPaid;
     }
 
+    //GETTERS (SOME OF THEM SHOULD BE DELETED AT SOME POINT)
 
     public String getFirstName() {
         return firstName;
@@ -33,7 +34,6 @@ public abstract class Member {
         return isActive;
     }
 
-
     public boolean isCompetitive() {
         return isCompetitive;
     }
@@ -41,6 +41,8 @@ public abstract class Member {
     public boolean isHasPaid() {
         return hasPaid;
     }
+
+    //SETTERS (SOME OF THEM SHOULD BE DELETED AT SOME POINT)
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
