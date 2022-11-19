@@ -38,7 +38,7 @@ public abstract class Member {
         return isCompetitive;
     }
 
-    public boolean isHasPaid() {
+    public boolean hasPaid() {
         return hasPaid;
     }
 

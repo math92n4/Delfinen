@@ -32,24 +32,32 @@ public class UserInterface {
 
     private void chairmanUI() {
 
-        System.out.println("Chairman password identified!\n" +
-                "1) Register swimmer\n" +
-                "2) List of all swimmer\n" +
-                "3) List of competetive swimmer\n" +
-                "4) List of normalswimmer");
+        int chairmanChoice;
+        System.out.println("Chairman password identified!");
 
-        int chairmanChoice = scanner.nextInt();
+        do {
+            System.out.println("1) Register swimmer\n" +
+                    "2) List of all swimmers\n" +
+                    "3) List of competetive swimmers\n" +
+                    "4) List of normalswimmers");
 
-        switch (chairmanChoice) {
-            case 1:
-                registerMember();
-            case 2:
-                // List of all swimmers
-            case 3:
-                // List of competitive member
-            case 4:
-                // List of normal simmers
-        }
+            chairmanChoice = scanner.nextInt();
+
+            switch (chairmanChoice) {
+                case 1:
+                    registerMember();
+                    break;
+                case 2:
+                    listOfAllSwimmers();
+                    break;
+                case 3:
+                    listOfCompetitiveSwimmers();
+                    break;
+                case 4:
+                    listOfNormalSwimmers();
+                    break;
+            }
+        } while (chairmanChoice <= 4 && chairmanChoice > 0);
 
 
     }
@@ -59,6 +67,8 @@ public class UserInterface {
         System.out.println("You have selected register member\n" +
                 "Enter first name: ");
 
+        scanner.nextLine();                                     //Scanner bug
+
         String firstName = scanner.nextLine();
 
         System.out.println("Enter last name");
@@ -66,18 +76,133 @@ public class UserInterface {
         String lastName = scanner.nextLine();
 
         System.out.println("Enter the member's age");
-        //TODO: TRY CATCH
+        //TODO: HANDLE WRONG INPUT
         int age = scanner.nextInt();
 
         // isActive
+        System.out.println("Is the member active? (yes/no)");
+        //TODO: HANDLE WRONG INPUT
+
+        boolean isActive = true;
+        char active;
+
+        active = scanner.next().charAt(0);
+        if (active == 'n') {
+            isActive = false;
+        } else if (active == 'y') {
+            isActive = true;
+        }
 
         // isCompetitive
+        System.out.println("Is the member a competitive swimmer?");
+        //TODO: HANDLE WRONG INPUT
+
+        boolean isCompetitive = true;
+        char competitive;
+
+        competitive = scanner.next().charAt(0);
+        if (competitive == 'n') {
+            isCompetitive = false;
+        } else if (competitive == 'y') {
+            isCompetitive = true;
+        }
 
         // hasPaid
+        System.out.println("Has the member paid?");
+        //TODO: HANDLE WRONG INPUT
 
+        boolean hasPaid = true;
+        char paid;
 
+        paid = scanner.next().charAt(0);
+        if (paid == 'n') {
+            hasPaid = false;
+        } else if (paid == 'y') {
+            hasPaid = true;
+        }
+
+        controller.createMember(firstName,lastName,age,isActive,isCompetitive,hasPaid);
 
     }
+
+    private void listOfAllSwimmers() {
+        System.out.println("-------------------");
+        for (Member member : controller.getAllSwimmers()) {
+            System.out.println("First name: " + member.getFirstName() +
+                    "\nLast name: " + member.getLastName() +
+                    "\nAge: " + member.getAge());
+            if (member.isActive()) {
+                System.out.println("Is the swimmer active: Yes");
+            } else {
+                System.out.println("Is the swimmer active: No");
+            }
+            if (member.isCompetitive()) {
+                System.out.println("Is the swimmer competitive: Yes");
+            } else {
+                System.out.println("Is the swimmer competitive: No");
+            }
+            if (member.hasPaid()) {
+                System.out.println("Has the member paid: Yes");
+            } else {
+                System.out.println("Has the member paid: No");
+            }
+            System.out.println("-------------------");
+        }
+    }
+
+    private void listOfCompetitiveSwimmers() {
+        System.out.println("-------------------");
+        for (Member member : controller.getCompetitiveSwimmers()) {
+            System.out.println("First name: " + member.getFirstName() +
+                    "\nLast name: " + member.getLastName() +
+                    "\nAge: " + member.getAge());
+            if (member.isActive()) {
+                System.out.println("Is the swimmer active: Yes");
+            } else {
+                System.out.println("Is the swimmer active: No");
+            }
+            if (member.isCompetitive()) {
+                System.out.println("Is the swimmer competitive: Yes");
+            } else {
+                System.out.println("Is the swimmer competitive: No");
+            }
+            if (member.hasPaid()) {
+                System.out.println("Has the member paid: Yes");
+            } else {
+                System.out.println("Has the member paid: No");
+            }
+            System.out.println("-------------------");
+        }
+    }
+
+    private void listOfNormalSwimmers() {
+        System.out.println("-------------------");
+        for (Member member : controller.getNormalSwimmers()) {
+            System.out.println("First name: " + member.getFirstName() +
+                    "\nLast name: " + member.getLastName() +
+                    "\nAge: " + member.getAge());
+            if (member.isActive()) {
+                System.out.println("Is the swimmer active: Yes");
+            } else {
+                System.out.println("Is the swimmer active: No");
+            }
+            if (member.isCompetitive()) {
+                System.out.println("Is the swimmer competitive: Yes");
+            } else {
+                System.out.println("Is the swimmer competitive: No");
+            }
+            if (member.hasPaid()) {
+                System.out.println("Has the member paid: Yes");
+            } else {
+                System.out.println("Has the member paid: No");
+            }
+            System.out.println("-------------------");
+        }
+    }
+
+
+
+
 
 
 
@@ -88,22 +213,6 @@ public class UserInterface {
 
 
 
-
-
-        /*System.out.println("ALL SWIMMERS IN DA CLUB:");
-        for (Member member : controller.getAllSwimmers()) {
-            System.out.println(member.getFirstName() + " " + member.getLastName());
-        }
-
-        System.out.println("\nALL COMPETITIVE MEMBERS:");
-        for (Member member : controller.getCompetitiveSwimmers()) {
-            System.out.println(member.getFirstName() + " " + member.getLastName());
-        }
-
-        System.out.println("\nALL NORMAL SWIMMERS:");
-        for (Member member : controller.getNormalSwimmers()) {
-            System.out.println(member.getFirstName() + " " + member.getLastName());
-        }*/
 
 
 
