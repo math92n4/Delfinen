@@ -16,7 +16,7 @@ public abstract class Member {
         this.hasPaid = hasPaid;
     }
 
-    //GETTERS (SOME OF THEM SHOULD BE DELETED AT SOME POINT)
+    //GETTERS
 
     public String getFirstName() {
         return firstName;
@@ -42,7 +42,7 @@ public abstract class Member {
         return hasPaid;
     }
 
-    //SETTERS (SOME OF THEM SHOULD BE DELETED AT SOME POINT)
+    //SETTERS
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;

@@ -1,15 +1,44 @@
+import java.util.Scanner;
+
 public class UserInterface {
 
-    public void testData() {
 
-        Controller controller = new Controller();
+    Controller controller = new Controller();
+    Scanner scanner = new Scanner(System.in);
 
-        controller.createMember("Mathias","Wulff",24,true,true,true);
-        controller.createMember("Søren","Sørensen",54,true,true,true);
-        controller.createMember("Michael","Nielsen",54,true,false,true);
-        controller.createMember("Morten","Mortensen",54,true,false,true);
+    public void start() {
 
-        System.out.println("ALL SWIMMERS IN DA CLUB:");
+        System.out.println("\nTHE DOPLHIN SWIMCLUB\n" + "-------------------\n" +
+                "Please enter your password: ");
+
+        String chairmanPassword = "chairman";
+        String cashierPassword = "cashier";
+        String password = scanner.nextLine();
+
+        if (password.toLowerCase().equals(chairmanPassword)) {
+            chairmanUI();
+        } else if (password.toLowerCase().equals(cashierPassword)) {
+            cashierUI();
+        }
+
+    }
+
+    private void chairmanUI() {
+        System.out.println("Chairman password identified!");
+    }
+
+
+
+
+    private void cashierUI() {
+        System.out.println("Cashier password identified!\nWork still in progress!");
+    }
+
+
+
+
+
+        /*System.out.println("ALL SWIMMERS IN DA CLUB:");
         for (Member member : controller.getAllSwimmers()) {
             System.out.println(member.getFirstName() + " " + member.getLastName());
         }
@@ -22,9 +51,8 @@ public class UserInterface {
         System.out.println("\nALL NORMAL SWIMMERS:");
         for (Member member : controller.getNormalSwimmers()) {
             System.out.println(member.getFirstName() + " " + member.getLastName());
-        }
+        }*/
 
-    }
 
 
 }
