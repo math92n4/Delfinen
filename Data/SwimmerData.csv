@@ -1,4 +1,6 @@
-Morten;Mortensen;29;true;false;true;
-Anders;Andersen;70;false;false;true;
-Torben;Torbensen;55;true;true;true;
-Kristoffer;Kristoffersen;22;false;true;false;
+Morten;Mortensen;male;29;true;false;true;
+Anders;Andersen;male;70;false;false;true;
+Torben;Torbensen;male;55;true;true;true;
+Kristoffer;Kristoffersen;male;22;false;true;false;
+Joe;Brazy;male;23;true;true;true;
+Zoe;Crude;female;21;true;true;true;

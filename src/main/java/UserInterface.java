@@ -78,6 +78,10 @@ public class UserInterface {
 
         String lastName = scanner.nextLine();
 
+        System.out.println("Enter gender: male / female: ");
+
+        String gender = scanner.nextLine();
+
         System.out.println("Enter the member's age");
         //TODO: HANDLE WRONG INPUT
         int age = scanner.nextInt();
@@ -124,7 +128,7 @@ public class UserInterface {
             hasPaid = true;
         }
 
-        controller.createMember(firstName,lastName,age,isActive,isCompetitive,hasPaid);
+        controller.createMember(firstName,lastName, gender, age,isActive,isCompetitive,hasPaid);
         controller.saveData();
     }
 
@@ -133,6 +137,7 @@ public class UserInterface {
         for (Member member : controller.getAllSwimmers()) {
             System.out.println("First name: " + member.getFirstName() +
                     "\nLast name: " + member.getLastName() +
+                    "\nGender: " + member.getGender() +
                     "\nAge: " + member.getAge());
             if (member.isActive()) {
                 System.out.println("Is the swimmer active: Yes");
@@ -158,6 +163,7 @@ public class UserInterface {
         for (Member member : controller.getCompetitiveSwimmers()) {
             System.out.println("First name: " + member.getFirstName() +
                     "\nLast name: " + member.getLastName() +
+                    "\nGender: " + member.getGender() +
                     "\nAge: " + member.getAge());
             if (member.isActive()) {
                 System.out.println("Is the swimmer active: Yes");
@@ -183,6 +189,7 @@ public class UserInterface {
         for (Member member : controller.getNormalSwimmers()) {
             System.out.println("First name: " + member.getFirstName() +
                     "\nLast name: " + member.getLastName() +
+                    "\nGender: " + member.getGender() +
                     "\nAge: " + member.getAge());
             if (member.isActive()) {
                 System.out.println("Is the swimmer active: Yes");

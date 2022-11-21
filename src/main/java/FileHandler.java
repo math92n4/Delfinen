@@ -14,6 +14,7 @@ public class FileHandler {
 
             output.print(member.getFirstName() + ";");
             output.print(member.getLastName() + ";");
+            output.print(member.getGender() + ";");
             output.print(member.getAge() + ";");
             output.print(member.isActive() + ";");
             output.print(member.isCompetitive() + ";");
@@ -45,10 +46,11 @@ public class FileHandler {
 
         member.setFirstName(split[0]);
         member.setLastName(split[1]);
-        member.setAge(Integer.parseInt(split[2]));
-        member.setActive(Boolean.parseBoolean(split[3]));
-        member.setCompetitive(Boolean.parseBoolean(split[4]));
-        member.setHasPaid(Boolean.parseBoolean(split[5]));
+        member.setGender(split[2]);
+        member.setAge(Integer.parseInt(split[3]));
+        member.setActive(Boolean.parseBoolean(split[4]));
+        member.setCompetitive(Boolean.parseBoolean(split[5]));
+        member.setHasPaid(Boolean.parseBoolean(split[6]));
 
         return member;
     }

@@ -6,14 +6,14 @@ public class Database {
     private ArrayList<Member> members = new ArrayList<>();
 
 
-    public void addMember(String firstName,String lastName,int age,
+    public void addMember(String firstName,String lastName, String gender, int age,
                             boolean isActive, boolean isCompetetive,
                             boolean hasPaid) {
         Member member;
         if (isCompetetive) {
-            member = new CompetitiveSwimmer(firstName, lastName, age, isActive, hasPaid);
+            member = new CompetitiveSwimmer(firstName, lastName, gender, age, isActive, hasPaid);
         } else
-            member = new NormalSwimmer(firstName, lastName, age, isActive, hasPaid);
+            member = new NormalSwimmer(firstName, lastName, gender, age, isActive, hasPaid);
         members.add(member);
     }
 

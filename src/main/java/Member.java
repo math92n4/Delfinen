@@ -2,15 +2,17 @@ public class Member {
 
     private String firstName;
     private String lastName;
+    private String gender;
     private int age;
     private boolean isActive;
     private boolean isCompetitive;
     private boolean hasPaid;
 
-    public Member(String firstName, String lastName, int age,
+    public Member(String firstName, String lastName, String gender, int age,
                   boolean isActive, boolean hasPaid) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.gender = gender;
         this.age = age;
         this.isActive = isActive;
         this.hasPaid = hasPaid;
@@ -28,6 +30,10 @@ public class Member {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public String getGender() {
+        return gender;
     }
 
     public int getAge() {
@@ -54,6 +60,10 @@ public class Member {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public void setAge(int age) {

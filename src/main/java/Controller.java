@@ -6,9 +6,9 @@ public class Controller {
     Database database = new Database();
     FileHandler fileHandler = new FileHandler();
 
-    public void createMember(String firstName, String lastName, int age,
+    public void createMember(String firstName, String lastName, String gender, int age,
                              boolean isActive,boolean isCompetitive, boolean hasPaid) {
-        database.addMember(firstName,lastName,age,isActive,isCompetitive,hasPaid);
+        database.addMember(firstName,lastName, gender, age,isActive,isCompetitive,hasPaid);
     }
 
     public ArrayList<Member> getAllSwimmers() {
