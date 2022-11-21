@@ -9,6 +9,8 @@ public class UserInterface {
 
     public void start() throws FileNotFoundException {
 
+        System.out.println("Hej Jeppe");
+
         System.out.println("\nTHE DOPLHIN SWIMCLUB\n" + "-------------------\n" +
                 "Please enter your password: ");
 
