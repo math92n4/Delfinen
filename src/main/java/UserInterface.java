@@ -41,8 +41,12 @@ public class UserInterface {
 
             System.out.println("1) Register swimmer\n" +
                     "2) List of all swimmers\n" +
-                    "3) List of competetive swimmers\n" +
-                    "4) List of normalswimmers");
+                    "3) List of competitive swimmers\n" +
+                    "4) List of casual swimmers\n" +
+                    "5) List of active swimmers\n" +
+                    "6) List of inactive swimmers\n" +
+                    "7) List of junior swimmers\n" +
+                    "8) List of senior swimmers");
 
             chairmanChoice = scanner.nextInt();
 
@@ -59,8 +63,19 @@ public class UserInterface {
                 case 4:
                     listOfNormalSwimmers();
                     break;
+                case 5:
+                    listOfActiveSwimmers();
+                    break;
+                case 6:
+                    listOfInactiveSwimmers();
+                    break;
+                case 7:
+                    listOfJuniorSwimmers();
+                    break;
+                case 8:
+                    listOfSeniorSwimmers();
             }
-        } while (chairmanChoice <= 4 && chairmanChoice > 0);
+        } while (chairmanChoice <= 8 && chairmanChoice > 0);
 
 
     }
@@ -128,7 +143,7 @@ public class UserInterface {
             hasPaid = true;
         }
 
-        controller.createMember(firstName,lastName, gender, age,isActive,isCompetitive,hasPaid);
+        controller.createMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid);
         controller.saveData();
     }
 
@@ -210,20 +225,112 @@ public class UserInterface {
         }
     }
 
+    private void listOfActiveSwimmers() {
+        System.out.println("-------------------");
+        for (Member member : controller.getActiveSwimmers()) {
+            System.out.println("First name: " + member.getFirstName() +
+                    "\nLast name: " + member.getLastName() +
+                    "\nGender: " + member.getGender() +
+                    "\nAge: " + member.getAge());
+            if (member.isActive()) {
+                System.out.println("Is the swimmer active: Yes");
+            }
+            if (member.isCompetitive()) {
+                System.out.println("Is the swimmer competitive: Yes");
+            } else {
+                System.out.println("Is the swimmer competitive: No");
+            }
+            if (member.hasPaid()) {
+                System.out.println("Has the member paid: Yes");
+            } else {
+                System.out.println("Has the member paid: No");
+            }
+            System.out.println("-------------------");
+        }
+    }
 
+    private void listOfInactiveSwimmers() {
+        System.out.println("-------------------");
+        for (Member member : controller.getInactiveSwimmers()) {
+            System.out.println("First name: " + member.getFirstName() +
+                    "\nLast name: " + member.getLastName() +
+                    "\nGender: " + member.getGender() +
+                    "\nAge: " + member.getAge());
+            if (member.isActive()) {
+                System.out.println("Is the swimmer active: Yes");
+            } else {
+                System.out.println("Is the swimmer active: No");
+            }
+            if (member.isCompetitive()) {
+                System.out.println("Is the swimmer competitive: Yes");
+            } else {
+                System.out.println("Is the swimmer competitive: No");
+            }
+            if (member.hasPaid()) {
+                System.out.println("Has the member paid: Yes");
+            } else {
+                System.out.println("Has the member paid: No");
+            }
+            System.out.println("-------------------");
+        }
+    }
 
+    private void listOfJuniorSwimmers() {
+        System.out.println("-------------------");
+        for (Member member : controller.getJuniorSwimmers()) {
+            System.out.println("First name: " + member.getFirstName() +
+                    "\nLast name: " + member.getLastName() +
+                    "\nGender: " + member.getGender() +
+                    "\nAge: " + member.getAge());
+            if (member.isActive()) {
+                System.out.println("Is the swimmer active: Yes");
+            } else {
+                System.out.println("Is the swimmer active: No");
+            }
+            if (member.isCompetitive()) {
+                System.out.println("Is the swimmer competitive: Yes");
+            } else {
+                System.out.println("Is the swimmer competitive: No");
+            }
+            if (member.hasPaid()) {
+                System.out.println("Has the member paid: Yes");
+            } else {
+                System.out.println("Has the member paid: No");
+            }
+            System.out.println("-------------------");
+        }
+    }
 
-
-
+    private void listOfSeniorSwimmers() {
+        System.out.println("-------------------");
+        for (Member member : controller.getSeniorSwimmers()) {
+            System.out.println("First name: " + member.getFirstName() +
+                    "\nLast name: " + member.getLastName() +
+                    "\nGender: " + member.getGender() +
+                    "\nAge: " + member.getAge());
+            if (member.isActive()) {
+                System.out.println("Is the swimmer active: Yes");
+            } else {
+                System.out.println("Is the swimmer active: No");
+            }
+            if (member.isCompetitive()) {
+                System.out.println("Is the swimmer competitive: Yes");
+            } else {
+                System.out.println("Is the swimmer competitive: No");
+            }
+            if (member.hasPaid()) {
+                System.out.println("Has the member paid: Yes");
+            } else {
+                System.out.println("Has the member paid: No");
+            }
+            System.out.println("-------------------");
+        }
+    }
 
 
     private void cashierUI() {
         System.out.println("Cashier password identified!\nWork still in progress!");
     }
-
-
-
-
 
 
 }
