@@ -6,6 +6,7 @@ public class Controller {
 
     Database database = new Database();
     FileHandler fileHandler = new FileHandler();
+    Member member = new Member();
 
     public void createMember(String firstName, String lastName, String gender, int age,
                              boolean isActive,boolean isCompetitive, boolean hasPaid) {
@@ -38,6 +39,10 @@ public class Controller {
 
     public ArrayList<Member> getSeniorSwimmers() {
         return database.getSeniorSwimmers();
+    }
+
+    public void setSubscription() {
+        database.setSubscription(database.getAllSwimmers());
     }
 
     public void saveData() throws FileNotFoundException {

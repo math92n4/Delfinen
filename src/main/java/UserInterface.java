@@ -169,7 +169,7 @@ public class UserInterface {
             } else {
                 System.out.println("Has the member paid: No");
             }
-            member.setSubscription();
+            controller.setSubscription();
             if (member.getSubscription() > 0) {
                 System.out.println("Subscription to pay in DKK: " + member.getSubscription() + ",-");
             }
@@ -199,7 +199,7 @@ public class UserInterface {
             } else {
                 System.out.println("Has the member paid: No");
             }
-            member.setSubscription();
+            controller.setSubscription();
             if (member.getSubscription() > 0) {
                 System.out.println("Subscription to pay in DKK: " + member.getSubscription() + ",-");
             }
@@ -229,7 +229,7 @@ public class UserInterface {
             } else {
                 System.out.println("Has the member paid: No");
             }
-            member.setSubscription();
+            controller.setSubscription();
             if (member.getSubscription() > 0) {
                 System.out.println("Subscription to pay in DKK: " + member.getSubscription() + ",-");
             }
@@ -257,7 +257,7 @@ public class UserInterface {
             } else {
                 System.out.println("Has the member paid: No");
             }
-            member.setSubscription();
+            controller.setSubscription();
             if (member.getSubscription() > 0) {
                 System.out.println("Subscription to pay in DKK: " + member.getSubscription() + ",-");
             }
@@ -287,7 +287,7 @@ public class UserInterface {
             } else {
                 System.out.println("Has the member paid: No");
             }
-            member.setSubscription();
+            controller.setSubscription();
             if (member.getSubscription() > 0) {
                 System.out.println("Subscription to pay in DKK: " + member.getSubscription() + ",-");
             }
@@ -317,7 +317,7 @@ public class UserInterface {
             } else {
                 System.out.println("Has the member paid: No");
             }
-            member.setSubscription();
+            controller.setSubscription();
             if (member.getSubscription() > 0) {
                 System.out.println("Subscription to pay in DKK: " + member.getSubscription() + ",-");
             }
@@ -347,7 +347,7 @@ public class UserInterface {
             } else {
                 System.out.println("Has the member paid: No");
             }
-            member.setSubscription();
+            controller.setSubscription();
             if (member.getSubscription() > 0) {
                 System.out.println("Subscription to pay in DKK: " + member.getSubscription() + ",-");
             }
