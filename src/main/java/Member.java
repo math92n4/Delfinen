@@ -7,6 +7,7 @@ public class Member {
     private boolean isActive;
     private boolean isCompetitive;
     private boolean hasPaid;
+    private int subscription;
 
     public Member(String firstName, String lastName, String gender, int age,
                   boolean isActive, boolean hasPaid) {
@@ -52,6 +53,10 @@ public class Member {
         return hasPaid;
     }
 
+    public int getSubscription() {
+        return subscription;
+    }
+
     //SETTERS
 
     public void setFirstName(String firstName) {
@@ -80,5 +85,17 @@ public class Member {
 
     public void setHasPaid(boolean hasPaid) {
         this.hasPaid = hasPaid;
+    }
+
+    public void setSubscription() {
+        if (isActive && age < 18 && age < 60) {
+            subscription = 1000;
+        } else if (isActive && age > 18) {
+            subscription = 1600;
+        } else if (isActive && age > 60) {
+            subscription = 1200;
+        } else if(!isActive) {
+            subscription = 500;
+        }
     }
 }

@@ -9,8 +9,6 @@ public class UserInterface {
 
     public void start() throws FileNotFoundException {
 
-        System.out.println("Hej Jeppe");
-
         System.out.println("\nTHE DOPLHIN SWIMCLUB\n" + "-------------------\n" +
                 "Please enter your password: ");
 
@@ -155,6 +153,10 @@ public class UserInterface {
                 System.out.println("Has the member paid: Yes");
             } else {
                 System.out.println("Has the member paid: No");
+            }
+            member.setSubscription();
+            if (member.getSubscription() > 0) {
+                System.out.println("Subscription to pay in DKK: " + member.getSubscription() + ",-");
             }
             System.out.println("-------------------");
         }

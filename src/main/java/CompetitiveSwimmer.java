@@ -5,6 +5,7 @@ public class CompetitiveSwimmer extends Member{
                               boolean isActive,boolean hasPaid) {
         super(firstName,lastName, gender, age,isActive,hasPaid);
         setCompetitive(true);
+        setSubscription();
     }
 
 
