@@ -156,8 +156,15 @@ public class UserInterface {
             } else {
                 System.out.println("Has the member paid: No");
             }
+            if (member.getSubscription() > 0) {
+                System.out.println(member.getSubscription());
+            }
+            System.out.println(member.getSubscription());
+
+
             System.out.println("-------------------");
         }
+
     }
 
     private void listOfCompetitiveSwimmers() {
