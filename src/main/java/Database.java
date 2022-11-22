@@ -40,4 +40,45 @@ public class Database {
         }
         return normalSwimmers;
     }
+
+    public ArrayList<Member> getActiveSwimmers() {
+        ArrayList<Member> activeSwimmers = new ArrayList<>();
+        for (Member member : members) {
+            if (member.isActive()) {
+                activeSwimmers.add(member);
+            }
+        }
+        return activeSwimmers;
+    }
+
+    public ArrayList<Member> getInactiveSwimmers() {
+       ArrayList<Member> inactiveSwimmers = new ArrayList<>();
+       for (Member member : members) {
+           if (!member.isActive()) {
+               inactiveSwimmers.add(member);
+           }
+       }
+       return inactiveSwimmers;
+    }
+
+    public ArrayList<Member> getJuniorSwimmers() {
+        ArrayList<Member> juniorSwimmers = new ArrayList<>();
+        for (Member member : members) {
+            if (member.getAge() < 18) {
+                juniorSwimmers.add(member);
+            }
+        }
+        return juniorSwimmers;
+    }
+
+    public ArrayList<Member> getSeniorSwimmers() {
+        ArrayList<Member> seniorSwimmers = new ArrayList<>();
+        for (Member member : members) {
+            if (member.getAge() >= 18) {
+                seniorSwimmers.add(member);
+            }
+        }
+        return seniorSwimmers;
+    }
+
 }
