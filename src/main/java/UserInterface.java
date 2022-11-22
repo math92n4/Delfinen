@@ -291,7 +291,7 @@ public class UserInterface {
             if (member.getSubscription() > 0) {
                 System.out.println("Subscription to pay in DKK: " + member.getSubscription() + ",-");
             }
-            System.out.println("-------------------");
+            System.out.println("--------------------");
         }
     }
 
