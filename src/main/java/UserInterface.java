@@ -60,27 +60,33 @@ public class UserInterface {
                     searchForSwimmer();
                     break;
                 case 3:
-                    listOfAllSwimmers();
+                   // updateSwimmer();
                     break;
                 case 4:
-                    listOfCompetitiveSwimmers();
+                    deleteSwimmer();
                     break;
                 case 5:
-                    listOfNormalSwimmers();
+                    listOfAllSwimmers();
                     break;
                 case 6:
-                    listOfActiveSwimmers();
+                    listOfCompetitiveSwimmers();
                     break;
                 case 7:
-                    listOfInactiveSwimmers();
+                    listOfNormalSwimmers();
                     break;
                 case 8:
-                    listOfJuniorSwimmers();
+                    listOfActiveSwimmers();
                     break;
                 case 9:
+                    listOfInactiveSwimmers();
+                    break;
+                case 10:
+                    listOfJuniorSwimmers();
+                    break;
+                case 11:
                     listOfSeniorSwimmers();
             }
-        } while (chairmanChoice <= 8 && chairmanChoice > 0);
+        } while (chairmanChoice != 10);
 
     }
 
@@ -392,6 +398,20 @@ public class UserInterface {
         }
     }
 
+    private void deleteSwimmer() throws FileNotFoundException {
+        int index = 1;
+        for (Member member : controller.getAllSwimmers()) {
+            System.out.println(index++ + ". Name: " + member.getFirstName() + " " + member.getLastName());
+        }
+
+        int choice = scanner.nextInt();
+        controller.deleteSwimmer(choice);
+        controller.saveData();
+    }
+
+
+
+
     // TODO: lav den her
     private void cashierUI() {
         System.out.println("Cashier password identified!\nWork still in progress!");
@@ -401,6 +421,7 @@ public class UserInterface {
     private void TrainerUI() {
         System.out.println("Trainer password identified!\nWork still in progress!");
     }
+
 
 
 }

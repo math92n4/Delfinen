@@ -94,6 +94,13 @@ public class Database {
         return seniorSwimmers;
     }
 
+    public void deleteSwimmer(int index) {
+
+        Member member = members.get(index - 1);
+        members.remove(member);
+
+    }
+
     public void setSubscription(ArrayList<Member> members) {
         for (Member member : members) {
             member.setSubscription();

@@ -45,6 +45,10 @@ public class Controller {
         return database.getSeniorSwimmers();
     }
 
+    public void deleteSwimmer(int index) {
+        database.deleteSwimmer(index);
+    }
+
     public void setSubscription() {
         database.setSubscription(database.getAllSwimmers());
     }
