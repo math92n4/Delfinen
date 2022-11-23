@@ -34,5 +34,4 @@ public class FlexibleComparator implements Comparator<Member> {
         return 0;
     }
 }
-
 */

@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -40,13 +41,14 @@ public class UserInterface {
             controller.loadData();
 
             System.out.println("1) Register swimmer\n" +
-                    "2) List of all swimmers\n" +
-                    "3) List of competitive swimmers\n" +
-                    "4) List of casual swimmers\n" +
-                    "5) List of active swimmers\n" +
-                    "6) List of inactive swimmers\n" +
-                    "7) List of junior swimmers\n" +
-                    "8) List of senior swimmers");
+                    "2) Search for swimmer\n" +
+                    "3) List of all swimmers\n" +
+                    "4) List of competitive swimmers\n" +
+                    "5) List of casual swimmers\n" +
+                    "6) List of active swimmers\n" +
+                    "7) List of inactive swimmers\n" +
+                    "8) List of junior swimmers\n" +
+                    "9) List of senior swimmers");
 
             chairmanChoice = scanner.nextInt();
 
@@ -55,28 +57,30 @@ public class UserInterface {
                     registerMember();
                     break;
                 case 2:
-                    listOfAllSwimmers();
+                    searchForSwimmer();
                     break;
                 case 3:
-                    listOfCompetitiveSwimmers();
+                    listOfAllSwimmers();
                     break;
                 case 4:
-                    listOfNormalSwimmers();
+                    listOfCompetitiveSwimmers();
                     break;
                 case 5:
-                    listOfActiveSwimmers();
+                    listOfNormalSwimmers();
                     break;
                 case 6:
-                    listOfInactiveSwimmers();
+                    listOfActiveSwimmers();
                     break;
                 case 7:
-                    listOfJuniorSwimmers();
+                    listOfInactiveSwimmers();
                     break;
                 case 8:
+                    listOfJuniorSwimmers();
+                    break;
+                case 9:
                     listOfSeniorSwimmers();
             }
         } while (chairmanChoice <= 8 && chairmanChoice > 0);
-
 
     }
 
@@ -145,6 +149,25 @@ public class UserInterface {
 
         controller.createMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid);
         controller.saveData();
+    }
+
+    private void searchForSwimmer() {
+        ArrayList<Member> swimmerFound;
+        System.out.println("Search for a member: ");
+        String firstName = scanner.next();
+        swimmerFound = controller.SearchForSwimmer(firstName);
+
+        for (Member member : swimmerFound) {
+            System.out.println("--------------------" + "\n" + "Delfinens medlemmer" + "\n" + "--------------------"
+                    + "\n" + "First name: " + member.getFirstName() + "\n" + "Last name: "
+                    + member.getLastName() + "\n" + "Age: " + member.getAge() + "\n"
+                    + ("Gender: " + member.getGender() + "\n" +
+                    ("Is active? " + member.isActive() + "\n" + ("Is competitive?: " + member.isCompetitive() + "\n"
+                            + ("Has paid? " + member.hasPaid() + "\n" + ("Subscription to pay in DDK: " + member.getSubscription() +",-"
+                    + "\n--------------------"))))));
+
+
+        }
     }
 
     private void listOfAllSwimmers() {
@@ -331,9 +354,14 @@ public class UserInterface {
         }
     }
 
-
+    // TODO: lav den her
     private void cashierUI() {
         System.out.println("Cashier password identified!\nWork still in progress!");
+    }
+
+    // TODO: lav den her
+    private void TrainerUI() {
+        System.out.println("Trainer password identified!\nWork still in progress!");
     }
 
 

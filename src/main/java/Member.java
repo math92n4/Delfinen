@@ -9,6 +9,9 @@ public class Member {
     private boolean hasPaid;
     private int subscription;
 
+    // attribute to make boolean expression return message instead of true / false
+    String message;
+
     public Member(String firstName, String lastName, String gender, int age,
                   boolean isActive, boolean hasPaid) {
         this.firstName = firstName;

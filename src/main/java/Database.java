@@ -2,9 +2,7 @@ import java.util.ArrayList;
 
 public class Database {
 
-
     private ArrayList<Member> members = new ArrayList<>();
-
 
     public void addMember(String firstName,String lastName, String gender, int age,
                             boolean isActive, boolean isCompetetive,
@@ -19,6 +17,19 @@ public class Database {
 
     public ArrayList<Member> getAllSwimmers() {
         return members;
+    }
+
+    public ArrayList<Member> getSearchForSwimmer(String firstName) {
+        ArrayList<Member> swimmerFound = new ArrayList<>();
+
+        for (Member søgning : members) {
+            if (søgning.getFirstName().toLowerCase().contains(firstName.toLowerCase())) {
+
+                swimmerFound.add(søgning);
+            }
+
+        }
+        return swimmerFound;
     }
 
     public ArrayList<Member> getCompetitiveSwimmers() {

@@ -16,6 +16,10 @@ public class Controller {
         return database.getAllSwimmers();
     }
 
+    public ArrayList<Member> SearchForSwimmer(String firstName) {
+        return database.getSearchForSwimmer(firstName);
+    }
+
     public ArrayList<Member> getCompetitiveSwimmers() {
         return database.getCompetitiveSwimmers();
     }
