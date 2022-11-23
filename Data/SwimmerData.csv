@@ -1,8 +1,9 @@
-morten;Mortensen;male;29;true;false;true;
-Anders;Andersen;male;70;false;false;true;
-Torben;Torbensen;male;55;true;true;true;
-Kristoffer;Kristoffersen;male;22;false;true;false;
-Joe;Brazy;male;23;true;true;true;
-Zoe;Crude;female;21;true;true;true;
-hej;med dig;male;29;true;false;true;
-kagemand;jeppe;male;29;true;true;true;
+Morten;Mortensen;male;29;true;false;true;true;
+Anders;Andersen;male;70;false;false;true;false;
+Torben;Torbensen;male;55;true;true;true;false;
+Kristoffer;Kristoffersen;male;22;false;true;false;true;
+Joe;Brazy;male;23;true;true;true;false;
+Zoe;Crude;female;21;true;true;true;true;
+Ole;Ozlem;male;16;true;true;true;false;
+Roronoa;Zoro;male;24;true;true;true;false;
+Casper;allë;male;27;true;true;true;true;

@@ -1,3 +1,5 @@
+import com.sun.source.tree.BreakTree;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -6,20 +8,32 @@ public class Database {
 
     private ArrayList<Member> members = new ArrayList<>();
 
-
-    public void addMember(String firstName, String lastName, String gender, int age,
-                          boolean isActive, boolean isCompetetive,
-                          boolean hasPaid) {
+    public void addMember(String firstName,String lastName, String gender, int age,
+                            boolean isActive, boolean isCompetetive,
+                            boolean hasPaid, boolean isStudent) {
         Member member;
         if (isCompetetive) {
-            member = new CompetitiveSwimmer(firstName, lastName, gender, age, isActive, hasPaid);
+            member = new CompetitiveSwimmer(firstName, lastName, gender, age, isActive, hasPaid, isStudent);
         } else
-            member = new NormalSwimmer(firstName, lastName, gender, age, isActive, hasPaid);
+            member = new NormalSwimmer(firstName, lastName, gender, age, isActive, hasPaid, isStudent);
         members.add(member);
     }
 
     public ArrayList<Member> getAllSwimmers() {
         return members;
+    }
+
+    public ArrayList<Member> getSearchForSwimmer(String firstName) {
+        ArrayList<Member> swimmerFound = new ArrayList<>();
+
+        for (Member søgning : members) {
+            if (søgning.getFirstName().toLowerCase().contains(firstName.toLowerCase())) {
+
+                swimmerFound.add(søgning);
+            }
+
+        }
+        return swimmerFound;
     }
 
     public ArrayList<Member> getCompetitiveSwimmers() {
@@ -123,6 +137,60 @@ public class Database {
                         if (svar.equals("no")) {
                             found = false;
                         }
+
+    public ArrayList<Member> getActiveSwimmers() {
+        ArrayList<Member> activeSwimmers = new ArrayList<>();
+        for (Member member : members) {
+            if (member.isActive()) {
+                activeSwimmers.add(member);
+            }
+        }
+        return activeSwimmers;
+    }
+
+    public ArrayList<Member> getInactiveSwimmers() {
+       ArrayList<Member> inactiveSwimmers = new ArrayList<>();
+       for (Member member : members) {
+           if (!member.isActive()) {
+               inactiveSwimmers.add(member);
+           }
+       }
+       return inactiveSwimmers;
+    }
+
+    public ArrayList<Member> getJuniorSwimmers() {
+        ArrayList<Member> juniorSwimmers = new ArrayList<>();
+        for (Member member : members) {
+            if (member.getAge() < 18) {
+                juniorSwimmers.add(member);
+            }
+        }
+        return juniorSwimmers;
+    }
+
+    public ArrayList<Member> getSeniorSwimmers() {
+        ArrayList<Member> seniorSwimmers = new ArrayList<>();
+        for (Member member : members) {
+            if (member.getAge() >= 18) {
+                seniorSwimmers.add(member);
+            }
+        }
+        return seniorSwimmers;
+    }
+
+    public void deleteSwimmer(int index) {
+
+        Member member = members.get(index - 1);
+        members.remove(member);
+
+    }
+
+    public void setSubscription(ArrayList<Member> members) {
+        for (Member member : members) {
+            member.setSubscription();
+        }
+    }
+}
 
                     } else if (choice == 6) {
                         System.out.println("The swimmers competitive status is currently set to: ");

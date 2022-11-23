@@ -7,14 +7,18 @@ public class Member {
     private boolean isActive;
     private boolean isCompetitive;
     private boolean hasPaid;
+    private boolean isStudent;
+    private int subscription;
+
 
     public Member(String firstName, String lastName, String gender, int age,
-                  boolean isActive, boolean hasPaid) {
+                  boolean isActive, boolean hasPaid, boolean isStudent) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
         this.isActive = isActive;
+        this.isStudent = isStudent;
         this.hasPaid = hasPaid;
     }
 
@@ -53,6 +57,14 @@ public class Member {
         return hasPaid;
     }
 
+    public boolean isStudent() {
+        return isStudent;
+    }
+
+    public int getSubscription() {
+        return subscription;
+    }
+
     //SETTERS
 
     public void setFirstName(String firstName) {
@@ -82,4 +94,29 @@ public class Member {
     public void setHasPaid(boolean hasPaid) {
         this.hasPaid = hasPaid;
     }
+
+    public void setStudent(boolean isStudent) {
+        this.isStudent = isStudent;
+    }
+
+    public void setSubscription() {
+        if (isActive && age < 18 && age < 60 && !isStudent) {
+            subscription = 1000;
+        } else if (isActive && age < 18 && isStudent) {
+            subscription = 850;
+        } else if (isActive && age > 18 && !isStudent) {
+            subscription = 1600;
+        } else if (isActive && age > 18 && age < 60 && isStudent) {
+            subscription = 1360;
+        } else if (isActive && age > 60 && !isStudent) {
+            subscription = 1200;
+        } else if (isActive && age > 60 && isStudent) {
+            subscription = 1020;
+        } else if(!isActive) {
+            subscription = 500;
+        }
+    }
+
 }
+
+
