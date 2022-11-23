@@ -42,13 +42,15 @@ public class UserInterface {
 
             System.out.println("1) Register swimmer\n" +
                     "2) Search for swimmer\n" +
-                    "3) List of all swimmers\n" +
-                    "4) List of competitive swimmers\n" +
-                    "5) List of casual swimmers\n" +
-                    "6) List of active swimmers\n" +
-                    "7) List of inactive swimmers\n" +
-                    "8) List of junior swimmers\n" +
-                    "9) List of senior swimmers");
+                    "3) Edit swimmer\n" +
+                    "4) Delete swimmer\n" +
+                    "5) List of all swimmers\n" +
+                    "6) List of competetive swimmers\n" +
+                    "7) List of normal swimmers\n" +
+                    "8) List of active swimmers\n" +
+                    "9) List of inactive swimmers\n" +
+                    "10) List of junior swimmers\n" +
+                    "11) List of senior swimmers");
 
             chairmanChoice = scanner.nextInt();
 
@@ -86,7 +88,7 @@ public class UserInterface {
                 case 11:
                     listOfSeniorSwimmers();
             }
-        } while (chairmanChoice != 10);
+        } while (chairmanChoice != 12);
 
     }
 
