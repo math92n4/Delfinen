@@ -8,9 +8,9 @@ public class Database {
 
     private ArrayList<Member> members = new ArrayList<>();
 
-    public void addMember(String firstName,String lastName, String gender, int age,
-                            boolean isActive, boolean isCompetetive,
-                            boolean hasPaid, boolean isStudent) {
+    public void addMember(String firstName, String lastName, String gender, int age,
+                          boolean isActive, boolean isCompetetive,
+                          boolean hasPaid, boolean isStudent) {
         Member member;
         if (isCompetetive) {
             member = new CompetitiveSwimmer(firstName, lastName, gender, age, isActive, hasPaid, isStudent);
@@ -137,61 +137,6 @@ public class Database {
                         if (svar.equals("no")) {
                             found = false;
                         }
-
-    public ArrayList<Member> getActiveSwimmers() {
-        ArrayList<Member> activeSwimmers = new ArrayList<>();
-        for (Member member : members) {
-            if (member.isActive()) {
-                activeSwimmers.add(member);
-            }
-        }
-        return activeSwimmers;
-    }
-
-    public ArrayList<Member> getInactiveSwimmers() {
-       ArrayList<Member> inactiveSwimmers = new ArrayList<>();
-       for (Member member : members) {
-           if (!member.isActive()) {
-               inactiveSwimmers.add(member);
-           }
-       }
-       return inactiveSwimmers;
-    }
-
-    public ArrayList<Member> getJuniorSwimmers() {
-        ArrayList<Member> juniorSwimmers = new ArrayList<>();
-        for (Member member : members) {
-            if (member.getAge() < 18) {
-                juniorSwimmers.add(member);
-            }
-        }
-        return juniorSwimmers;
-    }
-
-    public ArrayList<Member> getSeniorSwimmers() {
-        ArrayList<Member> seniorSwimmers = new ArrayList<>();
-        for (Member member : members) {
-            if (member.getAge() >= 18) {
-                seniorSwimmers.add(member);
-            }
-        }
-        return seniorSwimmers;
-    }
-
-    public void deleteSwimmer(int index) {
-
-        Member member = members.get(index - 1);
-        members.remove(member);
-
-    }
-
-    public void setSubscription(ArrayList<Member> members) {
-        for (Member member : members) {
-            member.setSubscription();
-        }
-    }
-}
-
                     } else if (choice == 6) {
                         System.out.println("The swimmers competitive status is currently set to: ");
                         System.out.println("Do you wish to switch it to (opposite of current status)");
@@ -225,9 +170,59 @@ public class Database {
 
                 }
 
-            } while (found == true);
+            } while (found);
+        }
+    }
+    public ArrayList<Member> getActiveSwimmers () {
+        ArrayList<Member> activeSwimmers = new ArrayList<>();
+        for (Member member : members) {
+            if (member.isActive()) {
+                activeSwimmers.add(member);
+            }
+        }
+        return activeSwimmers;
+    }
 
+    public ArrayList<Member> getInactiveSwimmers () {
+        ArrayList<Member> inactiveSwimmers = new ArrayList<>();
+        for (Member member : members) {
+            if (!member.isActive()) {
+                inactiveSwimmers.add(member);
+            }
+        }
+        return inactiveSwimmers;
+    }
 
+    public ArrayList<Member> getJuniorSwimmers () {
+        ArrayList<Member> juniorSwimmers = new ArrayList<>();
+        for (Member member : members) {
+            if (member.getAge() < 18) {
+                juniorSwimmers.add(member);
+            }
+        }
+        return juniorSwimmers;
+    }
+
+    public ArrayList<Member> getSeniorSwimmers () {
+        ArrayList<Member> seniorSwimmers = new ArrayList<>();
+        for (Member member : members) {
+            if (member.getAge() >= 18) {
+                seniorSwimmers.add(member);
+            }
+        }
+        return seniorSwimmers;
+    }
+
+    public void deleteSwimmer ( int index){
+
+        Member member = members.get(index - 1);
+        members.remove(member);
+
+    }
+
+    public void setSubscription (ArrayList < Member > members) {
+        for (Member member : members) {
+            member.setSubscription();
         }
     }
 }
