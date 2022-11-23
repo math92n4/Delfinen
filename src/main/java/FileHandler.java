@@ -19,6 +19,7 @@ public class FileHandler {
             output.print(member.isActive() + ";");
             output.print(member.isCompetitive() + ";");
             output.print(member.hasPaid() + ";");
+            output.print(member.isStudent() + ";");
 
             output.println("");
         }
@@ -51,6 +52,7 @@ public class FileHandler {
         member.setActive(Boolean.parseBoolean(split[4]));
         member.setCompetitive(Boolean.parseBoolean(split[5]));
         member.setHasPaid(Boolean.parseBoolean(split[6]));
+        member.setStudent(Boolean.parseBoolean(split[7]));
 
         return member;
     }

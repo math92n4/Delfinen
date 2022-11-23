@@ -8,12 +8,12 @@ public class Database {
 
     public void addMember(String firstName,String lastName, String gender, int age,
                             boolean isActive, boolean isCompetetive,
-                            boolean hasPaid) {
+                            boolean hasPaid, boolean isStudent) {
         Member member;
         if (isCompetetive) {
-            member = new CompetitiveSwimmer(firstName, lastName, gender, age, isActive, hasPaid);
+            member = new CompetitiveSwimmer(firstName, lastName, gender, age, isActive, hasPaid, isStudent);
         } else
-            member = new NormalSwimmer(firstName, lastName, gender, age, isActive, hasPaid);
+            member = new NormalSwimmer(firstName, lastName, gender, age, isActive, hasPaid, isStudent);
         members.add(member);
     }
 

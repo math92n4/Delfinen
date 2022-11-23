@@ -9,8 +9,8 @@ public class Controller {
     Member member = new Member();
 
     public void createMember(String firstName, String lastName, String gender, int age,
-                             boolean isActive,boolean isCompetitive, boolean hasPaid) {
-        database.addMember(firstName,lastName, gender, age,isActive,isCompetitive,hasPaid);
+                             boolean isActive,boolean isCompetitive, boolean hasPaid, boolean isStudent) {
+        database.addMember(firstName,lastName, gender, age,isActive,isCompetitive,hasPaid, isStudent);
     }
 
     public ArrayList<Member> getAllSwimmers() {

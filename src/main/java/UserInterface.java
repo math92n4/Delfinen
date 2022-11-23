@@ -147,7 +147,21 @@ public class UserInterface {
             hasPaid = true;
         }
 
-        controller.createMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid);
+        // isStudent
+        System.out.println("Is the member a student?");
+        //TODO: HANDLE WRONG INPUT
+
+        boolean isStudent = true;
+        char student;
+
+        student = scanner.next().charAt(0);
+        if (student == 'n') {
+            isStudent = false;
+        } else if (student == 'y') {
+            isStudent = true;
+        }
+
+        controller.createMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
         controller.saveData();
     }
 
