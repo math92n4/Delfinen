@@ -1,3 +1,5 @@
+import com.sun.source.tree.BreakTree;
+
 import java.util.ArrayList;
 
 public class Database {
@@ -92,4 +94,9 @@ public class Database {
         return seniorSwimmers;
     }
 
+    public void setSubscription(ArrayList<Member> members) {
+        for (Member member : members) {
+            member.setSubscription();
+        }
+    }
 }
