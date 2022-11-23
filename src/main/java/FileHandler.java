@@ -16,9 +16,9 @@ public class FileHandler {
             output.print(member.getLastName() + ";");
             output.print(member.getGender() + ";");
             output.print(member.getAge() + ";");
-            output.print(member.isActive() + ";");
-            output.print(member.isCompetitive() + ";");
-            output.print(member.hasPaid() + ";");
+            output.print(member.isActive()+ ";");
+            output.print(member.isCompetitive()+ ";");
+            output.print(member.hasPaid()+ ";");
 
             output.println("");
         }

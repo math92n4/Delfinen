@@ -30,6 +30,9 @@ public class Controller {
     public void loadData() throws FileNotFoundException {
         fileHandler.loadData(database.getAllSwimmers());
     }
+    public void editSwimmer(String name){
+        database.editSwimmer(name);
+    }
 
 
 }

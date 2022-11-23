@@ -42,7 +42,8 @@ public class UserInterface {
             System.out.println("1) Register swimmer\n" +
                     "2) List of all swimmers\n" +
                     "3) List of competetive swimmers\n" +
-                    "4) List of normalswimmers");
+                    "4) List of normalswimmers\n" +
+                    "5) Edit a swimmer");
 
             chairmanChoice = scanner.nextInt();
 
@@ -59,8 +60,14 @@ public class UserInterface {
                 case 4:
                     listOfNormalSwimmers();
                     break;
+                case 5:
+                    System.out.println("Enter the firstname or lastname of the swimmer you wish to edit");
+                    String name = scanner.next();
+                    controller.editSwimmer(name);
+                    controller.saveData();
+                    break;
             }
-        } while (chairmanChoice <= 4 && chairmanChoice > 0);
+        } while (chairmanChoice <= 5 && chairmanChoice > 0);
 
 
     }
