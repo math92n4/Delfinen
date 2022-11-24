@@ -1,4 +1,4 @@
-package Delfinen;
+import Delfinen.UserInterface;
 
 import java.io.FileNotFoundException;
 
