@@ -12,6 +12,8 @@ public class UserInterface {
 
     public void start() throws FileNotFoundException {
 
+        // TODO: SET SUBSCRIPTION
+
         System.out.println("\nTHE DOPLHIN SWIMCLUB\n" + "-------------------\n" +
                 "Please enter your password: ");
 
@@ -414,11 +416,35 @@ public class UserInterface {
     }
 
 
-
-
     // TODO: lav den her
     private void cashierUI() {
-        System.out.println("Cashier password identified!\nWork still in progress!");
+
+        int cashierChoice;
+        System.out.println("Cashier password identified!");
+
+        do {
+
+            System.out.println("1) Expected income\n" +
+                    "2) List of people who hasn't paid");
+
+            cashierChoice = scanner.nextInt();
+
+            switch (cashierChoice) {
+                case 1:
+                    //Expected income
+                    break;
+                case 2:
+                    // Unpaid members
+                    listOfUnpaidSwimmers();
+                    break;
+            }
+
+        } while (cashierChoice != 0);
+
+    }
+
+    private void listOfUnpaidSwimmers() {
+
     }
 
     // TODO: lav den her
