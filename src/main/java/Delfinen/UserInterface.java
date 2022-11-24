@@ -240,8 +240,6 @@ public class UserInterface {
         }
 
 
-
-
     private void listOfAllSwimmers() {
         System.out.println("-------------------");
         for (Member member : controller.getAllSwimmers()) {
@@ -587,8 +585,6 @@ public class UserInterface {
 
     }
 
-
-    // TODO: lav den her
     private void cashierUI() throws FileNotFoundException {
 
         controller.loadData();
@@ -627,12 +623,8 @@ public class UserInterface {
         System.out.println("Expected income from subscriptions: " + controller.getSubscriptionSum());
     }
 
-
-    // TODO: lav den her
     private void TrainerUI() {
         System.out.println("Trainer password identified!\nWork still in progress!");
     }
-
-
 
 }

@@ -7,7 +7,6 @@ public class Controller {
 
     Delfinen.Database database = new Database();
     FileHandler fileHandler = new FileHandler();
-    Member member = new Member();
 
     public void createMember(String firstName, String lastName, String gender, int age,
                              boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent) {
@@ -54,7 +53,6 @@ public class Controller {
         return database.getSubscriptionSum();
     }
 
-
     public void deleteSwimmer(int index) {
         database.deleteSwimmer(index);
     }
@@ -76,8 +74,8 @@ public class Controller {
         database.editSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
     }
 
-        public void sortBy (String sortBy){
-            database.sortBy(sortBy);
-        }
+    public void sortBy(String sortBy) {
+        database.sortBy(sortBy);
+    }
 
 }
