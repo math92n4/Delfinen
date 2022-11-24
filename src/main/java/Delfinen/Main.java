@@ -1,6 +1,6 @@
-package delfinen;
+package Delfinen;
 
-import javax.xml.crypto.Data;
+
 import java.io.FileNotFoundException;
 
 public class Main {

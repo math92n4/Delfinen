@@ -1,4 +1,4 @@
-package delfinen;
+package Delfinen;
 
 import java.io.File;
 import java.io.FileNotFoundException;

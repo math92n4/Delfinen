@@ -1,17 +1,17 @@
-package delfinen;
+package Delfinen;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Controller {
 
-    Database database = new Database();
+    Delfinen.Database database = new Database();
     FileHandler fileHandler = new FileHandler();
     Member member = new Member();
 
     public void createMember(String firstName, String lastName, String gender, int age,
-                             boolean isActive,boolean isCompetitive, boolean hasPaid, boolean isStudent) {
-        database.addMember(firstName,lastName, gender, age,isActive,isCompetitive,hasPaid, isStudent);
+                             boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent) {
+        database.addMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
     }
 
     public ArrayList<Member> getAllSwimmers() {
@@ -46,6 +46,15 @@ public class Controller {
         return database.getSeniorSwimmers();
     }
 
+    public ArrayList<Member> getUnpaidSwimmers() {
+        return database.getUnpaidSwimmers();
+    }
+
+    public int getSubscriptionSum() {
+        return database.getSubscriptionSum();
+    }
+
+
     public void deleteSwimmer(int index) {
         database.deleteSwimmer(index);
     }
@@ -62,14 +71,13 @@ public class Controller {
         fileHandler.loadData(database.getAllSwimmers());
     }
 
-    public void sortBy(String sortBy) {
-        database.sortBy(sortBy);
+    public void editSwimmer(int index, String firstName, String lastName, String gender, int age,
+                            boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent) {
+        database.editSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
     }
 
-    public void editSwimmer(String name) {
-        database.editSwimmer(name);
-    }
-
-
+        public void sortBy (String sortBy){
+            database.sortBy(sortBy);
+        }
 
 }

@@ -1,6 +1,6 @@
-package delfinen.comparatorer;
+package Delfinen.comparatorer;
 
-import delfinen.Member;
+import Delfinen.Member;
 
 import java.util.Comparator;
 

@@ -1,4 +1,4 @@
-package delfinen;
+package Delfinen;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ public class UserInterface {
                     searchForSwimmer();
                     break;
                 case 3:
-                   // updateSwimmer();
+                    editSwimmer();
                     break;
                 case 4:
                     deleteSwimmer();
@@ -421,6 +421,7 @@ public class UserInterface {
     }
 
     private void listOfSeniorSwimmers() {
+
         System.out.println("-------------------");
         for (Member member : controller.getSeniorSwimmers()) {
             System.out.println("First name: " + member.getFirstName() +
@@ -461,9 +462,136 @@ public class UserInterface {
         controller.saveData();
     }
 
+    private void editSwimmer() throws FileNotFoundException {
+
+        int index = 1;
+
+        System.out.println("-------------------");
+        for (Member member : controller.getAllSwimmers()) {
+            System.out.println("# " + index++);
+            System.out.println("First name: " + member.getFirstName() +
+                    "\nLast name: " + member.getLastName() +
+                    "\nGender: " + member.getGender() +
+                    "\nAge: " + member.getAge());
+            if (member.isActive()) {
+                System.out.println("Is the swimmer active: Yes");
+            } else {
+                System.out.println("Is the swimmer active: No");
+            }
+            if (member.isCompetitive()) {
+                System.out.println("Is the swimmer competitive: Yes");
+            } else {
+                System.out.println("Is the swimmer competitive: No");
+            }
+            if (member.hasPaid()) {
+                System.out.println("Has the member paid: Yes");
+            } else {
+                System.out.println("Has the member paid: No");
+            }
+            if (member.isStudent()) {
+                System.out.println("Is the member a student: Yes");
+            } else {
+                System.out.println("Is the member a student: No");
+            }
+            controller.setSubscription();
+            if (member.getSubscription() > 0) {
+                System.out.println("Subscription to pay in DKK: " + member.getSubscription() + ",-");
+            }
+            System.out.println("-------------------");
+        }
+
+
+        System.out.println("Choose the swimmer you wish to edit by number");
+
+        int swimmerChoice = scanner.nextInt();
+        String firstName = "";
+        String lastName = "";
+        String gender = "";
+        int age = 0;
+        boolean isActive = false;
+        boolean isCompetitive = false;
+        boolean hasPaid = false;
+        boolean isStudent = false;
+
+        System.out.println("Choose the field you wish to edit\n" +
+                "1) First name\n" +
+                "2) Last name\n" +
+                "3) Gender\n" +
+                "4) Age\n" +
+                "5) Is active\n" +
+                "6) Is competitive\n" +
+                "7) Has paid\n" +
+                "8) Is student ");
+
+        int attributeChoice = scanner.nextInt();
+        scanner.nextLine();                         // Scanner bug
+
+
+        if (attributeChoice == 1) {
+            System.out.println("Enter first name: ");
+            firstName = scanner.nextLine();
+
+        } else if (attributeChoice == 2) {
+            System.out.println("Enter last name: ");
+            lastName = scanner.nextLine();
+
+        } else if (attributeChoice == 3) {
+            System.out.println("Enter gender: ");
+            gender = scanner.nextLine();
+
+        } else if (attributeChoice == 4) {
+            System.out.println("Enter age: ");
+            age = scanner.nextInt();
+
+        } else if (attributeChoice == 5) {
+            System.out.println("Is the member active? (y/n)");
+            char active = scanner.next().charAt(0);
+            if (active == 'y') {
+                isActive = true;
+            } else if (active == 'n') {
+                isActive = false;
+            }
+
+        } else if (attributeChoice == 6) {
+            System.out.println("Is the member competitive? (y/n)");
+            char competitive = scanner.next().charAt(0);
+            if (competitive == 'y') {
+                isCompetitive = true;
+            } else if (competitive == 'n') {
+                isCompetitive = false;
+            }
+
+        } else if (attributeChoice == 7) {
+            System.out.println("Has the member paid? (y/n)");
+            char paid = scanner.next().charAt(0);
+            if (paid == 'y') {
+                hasPaid = true;
+            } else if (paid == 'n') {
+                hasPaid = false;
+            }
+
+        } else if (attributeChoice == 8) {
+            System.out.println("Is the member a student? (y/n)");
+            char student = scanner.next().charAt(0);
+            if (student == 'y') {
+                isStudent = true;
+            } else if (student == 'n') {
+                isStudent = false;
+            }
+
+        }
+
+
+        controller.editSwimmer(swimmerChoice, firstName, lastName,gender, age, isActive, isActive,hasPaid,isStudent);
+        controller.saveData();
+
+    }
+
 
     // TODO: lav den her
-    private void cashierUI() {
+    private void cashierUI() throws FileNotFoundException {
+
+        controller.loadData();
 
         int cashierChoice;
         System.out.println("Cashier password identified!");
@@ -477,10 +605,9 @@ public class UserInterface {
 
             switch (cashierChoice) {
                 case 1:
-                    //Expected income
+                    subscriptionSum();
                     break;
                 case 2:
-                    // Unpaid members
                     listOfUnpaidSwimmers();
                     break;
             }
@@ -490,8 +617,16 @@ public class UserInterface {
     }
 
     private void listOfUnpaidSwimmers() {
-
+        for (Member member : controller.getUnpaidSwimmers()) {
+            System.out.println(member.getFirstName() + " " + member.getLastName() + " is in debt");
+        }
+        System.out.println("-------------------");
     }
+
+    private void subscriptionSum() {
+        System.out.println("Expected income from subscriptions: " + controller.getSubscriptionSum());
+    }
+
 
     // TODO: lav den her
     private void TrainerUI() {

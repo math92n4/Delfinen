@@ -1,4 +1,4 @@
-package delfinen;
+package Delfinen;
 
 public class Member {
 
