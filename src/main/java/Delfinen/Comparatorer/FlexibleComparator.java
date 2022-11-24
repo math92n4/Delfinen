@@ -1,19 +1,43 @@
-/*package Comparatorer;
+package Delfinen.Comparatorer;
 
-import java.lang.reflect.Member;
+import Delfinen.Member;
+
 import java.util.Comparator;
 
 public class FlexibleComparator implements Comparator<Member> {
 
-    private String sortBy;
+    private String type;
 
-    public FlexibleComparator(String sortBy) {
-        this.sortBy = sortBy;
+    public FlexibleComparator(String type) {
+        this.type = type;
     }
 
     @Override
     public int compare(Member o1, Member o2) {
-        switch (sortBy) {
+
+    switch (type) {
+        case "firstName":
+            break;
+        case "lastName":
+            break;
+        case "gender":
+            break;
+        case "age":
+            break;
+        case "isActive":
+            break;
+        case "isCompetitive":
+            break;
+        case "hasPaid":
+            break;
+        case "isStudent":
+            break;
+        case "subscription":
+            break;
+    }
+
+
+        /*switch (sortBy) {
             case "type" -> {
                 // type
                 return o1.getType().compareTo(o2.getType());
@@ -30,8 +54,7 @@ public class FlexibleComparator implements Comparator<Member> {
                 // weight
                 return Double.compare(o1.getWeight(), o2.getWeight());
             }
-        }
+        } */
         return 0;
     }
 }
-*/

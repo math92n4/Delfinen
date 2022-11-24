@@ -1,3 +1,5 @@
+package Delfinen;
+
 public class NormalSwimmer extends Member{
 
     public NormalSwimmer(String firstName,String lastName, String gender, int age,

@@ -1,3 +1,5 @@
+package Delfinen;
+
 public class CompetitiveSwimmer extends Member{
 
 
