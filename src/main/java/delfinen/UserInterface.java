@@ -1,4 +1,4 @@
-package Delfinen;
+package delfinen;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-
     Controller controller = new Controller();
+
     Scanner scanner = new Scanner(System.in);
 
     public void start() throws FileNotFoundException {
@@ -49,12 +49,13 @@ public class UserInterface {
                     "3) Edit swimmer\n" +
                     "4) Delete swimmer\n" +
                     "5) List of all swimmers\n" +
-                    "6) List of competetive swimmers\n" +
-                    "7) List of normal swimmers\n" +
-                    "8) List of active swimmers\n" +
-                    "9) List of inactive swimmers\n" +
-                    "10) List of junior swimmers\n" +
-                    "11) List of senior swimmers");
+                    "6) Sorted lists of all swimmers\n" +
+                    "7) List of competetive swimmers\n" +
+                    "8) List of normal swimmers\n" +
+                    "9) List of active swimmers\n" +
+                    "10) List of inactive swimmers\n" +
+                    "11) List of junior swimmers\n" +
+                    "12) List of senior swimmers");
 
             chairmanChoice = scanner.nextInt();
 
@@ -75,24 +76,27 @@ public class UserInterface {
                     listOfAllSwimmers();
                     break;
                 case 6:
-                    listOfCompetitiveSwimmers();
+                    sort();
                     break;
                 case 7:
-                    listOfNormalSwimmers();
+                    listOfCompetitiveSwimmers();
                     break;
                 case 8:
-                    listOfActiveSwimmers();
+                    listOfNormalSwimmers();
                     break;
                 case 9:
-                    listOfInactiveSwimmers();
+                    listOfActiveSwimmers();
                     break;
                 case 10:
-                    listOfJuniorSwimmers();
+                    listOfInactiveSwimmers();
                     break;
                 case 11:
+                    listOfJuniorSwimmers();
+                    break;
+                case 12:
                     listOfSeniorSwimmers();
             }
-        } while (chairmanChoice != 12);
+        } while (chairmanChoice != 13);
 
     }
 
@@ -195,6 +199,48 @@ public class UserInterface {
 
         }
     }
+
+    private void sort() {
+        System.out.println("--------------------" + "\n");
+        System.out.println("Sort the list by: " + "\n" +
+                "1) first name" + "\n" +
+                "2) last name " + "\n" +
+                "3) Gender " + "\n" +
+                "4) Age " + "\n" +
+                "5) Active status " + "\n" +
+                "6) Competitive status " + "\n" +
+                "7) payment status " + "\n" +
+                "8) Student status " + "\n" +
+                "9) Subscription - soon!!...");
+
+        int choice = scanner.nextInt();
+
+
+        if (choice == 1) {
+            controller.sortBy("firstName");
+        } else if (choice == 2) {
+            controller.sortBy("lastName");
+        } else if (choice == 3) {
+            controller.sortBy("gender");
+        } else if (choice == 4) {
+            controller.sortBy("age");
+        } else if (choice == 5) {
+            controller.sortBy("isActive");
+        } else if (choice == 6) {
+            controller.sortBy("isCompetitive");
+        } else if (choice == 7) {
+            controller.sortBy("hasPaid");
+        } else if (choice == 8) {
+            controller.sortBy("isStudent");
+        }
+
+        // when sorted, show the list again
+        listOfAllSwimmers();
+
+        }
+
+
+
 
     private void listOfAllSwimmers() {
         System.out.println("-------------------");

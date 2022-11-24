@@ -1,4 +1,4 @@
-package Delfinen;
+package delfinen;
 
 public class NormalSwimmer extends Member{
 

@@ -1,6 +1,9 @@
-package Delfinen;
+package delfinen;
 
 import java.util.ArrayList;
+import delfinen.comparatorer.*;
+
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Database {
@@ -213,7 +216,7 @@ public class Database {
         return seniorSwimmers;
     }
 
-    public void deleteSwimmer ( int index){
+    public void deleteSwimmer ( int index) {
 
         Member member = members.get(index - 1);
         members.remove(member);
@@ -224,6 +227,11 @@ public class Database {
         for (Member member : members) {
             member.setSubscription();
         }
+    }
+
+    public void sortBy(String sortBy) {
+        Comparator comparator = new FlexibleComparator(sortBy);
+        members.sort(comparator);
     }
 }
 

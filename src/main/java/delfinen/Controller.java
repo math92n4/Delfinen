@@ -1,4 +1,4 @@
-package Delfinen;
+package delfinen;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -46,8 +46,6 @@ public class Controller {
         return database.getSeniorSwimmers();
     }
 
-
-
     public void deleteSwimmer(int index) {
         database.deleteSwimmer(index);
     }
@@ -63,9 +61,15 @@ public class Controller {
     public void loadData() throws FileNotFoundException {
         fileHandler.loadData(database.getAllSwimmers());
     }
-    public void editSwimmer(String name){
+
+    public void sortBy(String sortBy) {
+        database.sortBy(sortBy);
+    }
+
+    public void editSwimmer(String name) {
         database.editSwimmer(name);
     }
+
 
 
 }
