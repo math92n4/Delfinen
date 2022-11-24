@@ -45,6 +45,13 @@ public class Controller {
         return database.getSeniorSwimmers();
     }
 
+    public ArrayList<Member> getUnpaidSwimmers() {
+        return database.getUnpaidSwimmers();
+    }
+
+    public int getSubscriptionSum() {
+        return database.getSubscriptionSum();
+    }
 
 
     public void deleteSwimmer(int index) {
@@ -62,8 +69,10 @@ public class Controller {
     public void loadData() throws FileNotFoundException {
         fileHandler.loadData(database.getAllSwimmers());
     }
-    public void editSwimmer(String name){
-        database.editSwimmer(name);
+
+    public void editSwimmer(int index, String firstName, String lastName, String gender, int age,
+                            boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent){
+        database.editSwimmer(index,firstName,lastName,gender,age,isActive,isCompetitive,hasPaid,isStudent);
     }
 
 
