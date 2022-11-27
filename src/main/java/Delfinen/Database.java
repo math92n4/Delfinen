@@ -124,7 +124,6 @@ public class Database {
     public int getSubscriptionSum() {
         int total = 0;
         for (Member member : members) {
-            member.setSubscription();
             total += member.getSubscription();
         }
         return total;
@@ -147,11 +146,6 @@ public class Database {
 
     }
 
-    public void setSubscription(ArrayList<Member> members) {
-        for (Member member : members) {
-            member.setSubscription();
-        }
-    }
 
     public void sortBy(String sortBy) {
         Comparator comparator = new FlexibleComparator(sortBy);

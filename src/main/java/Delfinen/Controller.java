@@ -57,10 +57,6 @@ public class Controller {
         database.deleteSwimmer(index);
     }
 
-    public void setSubscription() {
-        database.setSubscription(database.getAllSwimmers());
-    }
-
     public void saveData() throws FileNotFoundException {
         fileHandler.saveData(database.getAllSwimmers());
     }

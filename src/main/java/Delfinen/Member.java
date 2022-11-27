@@ -22,6 +22,7 @@ public class Member {
         this.isActive = isActive;
         this.isStudent = isStudent;
         this.hasPaid = hasPaid;
+        setSubscription();
     }
 
     public Member() {
@@ -100,6 +101,12 @@ public class Member {
     public void setStudent(boolean isStudent) {
         this.isStudent = isStudent;
     }
+
+    public void setSubscription(int subscription) {
+        this.subscription = subscription;
+    }
+
+    //CALCULATE SUBSRCIPTION BASED ON MEMBER INFO
 
     public void setSubscription() {
         if (isActive && age < 18 && age < 60 && !isStudent) {
