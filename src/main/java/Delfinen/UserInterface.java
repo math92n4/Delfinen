@@ -19,6 +19,7 @@ public class UserInterface {
 
         String chairmanPassword = "chairman";
         String cashierPassword = "cashier";
+        String trainerPassword = "trainer";
         String password;
 
         do {
@@ -29,6 +30,8 @@ public class UserInterface {
                 chairmanUI();
             } else if (password.equals(cashierPassword)) {
                 cashierUI();
+            } else if (password.equals(trainerPassword)) {
+                trainerUI();
             } else
                 System.out.println("Password doesn't match. Please try again!");
 
@@ -636,8 +639,18 @@ public class UserInterface {
         System.out.println("Expected income from subscriptions: " + controller.getSubscriptionSum());
     }
 
-    private void TrainerUI() {
-        System.out.println("Trainer password identified!\nWork still in progress!");
+    private void trainerUI() {
+        System.out.println("Trainer password identified! ");
+
+        // trainer menu
+        System.out.println("1) Oversigt over hold \n" +
+                "2) Registrer ny tid\n" +
+                "3) Se bedste tider\n" +
+                "4) Rediger tider\n" +
+                "5) Slet tider\n");
+
+
+
     }
 
 }
