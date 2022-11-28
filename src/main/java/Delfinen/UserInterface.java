@@ -48,14 +48,7 @@ public class UserInterface {
                     "2) Search for swimmer\n" +
                     "3) Edit swimmer\n" +
                     "4) Delete swimmer\n" +
-                    "5) List of all swimmers\n" +
-                    "6) Sorted lists of all swimmers\n" +
-                    "7) List of competetive swimmers\n" +
-                    "8) List of normal swimmers\n" +
-                    "9) List of active swimmers\n" +
-                    "10) List of inactive swimmers\n" +
-                    "11) List of junior swimmers\n" +
-                    "12) List of senior swimmers");
+                    "5) Lists \n");
 
             chairmanChoice = scanner.nextInt();
 
@@ -73,30 +66,44 @@ public class UserInterface {
                     deleteSwimmer();
                     break;
                 case 5:
-                    listOfAllSwimmers();
-                    break;
-                case 6:
-                    sort();
-                    break;
-                case 7:
-                    listOfCompetitiveSwimmers();
-                    break;
-                case 8:
-                    listOfNormalSwimmers();
-                    break;
-                case 9:
-                    listOfActiveSwimmers();
-                    break;
-                case 10:
-                    listOfInactiveSwimmers();
-                    break;
-                case 11:
-                    listOfJuniorSwimmers();
-                    break;
-                case 12:
-                    listOfSeniorSwimmers();
+                    System.out.println("1) List of all swimmers\n" +
+                            "2) Sorted lists of all swimmers\n" +
+                            "3) List of competetive swimmers\n" +
+                            "4) List of normal swimmers\n" +
+                            "5) List of active swimmers\n" +
+                            "6) List of inactive swimmers\n" +
+                            "7) List of junior swimmers\n" +
+                            "8) List of senior swimmers");
+                    int listChoice;
+                    listChoice = scanner.nextInt();
+                    switch(listChoice){
+                        case 1:
+                            listOfAllSwimmers();
+                            break;
+                        case 2:
+                            sort();
+                            break;
+                        case 3:
+                            listOfCompetitiveSwimmers();
+                            break;
+                        case 4:
+                            listOfNormalSwimmers();
+                            break;
+                        case 5:
+                            listOfActiveSwimmers();
+                            break;
+                        case 6:
+                            listOfInactiveSwimmers();
+                            break;
+                        case 7:
+                            listOfJuniorSwimmers();
+                            break;
+                        case 8:
+                            listOfSeniorSwimmers();
+                            break;
             }
-        } while (chairmanChoice != 13);
+            }
+        } while (chairmanChoice != 6);
 
     }
 
