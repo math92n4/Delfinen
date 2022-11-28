@@ -239,7 +239,6 @@ public class UserInterface {
 
         }
 
-
     private void listOfAllSwimmers() {
         System.out.println("-------------------");
         for (Member member : controller.getAllSwimmers()) {
