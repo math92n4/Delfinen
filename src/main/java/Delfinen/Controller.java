@@ -21,33 +21,6 @@ public class Controller {
         return database.getSearchForSwimmer(firstName);
     }
 
-    public ArrayList<Member> getCompetitiveSwimmers() {
-        return database.getCompetitiveSwimmers();
-    }
-
-    public ArrayList<Member> getNormalSwimmers() {
-        return database.getNormalSwimmers();
-    }
-
-    public ArrayList<Member> getActiveSwimmers() {
-        return database.getActiveSwimmers();
-    }
-
-    public ArrayList<Member> getInactiveSwimmers() {
-        return database.getInactiveSwimmers();
-    }
-
-    public ArrayList<Member> getJuniorSwimmers() {
-        return database.getJuniorSwimmers();
-    }
-
-    public ArrayList<Member> getSeniorSwimmers() {
-        return database.getSeniorSwimmers();
-    }
-
-    public ArrayList<Member> getUnpaidSwimmers() {
-        return database.getUnpaidSwimmers();
-    }
 
     public int getSubscriptionSum() {
         return database.getSubscriptionSum();

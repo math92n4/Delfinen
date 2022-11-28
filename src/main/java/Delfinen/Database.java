@@ -35,25 +35,6 @@ public class Database {
         return swimmerFound;
     }
 
-    public ArrayList<Member> getCompetitiveSwimmers() {
-        ArrayList<Member> competetiveSwimmers = new ArrayList<>();
-        for (Member member : members) {
-            if (member.isCompetitive()) {
-                competetiveSwimmers.add(member);
-            }
-        }
-        return competetiveSwimmers;
-    }
-
-    public ArrayList<Member> getNormalSwimmers() {
-        ArrayList<Member> normalSwimmers = new ArrayList<>();
-        for (Member member : members) {
-            if (!member.isCompetitive()) {
-                normalSwimmers.add(member);
-            }
-        }
-        return normalSwimmers;
-    }
 
     public void editSwimmer(int index, String firstName, String lastName, String gender,
                             int age, boolean isActive, boolean isCompetitive,
@@ -81,62 +62,12 @@ public class Database {
     }
 
 
-    public ArrayList<Member> getActiveSwimmers() {
-        ArrayList<Member> activeSwimmers = new ArrayList<>();
-        for (Member member : members) {
-            if (member.isActive()) {
-                activeSwimmers.add(member);
-            }
-        }
-        return activeSwimmers;
-    }
-
-    public ArrayList<Member> getInactiveSwimmers() {
-        ArrayList<Member> inactiveSwimmers = new ArrayList<>();
-        for (Member member : members) {
-            if (!member.isActive()) {
-                inactiveSwimmers.add(member);
-            }
-        }
-        return inactiveSwimmers;
-    }
-
-    public ArrayList<Member> getJuniorSwimmers() {
-        ArrayList<Member> juniorSwimmers = new ArrayList<>();
-        for (Member member : members) {
-            if (member.getAge() < 18) {
-                juniorSwimmers.add(member);
-            }
-        }
-        return juniorSwimmers;
-    }
-
-    public ArrayList<Member> getSeniorSwimmers() {
-        ArrayList<Member> seniorSwimmers = new ArrayList<>();
-        for (Member member : members) {
-            if (member.getAge() >= 18) {
-                seniorSwimmers.add(member);
-            }
-        }
-        return seniorSwimmers;
-    }
-
     public int getSubscriptionSum() {
         int total = 0;
         for (Member member : members) {
             total += member.getSubscription();
         }
         return total;
-    }
-
-    public ArrayList<Member> getUnpaidSwimmers() {
-        ArrayList<Member> unPaidSwimmers = new ArrayList<>();
-        for (Member member : members) {
-            if (!member.hasPaid()) {
-                unPaidSwimmers.add(member);
-            }
-        }
-        return unPaidSwimmers;
     }
 
     public void deleteSwimmer(int index) {
