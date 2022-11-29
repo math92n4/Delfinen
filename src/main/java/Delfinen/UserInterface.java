@@ -79,7 +79,7 @@ public class UserInterface {
                             "8) List of senior swimmers");
                     int listChoice;
                     listChoice = scanner.nextInt();
-                    switch(listChoice){
+                    switch (listChoice) {
                         case 1:
                             listOfAllSwimmers();
                             break;
@@ -104,9 +104,9 @@ public class UserInterface {
                         case 8:
                             listOfSeniorSwimmers();
                             break;
+                    }
             }
-            }
-        } while (chairmanChoice != 6);
+        } while (chairmanChoice != 0);
 
     }
 
@@ -256,8 +256,8 @@ public class UserInterface {
                     + member.getLastName() + "\n" + "Age: " + member.getAge() + "\n"
                     + ("Gender: " + member.getGender() + "\n" +
                     ("Is active? " + member.isActive() + "\n" + ("Is competitive?: " + member.isCompetitive() + "\n"
-                            + ("Has paid? " + member.hasPaid() + "\n" + ("Subscription to pay in DDK: " + member.getSubscription() +",-"
-                    + "\n--------------------"))))));
+                            + ("Has paid? " + member.hasPaid() + "\n" + ("Subscription to pay in DDK: " + member.getSubscription() + ",-"
+                            + "\n--------------------"))))));
 
 
         }
@@ -300,7 +300,7 @@ public class UserInterface {
         // when sorted, show the list again
         listOfAllSwimmers();
 
-        }
+    }
 
     private void listOfAllSwimmers() {
         System.out.println("-------------------");
@@ -647,7 +647,7 @@ public class UserInterface {
         }
 
 
-        controller.editSwimmer(swimmerChoice, firstName, lastName,gender, age, isActive, isActive,hasPaid,isStudent);
+        controller.editSwimmer(swimmerChoice, firstName, lastName, gender, age, isActive, isActive, hasPaid, isStudent);
         controller.saveData();
 
     }
@@ -692,18 +692,70 @@ public class UserInterface {
         System.out.println("Expected income from subscriptions: " + controller.getSubscriptionSum());
     }
 
-    private void trainerUI() {
+    private void trainerUI() throws FileNotFoundException {
+
         System.out.println("Trainer password identified! ");
+        int choice;
+        int secondChoice;
 
-        // trainer menu
-        System.out.println("1) Oversigt over hold \n" +
-                "2) Registrer ny tid\n" +
-                "3) Se bedste tider\n" +
-                "4) Rediger tider\n" +
-                "5) Slet tider\n");
+        do {
+            controller.loadData();
 
+            // trainer menu
+            System.out.println("1) Overview over teams \n" +
+                    "2) Register new score\n" +
+                    "3) Se best scores\n" +
+                    "4) Edit scores\n" +
+                    "5) Delete scores\n");
 
+            choice = scanner.nextInt();
 
+            // second menu UI for overview over teams junior/senior men & junior/senior women
+            if (choice == 1) {
+                System.out.println("1) Junior men\n" +
+                        "2) Junior women\n" +
+                        "3) Senior men\n" +
+                        "4) Senior women");
+
+                secondChoice = scanner.nextInt();
+
+                if (secondChoice == 1) {
+                    System.out.println("Junior mens:\n" +
+                            "1) Butterfly\n" +
+                            "2) Crawl\n" +
+                            "3) BackCrawl\n" +
+                            "4) BreastStroke");
+                    System.out.println("---------------------");
+                }
+
+                if (secondChoice == 2) {
+                    System.out.println("Junior womens:\n" +
+                            "1) Butterfly\n" +
+                            "2) Crawl\n" +
+                            "3) BackCrawl\n" +
+                            "4) BreastStroke");
+                    System.out.println("---------------------");
+                }
+
+                if (secondChoice == 3) {
+                    System.out.println("Senior mens:\n" +
+                            "1) Butterfly\n" +
+                            "2) Crawl\n" +
+                            "3) BackCrawl\n" +
+                            "4) BreastStroke");
+                    System.out.println("---------------------");
+                }
+
+                if (secondChoice == 4) {
+                    System.out.println("Senior womens:\n" +
+                            "1) Butterfly\n" +
+                            "2) Crawl\n" +
+                            "3) BackCrawl\n" +
+                            "4) BreastStroke");
+                    System.out.println("---------------------");
+                }
+            }
+
+        } while (choice != 0);
     }
-
 }
