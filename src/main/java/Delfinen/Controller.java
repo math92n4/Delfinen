@@ -27,6 +27,34 @@ public class Controller {
         return database.getJuniorMenButterfly();
     }
 
+    public ArrayList<CompetitiveSwimmer> getJuniorMenCrawl() {
+        return database.getJuniorMenCrawl();
+    }
+
+    public ArrayList<CompetitiveSwimmer> getJuniorMenBackCrawl() {
+        return database.getJuniorMenBackCrawl();
+    }
+
+    public ArrayList<CompetitiveSwimmer> getJuniorMenBreastStroke() {
+        return database.getJuniorMenBreastStroke();
+    }
+
+    public ArrayList<CompetitiveSwimmer> getJuniorWomenButterfly() {
+        return database.getJuniorWomenButterfly();
+    }
+
+    public ArrayList<CompetitiveSwimmer> getJuniorWomenCrawl() {
+        return getJuniorWomenCrawl();
+    }
+
+    public ArrayList<CompetitiveSwimmer> getJuniorWomenBackCrawl() {
+        return database.getJuniorWomenBackCrawl();
+    }
+
+    public ArrayList<CompetitiveSwimmer> getJuniorWomenBreastStroke() {
+        return database.getJuniorWomenBreastStroke();
+    }
+
     public ArrayList<CompetitiveSwimmer> getSeniorMenButterfly() {
         return database.getSeniorMenButterfly();
     }
@@ -84,6 +112,15 @@ public class Controller {
     public void editSwimmer(int index, String firstName, String lastName, boolean gender, int age,
                             boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent) {
         database.editSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
+    }
+
+    public void editCompetitiveSwimmer(int index, String firstName, String lastName, boolean gender,
+                                       int age, boolean isActive, boolean isCompetitive,
+                                       boolean hasPaid, boolean isStudent, boolean canButterfly,
+                                       boolean canCrawl, boolean canBackcrawl, boolean canBreastStroke) {
+
+        database.editCompetitiveSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive,
+                hasPaid, isStudent, canButterfly, canCrawl, canBackcrawl, canBreastStroke);
     }
 
     public void sortBy(String sortBy) {

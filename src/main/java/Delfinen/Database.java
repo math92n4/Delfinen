@@ -36,6 +36,90 @@ public class Database {
         return compSwimmers;
     }
 
+    public ArrayList<CompetitiveSwimmer> getJuniorMenCrawl() {
+
+        ArrayList<CompetitiveSwimmer> juniorMenCrawl = new ArrayList<>();
+
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canCrawl() && member.getAge() < 18 && member.getGender()) {
+                juniorMenCrawl.add((CompetitiveSwimmer) member);
+            }
+        }
+        return juniorMenCrawl;
+    }
+
+    public ArrayList<CompetitiveSwimmer> getJuniorMenBackCrawl() {
+
+        ArrayList<CompetitiveSwimmer> juniorMenBackCrawl = new ArrayList<>();
+
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBackcrawl() && member.getAge() < 18 && member.getGender()) {
+                juniorMenBackCrawl.add((CompetitiveSwimmer) member);
+            }
+        }
+        return juniorMenBackCrawl;
+    }
+
+    public ArrayList<CompetitiveSwimmer> getJuniorMenBreastStroke() {
+
+        ArrayList<CompetitiveSwimmer> juniorMenBreastStroke = new ArrayList<>();
+
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBreastswimming() && member.getAge() < 18 && member.getGender()) {
+                juniorMenBreastStroke.add((CompetitiveSwimmer) member);
+            }
+        }
+        return juniorMenBreastStroke;
+    }
+
+    public ArrayList<CompetitiveSwimmer> getJuniorWomenButterfly() {
+
+        ArrayList<CompetitiveSwimmer> juniorWomenButterfly = new ArrayList<>();
+
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() < 18 && !member.getGender()) {
+                juniorWomenButterfly.add((CompetitiveSwimmer) member);
+            }
+        }
+        return juniorWomenButterfly;
+    }
+
+    public ArrayList<CompetitiveSwimmer> getJuniorWomenCrawl() {
+
+        ArrayList<CompetitiveSwimmer> juniorWomenCrawl = new ArrayList<>();
+
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canCrawl() && member.getAge() < 18 && !member.getGender()) {
+                juniorWomenCrawl.add((CompetitiveSwimmer) member);
+            }
+        }
+        return juniorWomenCrawl;
+    }
+
+    public ArrayList<CompetitiveSwimmer> getJuniorWomenBackCrawl() {
+
+        ArrayList<CompetitiveSwimmer> juniorWomenBackCrawl = new ArrayList<>();
+
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBackcrawl() && member.getAge() < 18 && !member.getGender()) {
+                juniorWomenBackCrawl.add((CompetitiveSwimmer) member);
+            }
+        }
+        return juniorWomenBackCrawl;
+    }
+
+    public ArrayList<CompetitiveSwimmer> getJuniorWomenBreastStroke() {
+
+        ArrayList<CompetitiveSwimmer> juniorWomenBreastStroke = new ArrayList<>();
+
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBreastswimming() && member.getAge() < 18 && !member.getGender()) {
+                juniorWomenBreastStroke.add((CompetitiveSwimmer) member);
+            }
+        }
+        return juniorWomenBreastStroke;
+    }
+
     public ArrayList<CompetitiveSwimmer> getSeniorMenButterfly() {
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() >= 18 && member.getGender()) {
@@ -143,6 +227,25 @@ public class Database {
         member.setActive(isActive);
         member.setHasPaid(hasPaid);
         member.setStudent(isStudent);
+    }
+
+    public void editCompetitiveSwimmer(int index, String firstName, String lastName, boolean gender,
+                                       int age, boolean isActive, boolean isCompetitive,
+                                       boolean hasPaid, boolean isStudent, boolean canButterfly,
+                                       boolean canCrawl, boolean canBackcrawl, boolean canBreastStroke) {
+
+        Member member = members.get(index - 1);
+
+        if (member instanceof CompetitiveSwimmer) {
+
+            editSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
+
+            ((CompetitiveSwimmer) member).setCanButterfly(canButterfly);
+            ((CompetitiveSwimmer) member).setCanCrawl(canCrawl);
+            ((CompetitiveSwimmer) member).setCanBackcrawl(canBackcrawl);
+            ((CompetitiveSwimmer) member).setCanBreastStroke(canBreastStroke);
+        }
+
     }
 
     public int getSubscriptionSum() {
