@@ -71,7 +71,41 @@ public class Database {
         }
         return compSwimmers;
     }
+    public ArrayList<CompetitiveSwimmer> getSeniorWomenButterfly() {
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() >= 18 && !member.getGender()) {
+                compSwimmers.add((CompetitiveSwimmer) member);
+            }
+        }
+        return compSwimmers;
+    }
 
+    public ArrayList<CompetitiveSwimmer> getSeniorWomenCrawl() {
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canCrawl() && member.getAge() >= 18 && !member.getGender()) {
+                compSwimmers.add((CompetitiveSwimmer) member);
+            }
+        }
+        return compSwimmers;
+    }
+
+    public ArrayList<CompetitiveSwimmer> getSeniorWomenBackCrawl() {
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBackcrawl() && member.getAge() >= 18 && !member.getGender()) {
+                compSwimmers.add((CompetitiveSwimmer) member);
+            }
+        }
+        return compSwimmers;
+    }
+
+    public ArrayList<CompetitiveSwimmer> getSeniorWomenBreastStroke() {
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBreastswimming() && member.getAge() >= 18 && !member.getGender()) {
+                compSwimmers.add((CompetitiveSwimmer) member);
+            }
+        }
+        return compSwimmers;
+    }
 
     public ArrayList<Member> getSearchForSwimmer(String firstName) {
         ArrayList<Member> swimmerFound = new ArrayList<>();
@@ -85,7 +119,6 @@ public class Database {
         }
         return swimmerFound;
     }
-
 
     public void editSwimmer(int index, String firstName, String lastName, boolean gender,
                             int age, boolean isActive, boolean isCompetitive,

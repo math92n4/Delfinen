@@ -769,6 +769,7 @@ public class UserInterface {
                         System.out.println("-------------------");
                     }
                 }
+
                 // list SeniorMenCrawl
                 if (secondChoice == 3 && thirdChoice == 2) {
                     for (CompetitiveSwimmer competitiveSwimmer : controller.getSeniorMenCrawl()) {
@@ -780,6 +781,7 @@ public class UserInterface {
                         System.out.println("-------------------");
                     }
                 }
+
                 // list SeniorMenBackCrawl
                 if (secondChoice == 3 && thirdChoice == 3) {
                     for (CompetitiveSwimmer competitiveSwimmer : controller.getSeniorMenBackCrawl()) {
@@ -791,6 +793,7 @@ public class UserInterface {
                         System.out.println("-------------------");
                     }
                 }
+
                 // list SeniorMenBreastStroke
                 if (secondChoice == 3 && thirdChoice == 4) {
                     for (CompetitiveSwimmer competitiveSwimmer : controller.getSeniorMenBreastStroke()) {
@@ -803,8 +806,55 @@ public class UserInterface {
                     }
                 }
 
-            }
 
+                // list SeniorWomenButterfly
+                if (secondChoice == 4 && thirdChoice == 1) {
+                    for (CompetitiveSwimmer competitiveSwimmer : controller.getSeniorWomenButterfly()) {
+                        System.out.println("First name: " + competitiveSwimmer.getFirstName() +
+                                "\nLast name: " + competitiveSwimmer.getLastName() +
+                                "\nGender: " + competitiveSwimmer.getGender() +
+                                "\nAge: " + competitiveSwimmer.getAge() +
+                                "\nCan butterfly " + competitiveSwimmer.canButterfly());
+                        System.out.println("-------------------");
+                    }
+                }
+
+                // list SeniorWomenCrawl
+                if (secondChoice == 4 && thirdChoice == 2) {
+                    for (CompetitiveSwimmer competitiveSwimmer : controller.getSeniorWomenCrawl()) {
+                        System.out.println("First name: " + competitiveSwimmer.getFirstName() +
+                                "\nLast name: " + competitiveSwimmer.getLastName() +
+                                "\nGender: " + competitiveSwimmer.getGender() +
+                                "\nAge: " + competitiveSwimmer.getAge() +
+                                "\nCan Crawl " + competitiveSwimmer.canButterfly());
+                        System.out.println("-------------------");
+                    }
+                }
+
+                // list SeniorWomenBackCrawl
+                if (secondChoice == 4 && thirdChoice == 3) {
+                    for (CompetitiveSwimmer competitiveSwimmer : controller.getSeniorWomenBackCrawl()) {
+                        System.out.println("First name: " + competitiveSwimmer.getFirstName() +
+                                "\nLast name: " + competitiveSwimmer.getLastName() +
+                                "\nGender: " + competitiveSwimmer.getGender() +
+                                "\nAge: " + competitiveSwimmer.getAge() +
+                                "\nCan BackCrawl " + competitiveSwimmer.canButterfly());
+                        System.out.println("-------------------");
+                    }
+                }
+
+                // list SeniorWomenBreastStroke
+                if (secondChoice == 4 && thirdChoice == 4) {
+                    for (CompetitiveSwimmer competitiveSwimmer : controller.getSeniorWomenBreastStroke()) {
+                        System.out.println("First name: " + competitiveSwimmer.getFirstName() +
+                                "\nLast name: " + competitiveSwimmer.getLastName() +
+                                "\nGender: " + competitiveSwimmer.getGender() +
+                                "\nAge: " + competitiveSwimmer.getAge() +
+                                "\nCan BreastStroke " + competitiveSwimmer.canButterfly());
+                        System.out.println("-------------------");
+                    }
+                }
+            }
 
         } while (choice != 0);
     }

@@ -43,6 +43,23 @@ public class Controller {
         return database.getSeniorMenBreastStroke();
     }
 
+    public ArrayList<CompetitiveSwimmer> getSeniorWomenButterfly() {
+        return database.getSeniorWomenButterfly();
+    }
+
+    public ArrayList<CompetitiveSwimmer> getSeniorWomenCrawl() {
+        return database.getSeniorWomenCrawl();
+    }
+
+    public ArrayList<CompetitiveSwimmer> getSeniorWomenBackCrawl() {
+        return database.getSeniorWomenBackCrawl();
+    }
+
+    public ArrayList<CompetitiveSwimmer> getSeniorWomenBreastStroke() {
+        return database.getSeniorWomenBreastStroke();
+    }
+
+
     public ArrayList<Member> SearchForSwimmer(String firstName) {
         return database.getSearchForSwimmer(firstName);
     }
