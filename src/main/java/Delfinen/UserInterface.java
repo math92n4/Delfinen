@@ -753,6 +753,7 @@ public class UserInterface {
                             "3) BackCrawl\n" +
                             "4) BreastStroke");
                     System.out.println("---------------------");
+                    System.out.println("");
                 }
             }
 
