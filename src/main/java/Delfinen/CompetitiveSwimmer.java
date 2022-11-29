@@ -9,7 +9,7 @@ public class CompetitiveSwimmer extends Member {
 
     public CompetitiveSwimmer() {
     }
-    public CompetitiveSwimmer(String firstName,String lastName, String gender, int age,
+    public CompetitiveSwimmer(String firstName,String lastName, boolean gender, int age,
                               boolean isActive, boolean hasPaid, boolean isStudent,
                               boolean canButterfly, boolean canCrawl, boolean canBackcrawl,
                               boolean canBreastswimming) {

@@ -125,7 +125,13 @@ public class UserInterface {
 
         System.out.println("Enter gender: male / female: ");
 
-        String gender = scanner.nextLine();
+        boolean gender = true;
+        char genderAnswer = scanner.next().charAt(0);
+        if (genderAnswer == 'm') {
+            gender = true;
+        } else if (genderAnswer == 'f') {
+            gender = false;
+        }
 
         System.out.println("Enter the member's age");
         //TODO: HANDLE WRONG INPUT
@@ -569,7 +575,7 @@ public class UserInterface {
         int swimmerChoice = scanner.nextInt();
         String firstName = "";
         String lastName = "";
-        String gender = "";
+        boolean gender = false;
         int age = 0;
         boolean isActive = false;
         boolean isCompetitive = false;
@@ -599,8 +605,13 @@ public class UserInterface {
             lastName = scanner.nextLine();
 
         } else if (attributeChoice == 3) {
-            System.out.println("Enter gender: ");
-            gender = scanner.nextLine();
+            System.out.println("Enter gender male/female: ");
+            char genderAnswer = scanner.next().charAt(0);
+            if (genderAnswer == 'm') {
+                gender = true;
+            } else if (genderAnswer == 'f') {
+                gender = false;
+            }
 
         } else if (attributeChoice == 4) {
             System.out.println("Enter age: ");
@@ -692,7 +703,10 @@ public class UserInterface {
 
     private void trainerUI() throws FileNotFoundException {
 
+
         System.out.println("Trainer password identified! ");
+
+
         int choice;
         int secondChoice;
         int thirdChoice;
@@ -728,10 +742,24 @@ public class UserInterface {
                         ---------------------""");
 
                 thirdChoice = scanner.nextInt();
-                controller.database.getAllSwimmers();
-                System.out.println();
 
-            }
+                if (secondChoice == 1 && thirdChoice == 1) {
+                    for (CompetitiveSwimmer competitiveSwimmer : controller.getJuniorMenButterfly()) {
+                        System.out.println("First name: " + competitiveSwimmer.getFirstName() +
+                                "\nLast name: " + competitiveSwimmer.getLastName() +
+                                "\nGender: " + competitiveSwimmer.getGender() +
+                                "\nAge: " + competitiveSwimmer.getAge() +
+                                "\nCan butterfly " + competitiveSwimmer.canButterfly());
+
+                        System.out.println("-------------------");
+                    }
+                }
+
+
+
+
+                }
+
 
 
         } while (choice != 0);

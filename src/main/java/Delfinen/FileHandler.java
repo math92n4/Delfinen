@@ -25,9 +25,9 @@ public class FileHandler {
             output.print(member.getSubscription() + ";");
 
             if(member.isCompetitive()) {
-                output.print(((CompetitiveSwimmer) member).canCrawl() + ";");
+                output.print(((CompetitiveSwimmer) member).canButterfly() + ";");
+                output.print(((CompetitiveSwimmer) member).canCrawl()+ ";");
                 output.print(((CompetitiveSwimmer) member).canBackcrawl()+ ";");
-                output.print(((CompetitiveSwimmer) member).canButterfly()+ ";");
                 output.print(((CompetitiveSwimmer) member).canBreastswimming()+ ";");
             }
 
@@ -59,7 +59,7 @@ public class FileHandler {
             CompetitiveSwimmer competitiveSwimmer = new CompetitiveSwimmer();
             competitiveSwimmer.setFirstName(split[0]);
             competitiveSwimmer.setLastName(split[1]);
-            competitiveSwimmer.setGender(split[2]);
+            competitiveSwimmer.setGender(Boolean.parseBoolean(split[2]));
             competitiveSwimmer.setAge(Integer.parseInt(split[3]));
             competitiveSwimmer.setActive(Boolean.parseBoolean(split[4]));
             competitiveSwimmer.setCompetitive(Boolean.parseBoolean(split[5]));
@@ -75,7 +75,7 @@ public class FileHandler {
             NormalSwimmer normalSwimmer = new NormalSwimmer();
             normalSwimmer.setFirstName(split[0]);
             normalSwimmer.setLastName(split[1]);
-            normalSwimmer.setGender(split[2]);
+            normalSwimmer.setGender(Boolean.parseBoolean(split[2]));
             normalSwimmer.setAge(Integer.parseInt(split[3]));
             normalSwimmer.setActive(Boolean.parseBoolean(split[4]));
             normalSwimmer.setCompetitive(Boolean.parseBoolean(split[5]));

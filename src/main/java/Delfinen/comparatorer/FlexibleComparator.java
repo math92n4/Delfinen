@@ -23,7 +23,7 @@ public class FlexibleComparator implements Comparator<Member> {
                 return o1.getFirstName().compareTo(o2.getLastName());
             }
             case "gender" -> {
-                return o1.getGender().compareTo(o2.getGender());
+                return Boolean.compare(o1.getGender(), o2.getGender());
             }
             case "age" -> {
                 return Integer.compare(o1.getAge(), o2.getAge());

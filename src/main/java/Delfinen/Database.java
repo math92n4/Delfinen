@@ -10,12 +10,12 @@ public class Database {
 
     private ArrayList<Member> members = new ArrayList<>();
 
-    public void addNormalMember(String firstName, String lastName, String gender, int age, boolean isActive, boolean isCompetetive, boolean hasPaid, boolean isStudent) {
+    public void addNormalMember(String firstName, String lastName, boolean gender, int age, boolean isActive, boolean isCompetetive, boolean hasPaid, boolean isStudent) {
         NormalSwimmer member = new NormalSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent);
         members.add(member);
     }
 
-    public void addCompetitiveSwimmer(String firstName, String lastName, String gender, int age, boolean isActive,boolean isCompetitive,boolean hasPaid, boolean isStudent,
+    public void addCompetitiveSwimmer(String firstName, String lastName, boolean gender, int age, boolean isActive,boolean isCompetitive,boolean hasPaid, boolean isStudent,
                                       boolean canButterfly, boolean canCrawl, boolean canBackcrawl,
                                       boolean canBreastswimming) {
         CompetitiveSwimmer member = new CompetitiveSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent,canButterfly,canCrawl,canBackcrawl,canBreastswimming);
@@ -24,6 +24,18 @@ public class Database {
 
     public ArrayList<Member> getAllSwimmers() {
         return members;
+    }
+
+    public ArrayList<CompetitiveSwimmer> getJuniorMenButterfly() {
+
+        ArrayList<CompetitiveSwimmer> compSwimmers = new ArrayList<>();
+
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() < 18 && member.getGender()) {
+                compSwimmers.add((CompetitiveSwimmer) member);
+            }
+        }
+        return compSwimmers;
     }
 
     public ArrayList<Member> getSearchForSwimmer(String firstName) {
@@ -40,7 +52,7 @@ public class Database {
     }
 
 
-    public void editSwimmer(int index, String firstName, String lastName, String gender,
+    public void editSwimmer(int index, String firstName, String lastName, boolean gender,
                             int age, boolean isActive, boolean isCompetitive,
                             boolean hasPaid, boolean isStudent) {
 
@@ -52,9 +64,9 @@ public class Database {
         if (!lastName.isEmpty()) {
             member.setLastName(lastName);
         }
-        if (!gender.isEmpty()) {
-            member.setGender(gender);
-        }
+
+        member.setGender(gender);
+
         if (age != 0) {
             member.setAge(age);
         }

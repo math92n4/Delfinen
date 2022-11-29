@@ -4,7 +4,7 @@ public abstract class Member {
 
     private String firstName;
     private String lastName;
-    private String gender;
+    private boolean gender;
     private int age;
     private boolean isActive;
     private boolean isCompetitive;
@@ -13,7 +13,7 @@ public abstract class Member {
     private int subscription;
 
 
-    public Member(String firstName, String lastName, String gender, int age,
+    public Member(String firstName, String lastName, boolean gender, int age,
                   boolean isActive, boolean hasPaid, boolean isStudent) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -39,7 +39,7 @@ public abstract class Member {
         return lastName;
     }
 
-    public String getGender() {
+    public boolean getGender() {
         return gender;
     }
 
@@ -78,7 +78,7 @@ public abstract class Member {
         this.lastName = lastName;
     }
 
-    public void setGender(String gender) {
+    public void setGender(boolean gender) {
         this.gender = gender;
     }
 
