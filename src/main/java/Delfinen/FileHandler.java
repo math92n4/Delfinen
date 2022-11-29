@@ -69,7 +69,7 @@ public class FileHandler {
             competitiveSwimmer.setCanButterfly(Boolean.parseBoolean(split[9]));
             competitiveSwimmer.setCanCrawl(Boolean.parseBoolean(split[10]));
             competitiveSwimmer.setCanBackcrawl(Boolean.parseBoolean(split[11]));
-            competitiveSwimmer.setCanBreastswimming(Boolean.parseBoolean(split[12]));
+            competitiveSwimmer.setCanBreastStroke(Boolean.parseBoolean(split[12]));
             return competitiveSwimmer;
         } else {
             NormalSwimmer normalSwimmer = new NormalSwimmer();

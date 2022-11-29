@@ -3,22 +3,24 @@ package Delfinen;
 public class CompetitiveSwimmer extends Member {
 
     private boolean canButterfly;
+    private double bestTimeButterfly;
+
     private boolean canCrawl;
     private boolean canBackcrawl;
-    private boolean canBreastswimming;
+    private boolean canBreastStroke;
 
     public CompetitiveSwimmer() {
     }
     public CompetitiveSwimmer(String firstName,String lastName, boolean gender, int age,
                               boolean isActive, boolean hasPaid, boolean isStudent,
                               boolean canButterfly, boolean canCrawl, boolean canBackcrawl,
-                              boolean canBreastswimming) {
+                              boolean canBreastStroke) {
         super(firstName, lastName, gender, age, isActive, hasPaid, isStudent);
         setCompetitive(true);
         this.canButterfly = canButterfly;
         this.canCrawl = canCrawl;
         this.canBackcrawl = canBackcrawl;
-        this.canBreastswimming = canBreastswimming;
+        this.canBreastStroke = canBreastStroke;
         setSubscription();
     }
 
@@ -47,10 +49,10 @@ public class CompetitiveSwimmer extends Member {
     }
 
     public boolean canBreastswimming() {
-        return canBreastswimming;
+        return canBreastStroke;
     }
 
-    public void setCanBreastswimming(boolean canBreastswimming) {
-        this.canBreastswimming = canBreastswimming;
+    public void setCanBreastStroke(boolean canBreastStroke) {
+        this.canBreastStroke = canBreastStroke;
     }
 }
