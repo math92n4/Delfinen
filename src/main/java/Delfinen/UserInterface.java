@@ -521,6 +521,8 @@ public class UserInterface {
         }
     }
 
+    // TODO: print list of student swimmers
+
     private void deleteSwimmer() throws FileNotFoundException {
         int index = 1;
         for (Member member : controller.getAllSwimmers()) {
@@ -743,6 +745,7 @@ public class UserInterface {
 
                 thirdChoice = scanner.nextInt();
 
+                // list for junior men
                 if (secondChoice == 1 && thirdChoice == 1) {
                     for (CompetitiveSwimmer competitiveSwimmer : controller.getJuniorMenButterfly()) {
                         System.out.println("First name: " + competitiveSwimmer.getFirstName() +
@@ -750,16 +753,57 @@ public class UserInterface {
                                 "\nGender: " + competitiveSwimmer.getGender() +
                                 "\nAge: " + competitiveSwimmer.getAge() +
                                 "\nCan butterfly " + competitiveSwimmer.canButterfly());
-
                         System.out.println("-------------------");
                     }
                 }
 
 
-
-
+                // list SeniorMenButterfly
+                if (secondChoice == 3 && thirdChoice == 1) {
+                    for (CompetitiveSwimmer competitiveSwimmer : controller.getSeniorMenButterfly()) {
+                        System.out.println("First name: " + competitiveSwimmer.getFirstName() +
+                                "\nLast name: " + competitiveSwimmer.getLastName() +
+                                "\nGender: " + competitiveSwimmer.getGender() +
+                                "\nAge: " + competitiveSwimmer.getAge() +
+                                "\nCan butterfly " + competitiveSwimmer.canButterfly());
+                        System.out.println("-------------------");
+                    }
+                }
+                // list SeniorMenCrawl
+                if (secondChoice == 3 && thirdChoice == 2) {
+                    for (CompetitiveSwimmer competitiveSwimmer : controller.getSeniorMenCrawl()) {
+                        System.out.println("First name: " + competitiveSwimmer.getFirstName() +
+                                "\nLast name: " + competitiveSwimmer.getLastName() +
+                                "\nGender: " + competitiveSwimmer.getGender() +
+                                "\nAge: " + competitiveSwimmer.getAge() +
+                                "\nCan Crawl " + competitiveSwimmer.canCrawl());
+                        System.out.println("-------------------");
+                    }
+                }
+                // list SeniorMenBackCrawl
+                if (secondChoice == 3 && thirdChoice == 3) {
+                    for (CompetitiveSwimmer competitiveSwimmer : controller.getSeniorMenBackCrawl()) {
+                        System.out.println("First name: " + competitiveSwimmer.getFirstName() +
+                                "\nLast name: " + competitiveSwimmer.getLastName() +
+                                "\nGender: " + competitiveSwimmer.getGender() +
+                                "\nAge: " + competitiveSwimmer.getAge() +
+                                "\nCan BackCrawl " + competitiveSwimmer.canBackcrawl());
+                        System.out.println("-------------------");
+                    }
+                }
+                // list SeniorMenBreastStroke
+                if (secondChoice == 3 && thirdChoice == 4) {
+                    for (CompetitiveSwimmer competitiveSwimmer : controller.getSeniorMenBreastStroke()) {
+                        System.out.println("First name: " + competitiveSwimmer.getFirstName() +
+                                "\nLast name: " + competitiveSwimmer.getLastName() +
+                                "\nGender: " + competitiveSwimmer.getGender() +
+                                "\nAge: " + competitiveSwimmer.getAge() +
+                                "\nCan BreastStroke " + competitiveSwimmer.canBreastswimming());
+                        System.out.println("-------------------");
+                    }
                 }
 
+            }
 
 
         } while (choice != 0);

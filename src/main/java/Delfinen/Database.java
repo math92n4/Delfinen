@@ -9,6 +9,7 @@ public class Database {
 
 
     private ArrayList<Member> members = new ArrayList<>();
+    ArrayList<CompetitiveSwimmer> compSwimmers = new ArrayList<>();
 
     public void addNormalMember(String firstName, String lastName, boolean gender, int age, boolean isActive, boolean isCompetetive, boolean hasPaid, boolean isStudent) {
         NormalSwimmer member = new NormalSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent);
@@ -27,9 +28,6 @@ public class Database {
     }
 
     public ArrayList<CompetitiveSwimmer> getJuniorMenButterfly() {
-
-        ArrayList<CompetitiveSwimmer> compSwimmers = new ArrayList<>();
-
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() < 18 && member.getGender()) {
                 compSwimmers.add((CompetitiveSwimmer) member);
@@ -37,6 +35,43 @@ public class Database {
         }
         return compSwimmers;
     }
+
+    public ArrayList<CompetitiveSwimmer> getSeniorMenButterfly() {
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() >= 18 && member.getGender()) {
+                compSwimmers.add((CompetitiveSwimmer) member);
+            }
+        }
+        return compSwimmers;
+    }
+
+    public ArrayList<CompetitiveSwimmer> getSeniorMenCrawl() {
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canCrawl() && member.getAge() >= 18 && member.getGender()) {
+                compSwimmers.add((CompetitiveSwimmer) member);
+            }
+        }
+        return compSwimmers;
+    }
+
+    public ArrayList<CompetitiveSwimmer> getSeniorMenBackCrawl() {
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBackcrawl() && member.getAge() >= 18 && member.getGender()) {
+                compSwimmers.add((CompetitiveSwimmer) member);
+            }
+        }
+        return compSwimmers;
+    }
+
+    public ArrayList<CompetitiveSwimmer> getSeniorMenBreastStroke() {
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBreastswimming() && member.getAge() >= 18 && member.getGender()) {
+                compSwimmers.add((CompetitiveSwimmer) member);
+            }
+        }
+        return compSwimmers;
+    }
+
 
     public ArrayList<Member> getSearchForSwimmer(String firstName) {
         ArrayList<Member> swimmerFound = new ArrayList<>();
@@ -77,7 +112,6 @@ public class Database {
         member.setStudent(isStudent);
     }
 
-
     public int getSubscriptionSum() {
         int total = 0;
         for (Member member : members) {
@@ -92,7 +126,6 @@ public class Database {
         members.remove(member);
 
     }
-
 
     public void sortBy(String sortBy) {
         Comparator comparator = new FlexibleComparator(sortBy);

@@ -27,6 +27,22 @@ public class Controller {
         return database.getJuniorMenButterfly();
     }
 
+    public ArrayList<CompetitiveSwimmer> getSeniorMenButterfly() {
+        return database.getSeniorMenButterfly();
+    }
+
+    public ArrayList<CompetitiveSwimmer> getSeniorMenCrawl() {
+        return database.getSeniorMenCrawl();
+    }
+
+    public ArrayList<CompetitiveSwimmer> getSeniorMenBackCrawl() {
+        return database.getSeniorMenBackCrawl();
+    }
+
+    public ArrayList<CompetitiveSwimmer> getSeniorMenBreastStroke() {
+        return database.getSeniorMenBreastStroke();
+    }
+
     public ArrayList<Member> SearchForSwimmer(String firstName) {
         return database.getSearchForSwimmer(firstName);
     }

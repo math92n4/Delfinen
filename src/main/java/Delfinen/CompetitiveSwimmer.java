@@ -3,7 +3,7 @@ package Delfinen;
 public class CompetitiveSwimmer extends Member {
 
     private boolean canButterfly;
-    private double bestTimeButterfly;
+
 
     private boolean canCrawl;
     private boolean canBackcrawl;
