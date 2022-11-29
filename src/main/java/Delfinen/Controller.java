@@ -23,10 +23,14 @@ public class Controller {
         return database.getAllSwimmers();
     }
 
+    public ArrayList<Member> getAllCompetitiveSwimmersThatAreJuniorMenAndSwimsButterfly() {
+        return database.getAllCompetitiveSwimmersThatAreJuniorMenAndSwimsButterfly();
+    }
+
+
     public ArrayList<Member> SearchForSwimmer(String firstName) {
         return database.getSearchForSwimmer(firstName);
     }
-
 
     public int getSubscriptionSum() {
         return database.getSubscriptionSum();

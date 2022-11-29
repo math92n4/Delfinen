@@ -17,12 +17,25 @@ public class Database {
 
     public void addCompetitiveSwimmer(String firstName, String lastName, String gender, int age, boolean isActive,boolean isCompetitive,boolean hasPaid, boolean isStudent,
                                       boolean canButterfly, boolean canCrawl, boolean canBackcrawl,
-                                      boolean canBreastswimming) {
-        CompetitiveSwimmer member = new CompetitiveSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent,canButterfly,canCrawl,canBackcrawl,canBreastswimming);
+                                      boolean canBreastStroke) {
+        CompetitiveSwimmer member = new CompetitiveSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent,canButterfly,canCrawl,canBackcrawl,canBreastStroke);
         members.add(member);
     }
 
     public ArrayList<Member> getAllSwimmers() {
+        return members;
+    }
+
+    public ArrayList<Member> getAllCompetitiveSwimmersThatAreJuniorMenAndSwimsButterfly() {
+        ArrayList<CompetitiveSwimmer> JuniorMenButterfly = new ArrayList<>();
+        for (Member member : getAllSwimmers()) {
+            if( member instanceof CompetitiveSwimmer) {
+                CompetitiveSwimmer swimmer = (CompetitiveSwimmer)member;
+                if (swimmer.canButterfly() && swimmer.getAge() < 18) {
+                    JuniorMenButterfly.add(swimmer);
+                }
+            }
+        }
         return members;
     }
 
@@ -38,7 +51,6 @@ public class Database {
         }
         return swimmerFound;
     }
-
 
     public void editSwimmer(int index, String firstName, String lastName, String gender,
                             int age, boolean isActive, boolean isCompetitive,
@@ -65,7 +77,6 @@ public class Database {
         member.setStudent(isStudent);
     }
 
-
     public int getSubscriptionSum() {
         int total = 0;
         for (Member member : members) {
@@ -80,7 +91,6 @@ public class Database {
         members.remove(member);
 
     }
-
 
     public void sortBy(String sortBy) {
         Comparator comparator = new FlexibleComparator(sortBy);

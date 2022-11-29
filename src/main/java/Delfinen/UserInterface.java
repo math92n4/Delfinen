@@ -695,7 +695,7 @@ public class UserInterface {
         System.out.println("Trainer password identified! ");
         int choice;
         int secondChoice;
-        int thirdChoice;
+        int thirdChoice = 0;
 
         do {
             controller.loadData();
@@ -707,7 +707,6 @@ public class UserInterface {
                     "4) Edit scores\n" +
                     "5) Delete scores");
             System.out.println("---------------------");
-
             choice = scanner.nextInt();
 
             // second menu UI for overview over teams junior/senior men & junior/senior women
@@ -718,22 +717,26 @@ public class UserInterface {
                         3) Senior men
                         4) Senior women
                         ---------------------""");
-
                 secondChoice = scanner.nextInt();
+
+
                 System.out.println("""
                         1) Butterfly
                         2) Crawl
                         3) BackCrawl
                         4) BreastStroke
                         ---------------------""");
-
                 thirdChoice = scanner.nextInt();
-                controller.database.getAllSwimmers();
-                System.out.println();
+                if (thirdChoice == 1) {
+                    controller.getAllCompetitiveSwimmersThatAreJuniorMenAndSwimsButterfly();
+                    System.out.println("A list of Junior, Men, Butterfly");
+                }
+                   // controller.getAllCompetitiveSwimmersThatAreJuniorMenAndSwimsCrawl();
+                    //controller.getAllCompetitiveSwimmersThatAreJuniorMenAndSwimsBackCrawl();
+                    //controller.getAllCompetitiveSwimmersThatAreJuniorMenAndSwimsBreastStore();
+                }
 
-            }
-
-
+            controller.saveData();
         } while (choice != 0);
     }
 
