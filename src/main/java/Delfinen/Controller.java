@@ -87,11 +87,9 @@ public class Controller {
         return database.getSeniorWomenBreastStroke();
     }
 
-
     public ArrayList<Member> SearchForSwimmer(String firstName) {
         return database.getSearchForSwimmer(firstName);
     }
-
 
     public int getSubscriptionSum() {
         return database.getSubscriptionSum();
@@ -117,10 +115,10 @@ public class Controller {
     public void editCompetitiveSwimmer(int index, String firstName, String lastName, boolean gender,
                                        int age, boolean isActive, boolean isCompetitive,
                                        boolean hasPaid, boolean isStudent, boolean canButterfly,
-                                       boolean canCrawl, boolean canBackcrawl, boolean canBreastStroke) {
+                                       boolean canCrawl, boolean canBackCrawl, boolean canBreastStroke) {
 
         database.editCompetitiveSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive,
-                hasPaid, isStudent, canButterfly, canCrawl, canBackcrawl, canBreastStroke);
+                hasPaid, isStudent, canButterfly, canCrawl, canBackCrawl, canBreastStroke);
     }
 
     public void sortBy(String sortBy) {

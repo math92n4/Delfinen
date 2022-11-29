@@ -18,8 +18,8 @@ public class Database {
 
     public void addCompetitiveSwimmer(String firstName, String lastName, boolean gender, int age, boolean isActive,boolean isCompetitive,boolean hasPaid, boolean isStudent,
                                       boolean canButterfly, boolean canCrawl, boolean canBackcrawl,
-                                      boolean canBreastswimming) {
-        CompetitiveSwimmer member = new CompetitiveSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent,canButterfly,canCrawl,canBackcrawl,canBreastswimming);
+                                      boolean canBreastStroke) {
+        CompetitiveSwimmer member = new CompetitiveSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent,canButterfly,canCrawl,canBackcrawl,canBreastStroke);
         members.add(member);
     }
 
@@ -155,6 +155,7 @@ public class Database {
         }
         return compSwimmers;
     }
+
     public ArrayList<CompetitiveSwimmer> getSeniorWomenButterfly() {
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() >= 18 && !member.getGender()) {
