@@ -187,7 +187,60 @@ public class UserInterface {
             isStudent = true;
         }
 
-        controller.createMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
+        if (!isCompetitive) {
+
+            controller.createNormalMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
+
+        } else if (isCompetitive) {
+
+            boolean canButterfly = true;
+            char butterfly;
+
+            System.out.println("Can the swimmer butterfly?");
+            butterfly = scanner.next().charAt(0);
+            if (butterfly == 'n') {
+                canButterfly = false;
+            } else if (butterfly == 'y') {
+                canButterfly = true;
+            }
+
+            boolean canCrawl = true;
+            char crawl;
+
+            System.out.println("Can the swimmer crawl?");
+            butterfly = scanner.next().charAt(0);
+            if (butterfly == 'n') {
+                canCrawl = false;
+            } else if (butterfly == 'y') {
+                canCrawl = true;
+            }
+
+            boolean canBackCrawl = true;
+            char backCrawl;
+
+            System.out.println("Can the swimmer back crawl?");
+            backCrawl = scanner.next().charAt(0);
+            if (backCrawl == 'n') {
+                canBackCrawl = false;
+            } else if (backCrawl == 'y') {
+                canBackCrawl = true;
+            }
+
+            boolean canBreastswim = true;
+            char breastSwim;
+
+            System.out.println("Can the swimmer breast swim?");
+            breastSwim = scanner.next().charAt(0);
+            if (breastSwim == 'n') {
+                canBreastswim = false;
+            } else if (breastSwim == 'y') {
+                canBreastswim = true;
+            }
+
+
+            controller.createCompetitiveMember(firstName,lastName,gender,age,isActive,isCompetitive,hasPaid,isStudent,
+                    canButterfly,canCrawl,canBackCrawl,canBreastswim);
+        }
         controller.saveData();
     }
 

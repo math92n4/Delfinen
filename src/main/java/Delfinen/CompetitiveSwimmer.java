@@ -1,13 +1,56 @@
 package Delfinen;
 
-public class CompetitiveSwimmer extends Member{
+public class CompetitiveSwimmer extends Member {
 
+    private boolean canButterfly;
+    private boolean canCrawl;
+    private boolean canBackcrawl;
+    private boolean canBreastswimming;
 
+    public CompetitiveSwimmer() {
+    }
     public CompetitiveSwimmer(String firstName,String lastName, String gender, int age,
-                              boolean isActive, boolean hasPaid, boolean isStudent) {
+                              boolean isActive, boolean hasPaid, boolean isStudent,
+                              boolean canButterfly, boolean canCrawl, boolean canBackcrawl,
+                              boolean canBreastswimming) {
         super(firstName, lastName, gender, age, isActive, hasPaid, isStudent);
         setCompetitive(true);
+        this.canButterfly = canButterfly;
+        this.canCrawl = canCrawl;
+        this.canBackcrawl = canBackcrawl;
+        this.canBreastswimming = canBreastswimming;
+        setSubscription();
     }
 
+    public boolean canButterfly() {
+        return canButterfly;
+    }
 
+    public void setCanButterfly(boolean canButterfly) {
+        this.canButterfly = canButterfly;
+    }
+
+    public boolean canCrawl() {
+        return canCrawl;
+    }
+
+    public void setCanCrawl(boolean canCrawl) {
+        this.canCrawl = canCrawl;
+    }
+
+    public boolean canBackcrawl() {
+        return canBackcrawl;
+    }
+
+    public void setCanBackcrawl(boolean canBackcrawl) {
+        this.canBackcrawl = canBackcrawl;
+    }
+
+    public boolean canBreastswimming() {
+        return canBreastswimming;
+    }
+
+    public void setCanBreastswimming(boolean canBreastswimming) {
+        this.canBreastswimming = canBreastswimming;
+    }
 }

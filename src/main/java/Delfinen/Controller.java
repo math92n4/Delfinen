@@ -8,9 +8,15 @@ public class Controller {
     Delfinen.Database database = new Database();
     FileHandler fileHandler = new FileHandler();
 
-    public void createMember(String firstName, String lastName, String gender, int age,
+    public void createNormalMember(String firstName, String lastName, String gender, int age,
                              boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent) {
-        database.addMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
+        database.addNormalMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
+    }
+
+    public void createCompetitiveMember(String firstName, String lastName, String gender, int age, boolean isActive,
+                                        boolean isCompetitive, boolean hasPaid, boolean isStudent, boolean canButterfly, boolean canCrawl, boolean canBackcrawl,
+                                        boolean canBreastswimming) {
+        database.addCompetitiveSwimmer(firstName,lastName,gender,age,isActive,isCompetitive,hasPaid,isStudent, canButterfly,canCrawl,canBackcrawl,canBreastswimming);
     }
 
     public ArrayList<Member> getAllSwimmers() {

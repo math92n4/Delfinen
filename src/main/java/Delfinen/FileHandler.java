@@ -24,6 +24,13 @@ public class FileHandler {
             output.print(member.isStudent() + ";");
             output.print(member.getSubscription() + ";");
 
+            if(member.isCompetitive()) {
+                output.print(((CompetitiveSwimmer) member).canCrawl() + ";");
+                output.print(((CompetitiveSwimmer) member).canBackcrawl()+ ";");
+                output.print(((CompetitiveSwimmer) member).canButterfly()+ ";");
+                output.print(((CompetitiveSwimmer) member).canBreastswimming()+ ";");
+            }
+
             output.println("");
         }
         output.close();
@@ -46,21 +53,39 @@ public class FileHandler {
 
     private Member splitLines(String scan) {
         String[] split = scan.split(";");
-        Member member = new Member();
+        boolean isCompetitive = Boolean.parseBoolean(split[5]);
 
-        member.setFirstName(split[0]);
-        member.setLastName(split[1]);
-        member.setGender(split[2]);
-        member.setAge(Integer.parseInt(split[3]));
-        member.setActive(Boolean.parseBoolean(split[4]));
-        member.setCompetitive(Boolean.parseBoolean(split[5]));
-        member.setHasPaid(Boolean.parseBoolean(split[6]));
-        member.setStudent(Boolean.parseBoolean(split[7]));
-        member.setSubscription(Integer.parseInt(split[8]));
-
-        return member;
+        if(isCompetitive) {
+            CompetitiveSwimmer competitiveSwimmer = new CompetitiveSwimmer();
+            competitiveSwimmer.setFirstName(split[0]);
+            competitiveSwimmer.setLastName(split[1]);
+            competitiveSwimmer.setGender(split[2]);
+            competitiveSwimmer.setAge(Integer.parseInt(split[3]));
+            competitiveSwimmer.setActive(Boolean.parseBoolean(split[4]));
+            competitiveSwimmer.setCompetitive(Boolean.parseBoolean(split[5]));
+            competitiveSwimmer.setHasPaid(Boolean.parseBoolean(split[6]));
+            competitiveSwimmer.setStudent(Boolean.parseBoolean(split[7]));
+            competitiveSwimmer.setSubscription(Integer.parseInt(split[8]));
+            competitiveSwimmer.setCanButterfly(Boolean.parseBoolean(split[9]));
+            competitiveSwimmer.setCanCrawl(Boolean.parseBoolean(split[10]));
+            competitiveSwimmer.setCanBackcrawl(Boolean.parseBoolean(split[11]));
+            competitiveSwimmer.setCanBreastswimming(Boolean.parseBoolean(split[12]));
+            return competitiveSwimmer;
+        } else {
+            NormalSwimmer normalSwimmer = new NormalSwimmer();
+            normalSwimmer.setFirstName(split[0]);
+            normalSwimmer.setLastName(split[1]);
+            normalSwimmer.setGender(split[2]);
+            normalSwimmer.setAge(Integer.parseInt(split[3]));
+            normalSwimmer.setActive(Boolean.parseBoolean(split[4]));
+            normalSwimmer.setCompetitive(Boolean.parseBoolean(split[5]));
+            normalSwimmer.setHasPaid(Boolean.parseBoolean(split[6]));
+            normalSwimmer.setStudent(Boolean.parseBoolean(split[7]));
+            normalSwimmer.setSubscription(Integer.parseInt(split[8]));
+            return normalSwimmer;
+        }
     }
 
-
-
 }
+
+

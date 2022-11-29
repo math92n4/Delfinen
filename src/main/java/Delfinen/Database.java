@@ -10,11 +10,15 @@ public class Database {
 
     private ArrayList<Member> members = new ArrayList<>();
 
-    public void addMember(String firstName, String lastName, String gender, int age, boolean isActive, boolean isCompetetive, boolean hasPaid, boolean isStudent) {
-        Member member;
-        if (isCompetetive) {
-            member = new CompetitiveSwimmer(firstName, lastName, gender, age, isActive, hasPaid, isStudent);
-        } else member = new NormalSwimmer(firstName, lastName, gender, age, isActive, hasPaid, isStudent);
+    public void addNormalMember(String firstName, String lastName, String gender, int age, boolean isActive, boolean isCompetetive, boolean hasPaid, boolean isStudent) {
+        NormalSwimmer member = new NormalSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent);
+        members.add(member);
+    }
+
+    public void addCompetitiveSwimmer(String firstName, String lastName, String gender, int age, boolean isActive,boolean isCompetitive,boolean hasPaid, boolean isStudent,
+                                      boolean canButterfly, boolean canCrawl, boolean canBackcrawl,
+                                      boolean canBreastswimming) {
+        CompetitiveSwimmer member = new CompetitiveSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent,canButterfly,canCrawl,canBackcrawl,canBreastswimming);
         members.add(member);
     }
 

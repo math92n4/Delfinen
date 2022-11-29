@@ -1,6 +1,6 @@
 package Delfinen;
 
-public class Member {
+public abstract class Member {
 
     private String firstName;
     private String lastName;

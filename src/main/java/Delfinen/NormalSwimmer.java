@@ -8,5 +8,7 @@ public class NormalSwimmer extends Member {
                          boolean isActive,boolean hasPaid, boolean isStudent) {
         super(firstName,lastName,gender,age,isActive,hasPaid,isStudent);
         setCompetitive(false);
+        setSubscription();
     }
+
 }
