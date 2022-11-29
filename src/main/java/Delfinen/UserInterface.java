@@ -238,8 +238,8 @@ public class UserInterface {
             }
 
 
-            controller.createCompetitiveMember(firstName,lastName,gender,age,isActive,isCompetitive,hasPaid,isStudent,
-                    canButterfly,canCrawl,canBackCrawl,canBreastswim);
+            controller.createCompetitiveMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent,
+                    canButterfly, canCrawl, canBackCrawl, canBreastswim);
         }
         controller.saveData();
     }
@@ -258,8 +258,6 @@ public class UserInterface {
                     ("Is active? " + member.isActive() + "\n" + ("Is competitive?: " + member.isCompetitive() + "\n"
                             + ("Has paid? " + member.hasPaid() + "\n" + ("Subscription to pay in DDK: " + member.getSubscription() + ",-"
                             + "\n--------------------"))))));
-
-
         }
     }
 
@@ -697,6 +695,7 @@ public class UserInterface {
         System.out.println("Trainer password identified! ");
         int choice;
         int secondChoice;
+        int thirdChoice;
 
         do {
             controller.loadData();
@@ -706,57 +705,36 @@ public class UserInterface {
                     "2) Register new score\n" +
                     "3) Se best scores\n" +
                     "4) Edit scores\n" +
-                    "5) Delete scores\n");
+                    "5) Delete scores");
+            System.out.println("---------------------");
 
             choice = scanner.nextInt();
 
             // second menu UI for overview over teams junior/senior men & junior/senior women
             if (choice == 1) {
-                System.out.println("1) Junior men\n" +
-                        "2) Junior women\n" +
-                        "3) Senior men\n" +
-                        "4) Senior women");
+                System.out.println("""
+                        1) Junior men
+                        2) Junior women
+                        3) Senior men
+                        4) Senior women
+                        ---------------------""");
 
                 secondChoice = scanner.nextInt();
+                System.out.println("""
+                        1) Butterfly
+                        2) Crawl
+                        3) BackCrawl
+                        4) BreastStroke
+                        ---------------------""");
 
-                if (secondChoice == 1) {
-                    System.out.println("Junior mens:\n" +
-                            "1) Butterfly\n" +
-                            "2) Crawl\n" +
-                            "3) BackCrawl\n" +
-                            "4) BreastStroke");
-                    System.out.println("---------------------");
-                }
+                thirdChoice = scanner.nextInt();
+                controller.database.getAllSwimmers();
+                System.out.println();
 
-                if (secondChoice == 2) {
-                    System.out.println("Junior womens:\n" +
-                            "1) Butterfly\n" +
-                            "2) Crawl\n" +
-                            "3) BackCrawl\n" +
-                            "4) BreastStroke");
-                    System.out.println("---------------------");
-                }
-
-                if (secondChoice == 3) {
-                    System.out.println("Senior mens:\n" +
-                            "1) Butterfly\n" +
-                            "2) Crawl\n" +
-                            "3) BackCrawl\n" +
-                            "4) BreastStroke");
-                    System.out.println("---------------------");
-                }
-
-                if (secondChoice == 4) {
-                    System.out.println("Senior womens:\n" +
-                            "1) Butterfly\n" +
-                            "2) Crawl\n" +
-                            "3) BackCrawl\n" +
-                            "4) BreastStroke");
-                    System.out.println("---------------------");
-                    System.out.println("");
-                }
             }
+
 
         } while (choice != 0);
     }
+
 }
