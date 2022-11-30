@@ -2,6 +2,7 @@ package Delfinen;
 
 import Delfinen.comparatorer.FlexibleComparator;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -9,7 +10,8 @@ public class Database {
 
 
     private ArrayList<Member> members = new ArrayList<>();
-    ArrayList<CompetitiveSwimmer> compSwimmers = new ArrayList<>();
+    private ArrayList<Trainer> trainers = new ArrayList<>();
+    private ArrayList<CompetitiveSwimmer> compSwimmers = new ArrayList<>();
 
     public void addNormalMember(String firstName, String lastName, boolean gender, int age, boolean isActive, boolean isCompetetive, boolean hasPaid, boolean isStudent) {
         NormalSwimmer member = new NormalSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent);
@@ -23,8 +25,17 @@ public class Database {
         members.add(member);
     }
 
+    public void addTrainer(String trainerFirstName, String trainerLastName) {
+        Trainer trainer = new Trainer(trainerFirstName, trainerLastName);
+        trainers.add(trainer);
+    }
+
     public ArrayList<Member> getAllSwimmers() {
         return members;
+    }
+
+    public ArrayList<Trainer> getAllTrainers() {
+        return trainers;
     }
 
     public ArrayList<CompetitiveSwimmer> getJuniorMenButterfly() {
@@ -247,6 +258,22 @@ public class Database {
             ((CompetitiveSwimmer) member).setCanBreastStroke(canBreastStroke);
         }
 
+    }
+
+    public void editTrainer(int index, String trainerFirstName, String trainerLastName) {
+        Trainer trainer = trainers.get(index - 1);
+
+        if (!trainerFirstName.isEmpty()) {
+            trainer.setTrainerFirstName(trainerFirstName);
+        }
+        if (!trainers.isEmpty()) {
+            trainer.setTrainerLastName(trainerLastName);
+        }
+        }
+
+    public void deleteTrainer(int index, String trainerFirstName,String trainerLastName) {
+        Trainer trainer = trainers.get(index - 1);
+        trainers.remove(trainer);
     }
 
     public int getSubscriptionSum() {

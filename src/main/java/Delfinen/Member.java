@@ -47,7 +47,6 @@ public abstract class Member {
         return age;
     }
 
-
     public boolean isActive() {
         return isActive;
     }

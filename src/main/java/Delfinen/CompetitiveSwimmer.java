@@ -3,14 +3,15 @@ package Delfinen;
 public class CompetitiveSwimmer extends Member {
 
     private boolean canButterfly;
-
-
     private boolean canCrawl;
     private boolean canBackcrawl;
     private boolean canBreastStroke;
+    private String TrainerName;
 
     public CompetitiveSwimmer() {
+
     }
+
     public CompetitiveSwimmer(String firstName,String lastName, boolean gender, int age,
                               boolean isActive, boolean hasPaid, boolean isStudent,
                               boolean canButterfly, boolean canCrawl, boolean canBackcrawl,
@@ -23,6 +24,8 @@ public class CompetitiveSwimmer extends Member {
         this.canBreastStroke = canBreastStroke;
         setSubscription();
     }
+
+
 
     public boolean canButterfly() {
         return canButterfly;

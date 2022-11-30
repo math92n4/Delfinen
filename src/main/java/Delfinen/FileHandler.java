@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class FileHandler {
@@ -24,12 +25,27 @@ public class FileHandler {
             output.print(member.isStudent() + ";");
             output.print(member.getSubscription() + ";");
 
-            if(member.isCompetitive()) {
+            if (member.isCompetitive()) {
                 output.print(((CompetitiveSwimmer) member).canButterfly() + ";");
-                output.print(((CompetitiveSwimmer) member).canCrawl()+ ";");
-                output.print(((CompetitiveSwimmer) member).canBackcrawl()+ ";");
-                output.print(((CompetitiveSwimmer) member).canBreastswimming()+ ";");
+                output.print(((CompetitiveSwimmer) member).canCrawl() + ";");
+                output.print(((CompetitiveSwimmer) member).canBackcrawl() + ";");
+                output.print(((CompetitiveSwimmer) member).canBreastswimming() + ";");
             }
+
+            output.println("");
+        }
+        output.close();
+
+    }
+
+    public void saveTrainerData(ArrayList<Trainer> trainers) throws FileNotFoundException {
+        PrintStream output = new PrintStream(new File("Data/trainerData.csv"));
+
+        for (Trainer trainer : trainers) {
+            output.print("");
+
+            output.print(trainer.getTrainerFirstName() + ";");
+            output.print(trainer.getTrainerLastName() + ";");
 
             output.println("");
         }
@@ -51,11 +67,26 @@ public class FileHandler {
         }
     }
 
+    public void loadTrainerData(ArrayList<Trainer> trainers) throws FileNotFoundException {
+        Scanner scanList = new Scanner(new File("Data/trainerData.csv"));
+
+        trainers.clear();
+
+        while (scanList.hasNextLine()) {
+            String scan = scanList.nextLine();
+
+            Trainer trainer = splitLinesTrainer(scan);
+
+            trainers.add(trainer);
+        }
+    }
+
     private Member splitLines(String scan) {
         String[] split = scan.split(";");
-        boolean isCompetitive = Boolean.parseBoolean(split[5]);
+        boolean isCompetitive = Boolean.parseBoolean(split[0]);
+        System.out.println(Arrays.toString(split));
 
-        if(isCompetitive) {
+        if (isCompetitive) {
             CompetitiveSwimmer competitiveSwimmer = new CompetitiveSwimmer();
             competitiveSwimmer.setFirstName(split[0]);
             competitiveSwimmer.setLastName(split[1]);
@@ -86,6 +117,17 @@ public class FileHandler {
         }
     }
 
+    private Trainer splitLinesTrainer(String scan) {
+        String[] splitTrainer = scan.split(";");
+
+        Trainer trainer = new Trainer();
+        trainer.setTrainerLastName(splitTrainer[0]);
+        trainer.setTrainerLastName(splitTrainer[1]);
+        return trainer;
+    }
+
 }
+
+
 
 

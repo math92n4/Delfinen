@@ -46,12 +46,19 @@ public class UserInterface {
 
         do {
             controller.loadData();
+            controller.loadTrainerData();
 
             System.out.println("1) Register swimmer\n" +
                     "2) Search for swimmer\n" +
                     "3) Edit swimmer\n" +
                     "4) Delete swimmer\n" +
-                    "5) Lists \n");
+                    "----------------------\n" +
+                    "5) Register Trainer\n" +
+                    "6) List of all Trainers\n" +
+                    "7) Edit trainer\n" +
+                    "8) Delete trainer\n" +
+                    "----------------------\n" +
+                    "9) Lists \n");
 
             chairmanChoice = scanner.nextInt();
 
@@ -69,6 +76,18 @@ public class UserInterface {
                     deleteSwimmer();
                     break;
                 case 5:
+                    registerTrainer();
+                    break;
+                case 6:
+                    listOfAllTrainers();
+                    break;
+                case 7:
+                    editTrainer();
+                    break;
+                case 8:
+                    deleteTrainer();
+                    break;
+                case 9:
                     System.out.println("1) List of all swimmers\n" +
                             "2) Sorted lists of all swimmers\n" +
                             "3) List of competitive swimmers\n" +
@@ -247,11 +266,89 @@ public class UserInterface {
                 canBreastswim = true;
             }
 
-
             controller.createCompetitiveMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent,
                     canButterfly, canCrawl, canBackCrawl, canBreastswim);
         }
         controller.saveData();
+    }
+
+    private void registerTrainer() throws FileNotFoundException {
+
+        System.out.println("You have selected register trainer ");
+
+        scanner.nextLine();                                     //Scanner bug
+
+        System.out.println("Enter trainers first name: ");
+        String firstName = scanner.nextLine();
+
+        System.out.println("Enter trainers last name: ");
+        String lastName = scanner.nextLine();
+
+        System.out.println("Type ");
+
+        controller.createTrainer(firstName, lastName);
+        controller.saveTrainerData();
+    }
+
+    private void listOfAllTrainers() {
+
+        System.out.println("-------------------");
+        for (Trainer trainer : controller.getAllTrainers()) {
+            System.out.println("Trainers first name: " + trainer.getTrainerFirstName() +
+                    "\nTrainers last name: " + trainer.getTrainerLastName());
+            System.out.println("-------------------");
+        }
+    }
+
+    private void editTrainer() throws FileNotFoundException {
+        int index = 1;
+
+        System.out.println("-------------------");
+        for (Trainer trainer : controller.getAllTrainers()) {
+            System.out.println("# " + index++);
+            System.out.println("Trainer first name: " + trainer.getTrainerFirstName() +
+                    "\nTrainer last name: " + trainer.getTrainerLastName());
+        }
+
+        System.out.println("Choose the trainer you wish to edit by number");
+
+        int swimmerChoice = scanner.nextInt();
+        String trainerFirstName = "";
+        String trainerLastName = "";
+
+
+        System.out.println("Choose the field you wish to edit\n" +
+                "1) First name\n" +
+                "2) Last name\n");
+
+        int attributeChoice = scanner.nextInt();
+        scanner.nextLine();                         // Scanner bug
+
+
+        if (attributeChoice == 1) {
+            System.out.println("Enter trainer first name: ");
+            trainerFirstName = scanner.nextLine();
+
+        } else if (attributeChoice == 2) {
+            System.out.println("Enter trainer last name: ");
+            trainerLastName = scanner.nextLine();
+
+
+            controller.editTrainer(swimmerChoice, trainerFirstName, trainerLastName);
+            controller.saveTrainerData();
+
+        }
+    }
+
+    private void deleteTrainer() throws FileNotFoundException {
+        int index = 1;
+        for (Trainer trainer : controller.getAllTrainers()) {
+            System.out.println(index++ + ". Name: " + trainer.getTrainerFirstName() + " " + trainer.getTrainerFirstName());
+        }
+
+        int choice = scanner.nextInt();
+        controller.deleteSwimmer(choice);
+        controller.saveTrainerData();
     }
 
     private void searchForSwimmer() {
@@ -393,19 +490,23 @@ public class UserInterface {
                     System.out.println("Is the swimmer a student: Yes");
                 } else {
                     System.out.println("Is the swimmer a student: No");
-                } if (member.isActive()) {
+                }
+                if (member.isActive()) {
                     System.out.println("Is the swimmer active: Yes");
                 } else {
                     System.out.println("Is the swimmer active: No");
-                } if (member.isCompetitive()) {
+                }
+                if (member.isCompetitive()) {
                     System.out.println("Is the swimmer competitive: Yes");
                 } else {
                     System.out.println("Is the swimmer competitive: No");
-                } if (member.hasPaid()) {
+                }
+                if (member.hasPaid()) {
                     System.out.println("Has the member paid: Yes");
                 } else {
                     System.out.println("Has the member paid: No");
-                } if (member.getSubscription() > 0) {
+                }
+                if (member.getSubscription() > 0) {
                     System.out.println("Subscription to pay in DKK: " + member.getSubscription() + ",-");
                 }
                 System.out.println("-------------------");
@@ -779,9 +880,7 @@ public class UserInterface {
         }
 
 
-
         //TODO: USE EDITCOMPETITIVESWIMMER SOMEHOW
-
 
 
         controller.editSwimmer(swimmerChoice, firstName, lastName, gender, age, isActive, isActive, hasPaid, isStudent);
