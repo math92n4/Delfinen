@@ -84,7 +84,6 @@ public class FileHandler {
     private Member splitLines(String scan) {
         String[] split = scan.split(";");
         boolean isCompetitive = Boolean.parseBoolean(split[0]);
-        System.out.println(Arrays.toString(split));
 
         if (isCompetitive) {
             CompetitiveSwimmer competitiveSwimmer = new CompetitiveSwimmer();

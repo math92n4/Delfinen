@@ -276,7 +276,7 @@ public class UserInterface {
 
         System.out.println("You have selected register trainer ");
 
-        scanner.nextLine();                                     //Scanner bug
+        scanner.nextLine();        //Scanner bug
 
         System.out.println("Enter trainers first name: ");
         String firstName = scanner.nextLine();
