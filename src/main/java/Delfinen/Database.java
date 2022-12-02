@@ -12,16 +12,21 @@ public class Database {
     private ArrayList<Member> members = new ArrayList<>();
     private ArrayList<Trainer> trainers = new ArrayList<>();
     private ArrayList<CompetitiveSwimmer> compSwimmers = new ArrayList<>();
+    private ArrayList<CompetitiveSwimmer> BestScores = new ArrayList<>();
 
-    public void addNormalMember(String firstName, String lastName, boolean gender, int age, boolean isActive, boolean isCompetetive, boolean hasPaid, boolean isStudent) {
-        NormalSwimmer member = new NormalSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent);
+    public void addNormalMember(String firstName, String lastName, boolean gender,
+                                int age, boolean isActive, boolean isCompetetive,
+                                boolean hasPaid, boolean isStudent) {
+        NormalSwimmer member = new NormalSwimmer(firstName, lastName, gender, age, isActive, hasPaid, isStudent);
         members.add(member);
     }
 
-    public void addCompetitiveSwimmer(String firstName, String lastName, boolean gender, int age, boolean isActive,boolean isCompetitive,boolean hasPaid, boolean isStudent,
+    public void addCompetitiveSwimmer(String firstName, String lastName, boolean gender,
+                                      int age, boolean isActive, boolean isCompetitive,
+                                      boolean hasPaid, boolean isStudent,
                                       boolean canButterfly, boolean canCrawl, boolean canBackcrawl,
                                       boolean canBreastStroke) {
-        CompetitiveSwimmer member = new CompetitiveSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent,canButterfly,canCrawl,canBackcrawl,canBreastStroke);
+        CompetitiveSwimmer member = new CompetitiveSwimmer(firstName, lastName, gender, age, isActive, hasPaid, isStudent, canButterfly, canCrawl, canBackcrawl, canBreastStroke);
         members.add(member);
     }
 
@@ -266,12 +271,12 @@ public class Database {
         if (!trainerFirstName.isEmpty()) {
             trainer.setTrainerFirstName(trainerFirstName);
         }
-        if (!trainers.isEmpty()) {
+        if (!trainerLastName.isEmpty()) {
             trainer.setTrainerLastName(trainerLastName);
         }
-        }
+    }
 
-    public void deleteTrainer(int index, String trainerFirstName,String trainerLastName) {
+    public void deleteTrainer(int index) {
         Trainer trainer = trainers.get(index - 1);
         trainers.remove(trainer);
     }

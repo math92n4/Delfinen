@@ -107,6 +107,10 @@ public class Controller {
         database.deleteSwimmer(index);
     }
 
+    public void deleteTrainer(int index) {
+        database.deleteTrainer(index);
+    }
+
     public void saveData() throws FileNotFoundException {
         fileHandler.saveData(database.getAllSwimmers());
     }

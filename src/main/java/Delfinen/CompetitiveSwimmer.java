@@ -6,6 +6,10 @@ public class CompetitiveSwimmer extends Member {
     private boolean canCrawl;
     private boolean canBackcrawl;
     private boolean canBreastStroke;
+    private double butterflyScore;
+    private double crawlScore;
+    private double backCrawlScore;
+    private double breastStrokeScore;
     private String TrainerName;
 
     public CompetitiveSwimmer() {
@@ -25,14 +29,20 @@ public class CompetitiveSwimmer extends Member {
         setSubscription();
     }
 
-
-
     public boolean canButterfly() {
         return canButterfly;
     }
 
     public void setCanButterfly(boolean canButterfly) {
         this.canButterfly = canButterfly;
+    }
+
+    public double getButterflyScore() {
+        return butterflyScore;
+    }
+
+    public void setButterflyScore(double butterflyScore) {
+        this.butterflyScore = butterflyScore;
     }
 
     public boolean canCrawl() {
@@ -43,6 +53,14 @@ public class CompetitiveSwimmer extends Member {
         this.canCrawl = canCrawl;
     }
 
+    public double getCrawlScore() {
+        return crawlScore;
+    }
+
+    public void setCrawlScore(double butterflyScore) {
+        this.crawlScore = crawlScore;
+    }
+
     public boolean canBackcrawl() {
         return canBackcrawl;
     }
@@ -51,11 +69,27 @@ public class CompetitiveSwimmer extends Member {
         this.canBackcrawl = canBackcrawl;
     }
 
+    public double getBackCrawlScore() {
+        return backCrawlScore;
+    }
+
+    public void setBackCrawlScore(double backCrawlScore) {
+        this.backCrawlScore = backCrawlScore;
+    }
+
     public boolean canBreastswimming() {
         return canBreastStroke;
     }
 
     public void setCanBreastStroke(boolean canBreastStroke) {
         this.canBreastStroke = canBreastStroke;
+    }
+
+    public double getBreastStrokeScore() {
+        return breastStrokeScore;
+    }
+
+    public void setBreastStrokeScore(double breastStrokeScore) {
+        this.breastStrokeScore = breastStrokeScore;
     }
 }

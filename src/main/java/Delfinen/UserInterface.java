@@ -45,8 +45,8 @@ public class UserInterface {
         System.out.println("Chairman password identified!");
 
         do {
-            controller.loadData();
             controller.loadTrainerData();
+            controller.loadData();
 
             System.out.println("1) Register swimmer\n" +
                     "2) Search for swimmer\n" +
@@ -347,7 +347,7 @@ public class UserInterface {
         }
 
         int choice = scanner.nextInt();
-        controller.deleteSwimmer(choice);
+        controller.deleteTrainer(choice);
         controller.saveTrainerData();
     }
 
@@ -1160,6 +1160,29 @@ public class UserInterface {
                         System.out.println("-------------------");
                     }
                 }
+            }
+
+            if (choice == 2) {
+                // TODO:
+            }
+
+            if (choice == 3) {
+                System.out.println("""
+                        1) Junior men
+                        2) Junior women
+                        3) Senior men
+                        4) Senior women
+                        ---------------------""");
+                secondChoice = scanner.nextInt();
+
+                System.out.println("""
+                        1) Butterfly
+                        2) Crawl
+                        3) BackCrawl
+                        4) BreastStroke
+                        ---------------------""");
+
+                thirdChoice = scanner.nextInt();
             }
 
         } while (choice != 0);

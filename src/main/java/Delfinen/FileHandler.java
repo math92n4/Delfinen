@@ -43,11 +43,11 @@ public class FileHandler {
 
         for (Trainer trainer : trainers) {
             output.print("");
-
             output.print(trainer.getTrainerFirstName() + ";");
-            output.print(trainer.getTrainerLastName() + ";");
+            output.print(trainer.getTrainerLastName());
 
             output.println("");
+
         }
         output.close();
 
@@ -118,10 +118,11 @@ public class FileHandler {
 
     private Trainer splitLinesTrainer(String scan) {
         String[] splitTrainer = scan.split(";");
-
         Trainer trainer = new Trainer();
-        trainer.setTrainerLastName(splitTrainer[0]);
+
+        trainer.setTrainerFirstName(splitTrainer[0]);
         trainer.setTrainerLastName(splitTrainer[1]);
+
         return trainer;
     }
 
