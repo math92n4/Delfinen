@@ -1319,7 +1319,6 @@ public class UserInterface {
 
                             }
                         }
-
                     }
 
                     // junior women
@@ -1331,42 +1330,115 @@ public class UserInterface {
                                         "\nGender: " + member.getGender() +
                                         "\nAge: " + member.getAge());
                                 System.out.println("-------------------");
+                                System.out.println("Choose the swimmer you wish to set a score for: ");
+                                scanner.nextLine();                         // Scanner bug
+
+                                int attributeChoice = scanner.nextInt();
+
+                                if (secondChoice == 1 && attributeChoice == 1) {
+                                    System.out.println("Type in butterfly time: ");
+                                    butterfly = scanner.nextDouble();
+
+                                } else if (secondChoice == 1 && attributeChoice == 2) {
+                                    System.out.println("Type in crawl time: ");
+                                    crawl = scanner.nextDouble();
+
+                                } else if (secondChoice == 1 && attributeChoice == 3) {
+                                    System.out.println("Type in backCrawl time: ");
+                                    backCrawl = scanner.nextDouble();
+
+                                } else if (secondChoice == 1 && attributeChoice == 4) {
+                                    System.out.println("Type in breastStroke time: ");
+                                    breastStroke = scanner.nextInt();
+
+                                    controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
+                                    controller.saveTrainerData();
+
+                                }
                             }
                         }
-                    }
 
-                    // senior men
-                    if (secondChoice == 3) {
-                        for (Member member : controller.getAllSwimmers()) {
-                            if (member.isCompetitive() && member.getAge() >= 18 && member.getGender()) {
-                                System.out.println("First name: " + member.getFirstName() +
-                                        "\nLast name: " + member.getLastName() +
-                                        "\nGender: " + member.getGender() +
-                                        "\nAge: " + member.getAge());
-                                System.out.println("-------------------");
+                        // senior men
+                        if (secondChoice == 3) {
+                            for (Member member : controller.getAllSwimmers()) {
+                                if (member.isCompetitive() && member.getAge() >= 18 && member.getGender()) {
+                                    System.out.println("First name: " + member.getFirstName() +
+                                            "\nLast name: " + member.getLastName() +
+                                            "\nGender: " + member.getGender() +
+                                            "\nAge: " + member.getAge());
+                                    System.out.println("-------------------");
+                                    System.out.println("Choose the swimmer you wish to set a score for: ");
+                                    scanner.nextLine();                         // Scanner bug
+
+                                    int attributeChoice = scanner.nextInt();
+
+                                    if (secondChoice == 1 && attributeChoice == 1) {
+                                        System.out.println("Type in butterfly time: ");
+                                        butterfly = scanner.nextDouble();
+
+                                    } else if (secondChoice == 1 && attributeChoice == 2) {
+                                        System.out.println("Type in crawl time: ");
+                                        crawl = scanner.nextDouble();
+
+                                    } else if (secondChoice == 1 && attributeChoice == 3) {
+                                        System.out.println("Type in backCrawl time: ");
+                                        backCrawl = scanner.nextDouble();
+
+                                    } else if (secondChoice == 1 && attributeChoice == 4) {
+                                        System.out.println("Type in breastStroke time: ");
+                                        breastStroke = scanner.nextInt();
+
+                                        controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
+                                        controller.saveTrainerData();
+                                    }
+                                }
                             }
-                        }
-                    }
 
-                    // senior women
-                    if (secondChoice == 4) {
-                        for (Member member : controller.getAllSwimmers()) {
-                            if (member.isCompetitive() && member.getAge() >= 18 && !member.getGender()) {
-                                System.out.println("First name: " + member.getFirstName() +
-                                        "\nLast name: " + member.getLastName() +
-                                        "\nGender: " + member.getGender() +
-                                        "\nAge: " + member.getAge());
-                                System.out.println("-------------------");
+                            // senior women
+                            if (secondChoice == 4) {
+                                for (Member member : controller.getAllSwimmers()) {
+                                    if (member.isCompetitive() && member.getAge() >= 18 && !member.getGender()) {
+                                        System.out.println("First name: " + member.getFirstName() +
+                                                "\nLast name: " + member.getLastName() +
+                                                "\nGender: " + member.getGender() +
+                                                "\nAge: " + member.getAge());
+                                        System.out.println("-------------------");
+                                        System.out.println("Choose the swimmer you wish to set a score for: ");
+                                        scanner.nextLine();                         // Scanner bug
+
+                                        int attributeChoice = scanner.nextInt();
+
+                                        if (secondChoice == 1 && attributeChoice == 1) {
+                                            System.out.println("Type in butterfly time: ");
+                                            butterfly = scanner.nextDouble();
+
+                                        } else if (secondChoice == 1 && attributeChoice == 2) {
+                                            System.out.println("Type in crawl time: ");
+                                            crawl = scanner.nextDouble();
+
+                                        } else if (secondChoice == 1 && attributeChoice == 3) {
+                                            System.out.println("Type in backCrawl time: ");
+                                            backCrawl = scanner.nextDouble();
+
+                                        } else if (secondChoice == 1 && attributeChoice == 4) {
+                                            System.out.println("Type in breastStroke time: ");
+                                            breastStroke = scanner.nextInt();
+
+                                            controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
+                                            controller.saveTrainerData();
+                                        }
+                                    }
+                                }
+
+
                             }
-                        }
-                    }
 
+                        }
+
+                    }
 
                 }
-
             }
-
         } while (choice != 0);
-
     }
 }
