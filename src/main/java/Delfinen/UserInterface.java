@@ -286,8 +286,6 @@ public class UserInterface {
         controller.saveData();
     }
 
-
-
     private void registerTrainer() throws FileNotFoundException {
 
         scanner.nextLine(); //scanner bug
@@ -297,11 +295,10 @@ public class UserInterface {
         System.out.println("Enter trainer's last name: ");
         String lastName = scanner.nextLine();
 
-        controller.createTrainer(firstName,lastName);
+        controller.createTrainer(firstName, lastName);
         controller.saveTrainerData();
 
     }
-
 
     private void registerTeam() throws FileNotFoundException {
         System.out.println("Enter the name of the team: ");
@@ -323,7 +320,6 @@ public class UserInterface {
     }
 
     private void editTrainer() throws FileNotFoundException {
-
 
 
         for (Trainer trainer : controller.getTrainers()) {
@@ -370,16 +366,16 @@ public class UserInterface {
 
                 break;
         }
-                controller.editTrainer(trainerId, firstName, lastName, teamId);
-                controller.saveTrainerData();
-                //controller.saveTeamData();
+        controller.editTrainer(trainerId, firstName, lastName, teamId);
+        controller.saveTrainerData();
+        //controller.saveTeamData();
 
-                for (Trainer trainer : controller.getTrainers()) {
-                    System.out.println("Trainer: " + trainer.getName() + " " + trainer.getLastName() + " is training team: "
-                            + trainer.getTeamName());
-                }
-
+        for (Trainer trainer : controller.getTrainers()) {
+            System.out.println("Trainer: " + trainer.getName() + " " + trainer.getLastName() + " is training team: "
+                    + trainer.getTeamName());
         }
+
+    }
 
     private void editTeam() throws FileNotFoundException {
 
@@ -420,10 +416,8 @@ public class UserInterface {
                 break;
         }
 
-        controller.editTeam(teamId,name,swimmerId);
+        controller.editTeam(teamId, name, swimmerId);
         controller.saveTeamData();
-
-
 
 
     }
@@ -1290,72 +1284,89 @@ public class UserInterface {
                         4) Senior women
                         ---------------------""");
                 secondChoice = scanner.nextInt();
-
                 // junior men
                 if (secondChoice == 1) {
                     for (Member member : controller.getAllSwimmers()) {
                         if (member.isCompetitive() && member.getAge() < 18 && member.getGender()) {
-                            System.out.println("#" + index++ + "\nFirst name: " + member.getFirstName() +
+                            System.out.println("-------------------");
+                            System.out.println("# " + index++ + "\nFirst name: " + member.getFirstName() +
                                     "\nLast name: " + member.getLastName() +
-                                    "\nGender: " + member.getGender() +
                                     "\nAge: " + member.getAge());
                             System.out.println("-------------------");
                             System.out.println("Choose the swimmer you wish to set a score for: ");
                             scanner.nextLine();                         // Scanner bug
 
-                            int number = scanner.nextInt();
+                            int attributeChoice = scanner.nextInt();
 
-                            controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
-                            controller.saveTrainerData();
+                            if (secondChoice == 1 && attributeChoice == 1) {
+                                System.out.println("Type in butterfly time: ");
+                                butterfly = scanner.nextDouble();
 
+                            } else if (secondChoice == 1 && attributeChoice == 2) {
+                                System.out.println("Type in crawl time: ");
+                                crawl = scanner.nextDouble();
+
+                            } else if (secondChoice == 1 && attributeChoice == 3) {
+                                System.out.println("Type in backCrawl time: ");
+                                backCrawl = scanner.nextDouble();
+
+                            } else if (secondChoice == 1 && attributeChoice == 4) {
+                                System.out.println("Type in breastStroke time: ");
+                                breastStroke = scanner.nextInt();
+
+                                controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
+                                controller.saveTrainerData();
+
+                            }
+                        }
+
+                    }
+
+                    // junior women
+                    if (secondChoice == 2) {
+                        for (Member member : controller.getAllSwimmers()) {
+                            if (member.isCompetitive() && member.getAge() < 18 && !member.getGender()) {
+                                System.out.println("First name: " + member.getFirstName() +
+                                        "\nLast name: " + member.getLastName() +
+                                        "\nGender: " + member.getGender() +
+                                        "\nAge: " + member.getAge());
+                                System.out.println("-------------------");
+                            }
                         }
                     }
 
-                }
-
-                // junior women
-                if (secondChoice == 2) {
-                    for (Member member : controller.getAllSwimmers()) {
-                        if (member.isCompetitive() && member.getAge() < 18 && !member.getGender()) {
-                            System.out.println("First name: " + member.getFirstName() +
-                                    "\nLast name: " + member.getLastName() +
-                                    "\nGender: " + member.getGender() +
-                                    "\nAge: " + member.getAge());
-                            System.out.println("-------------------");
+                    // senior men
+                    if (secondChoice == 3) {
+                        for (Member member : controller.getAllSwimmers()) {
+                            if (member.isCompetitive() && member.getAge() >= 18 && member.getGender()) {
+                                System.out.println("First name: " + member.getFirstName() +
+                                        "\nLast name: " + member.getLastName() +
+                                        "\nGender: " + member.getGender() +
+                                        "\nAge: " + member.getAge());
+                                System.out.println("-------------------");
+                            }
                         }
                     }
-                }
 
-                // senior men
-                if (secondChoice == 3) {
-                    for (Member member : controller.getAllSwimmers()) {
-                        if (member.isCompetitive() && member.getAge() >= 18 && member.getGender()) {
-                            System.out.println("First name: " + member.getFirstName() +
-                                    "\nLast name: " + member.getLastName() +
-                                    "\nGender: " + member.getGender() +
-                                    "\nAge: " + member.getAge());
-                            System.out.println("-------------------");
+                    // senior women
+                    if (secondChoice == 4) {
+                        for (Member member : controller.getAllSwimmers()) {
+                            if (member.isCompetitive() && member.getAge() >= 18 && !member.getGender()) {
+                                System.out.println("First name: " + member.getFirstName() +
+                                        "\nLast name: " + member.getLastName() +
+                                        "\nGender: " + member.getGender() +
+                                        "\nAge: " + member.getAge());
+                                System.out.println("-------------------");
+                            }
                         }
                     }
-                }
 
-                // senior women
-                if (secondChoice == 4) {
-                    for (Member member : controller.getAllSwimmers()) {
-                        if (member.isCompetitive() && member.getAge() >= 18 && !member.getGender()) {
-                            System.out.println("First name: " + member.getFirstName() +
-                                    "\nLast name: " + member.getLastName() +
-                                    "\nGender: " + member.getGender() +
-                                    "\nAge: " + member.getAge());
-                            System.out.println("-------------------");
-                        }
-                    }
-                }
 
+                }
 
             }
 
         } while (choice != 0);
-    }
 
+    }
 }
