@@ -40,7 +40,7 @@ public class FileHandler {
     }
 
     public void saveTrainerData(ArrayList<Trainer> trainers) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File("Data/trainerData.csv"));
+        PrintStream output = new PrintStream(new File("Data/TrainerData.csv"));
 
         for (Trainer trainer : trainers) {
             output.print("");

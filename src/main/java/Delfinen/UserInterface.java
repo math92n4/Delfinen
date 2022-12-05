@@ -324,6 +324,8 @@ public class UserInterface {
 
     private void editTrainer() throws FileNotFoundException {
 
+
+
         for (Trainer trainer : controller.getTrainers()) {
             System.out.println("ID: " + trainer.getId() +
                     "\n First name: " + trainer.getName() +
@@ -341,9 +343,11 @@ public class UserInterface {
 
         int choice = scanner.nextInt();
 
+
         String firstName = "";
         String lastName = "";
         int teamId = -1;
+
 
         switch (choice) {
             case 1:

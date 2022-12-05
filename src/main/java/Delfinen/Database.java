@@ -90,7 +90,7 @@ public class Database {
                 if (!lastName.isEmpty()) {
                     trainer.setLastName(lastName);
                 }
-                if (teamId != -1) {
+                 if (teamId != -1) {
                     trainer.setTeam(team);
                 }
             }
