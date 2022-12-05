@@ -154,11 +154,11 @@ public class Controller {
     }
 
     public void saveTeamData() throws FileNotFoundException {
-        teamFileHandler.saveTeamData(database.getTeams());
+        fileHandler.saveTeamData(database.getTeams());
     }
 
     public void loadTeamData() throws FileNotFoundException {
-        teamFileHandler.loadTeamData(database.getTeams());
+        fileHandler.loadTeamData(database.getTeams());
     }
 
     public void saveTrainerData() throws FileNotFoundException {
