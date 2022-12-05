@@ -4,9 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class MemberFileHandler {
+public class FileHandler {
 
     public void saveData(ArrayList<Member> members) throws FileNotFoundException {
         PrintStream output = new PrintStream(new File("Data/SwimmerData.csv"));
@@ -14,7 +15,6 @@ public class MemberFileHandler {
         for (Member member : members) {
             output.print("");
 
-            output.print(member.getId() + ";");
             output.print(member.getFirstName() + ";");
             output.print(member.getLastName() + ";");
             output.print(member.getGender() + ";");
@@ -25,12 +25,27 @@ public class MemberFileHandler {
             output.print(member.isStudent() + ";");
             output.print(member.getSubscription() + ";");
 
-            if(member.isCompetitive()) {
+            if (member.isCompetitive()) {
                 output.print(((CompetitiveSwimmer) member).canButterfly() + ";");
-                output.print(((CompetitiveSwimmer) member).canCrawl()+ ";");
-                output.print(((CompetitiveSwimmer) member).canBackcrawl()+ ";");
-                output.print(((CompetitiveSwimmer) member).canBreastswimming()+ ";");
+                output.print(((CompetitiveSwimmer) member).canCrawl() + ";");
+                output.print(((CompetitiveSwimmer) member).canBackcrawl() + ";");
+                output.print(((CompetitiveSwimmer) member).canBreastswimming() + ";");
             }
+
+            output.println("");
+        }
+        output.close();
+
+    }
+
+    public void saveTrainerData(ArrayList<Trainer> trainers) throws FileNotFoundException {
+        PrintStream output = new PrintStream(new File("Data/trainerData.csv"));
+
+        for (Trainer trainer : trainers) {
+            output.print("");
+
+            output.print(trainer.getTrainerFirstName() + ";");
+            output.print(trainer.getTrainerLastName() + ";");
 
             output.println("");
         }
@@ -49,6 +64,20 @@ public class MemberFileHandler {
             Member member = splitLines(scan);
 
             members.add(member);
+        }
+    }
+
+    public void loadTrainerData(ArrayList<Trainer> trainers) throws FileNotFoundException {
+        Scanner scanList = new Scanner(new File("Data/trainerData.csv"));
+
+        trainers.clear();
+
+        while (scanList.hasNextLine()) {
+            String scan = scanList.nextLine();
+
+            Trainer trainer = splitLinesTrainer(scan);
+
+            trainers.add(trainer);
         }
     }
 
@@ -87,6 +116,15 @@ public class MemberFileHandler {
             normalSwimmer.setSubscription(Integer.parseInt(split[9]));
             return normalSwimmer;
         }
+    }
+
+    private Trainer splitLinesTrainer(String scan) {
+        String[] splitTrainer = scan.split(";");
+
+        Trainer trainer = new Trainer();
+        trainer.setTrainerLastName(splitTrainer[0]);
+        trainer.setTrainerLastName(splitTrainer[1]);
+        return trainer;
     }
 
 }

@@ -54,8 +54,16 @@ public class Controller {
         database.editTrainer(trainerId,firstName,lastName,teamId);
     }
 
+    public void createTrainer(String trainerFirstName, String trainerLastName) {
+        database.addTrainer(trainerFirstName, trainerLastName);
+    }
+
     public ArrayList<Member> getAllSwimmers() {
         return database.getAllSwimmers();
+    }
+
+    public ArrayList<Trainer> getAllTrainers() {
+        return database.getAllTrainers();
     }
 
     public ArrayList<CompetitiveSwimmer> getJuniorMenButterfly() {
@@ -122,11 +130,9 @@ public class Controller {
         return database.getSeniorWomenBreastStroke();
     }
 
-
     public ArrayList<Member> SearchForSwimmer(String firstName) {
         return database.getSearchForSwimmer(firstName);
     }
-
 
     public int getSubscriptionSum() {
         return database.getSubscriptionSum();
@@ -168,18 +174,30 @@ public class Controller {
         teamFileHandler.loadTeamData(database.getTeams());
     }
 
+    public void saveTrainerData() throws FileNotFoundException {
+        fileHandler.saveTrainerData(database.getAllTrainers());
+    }
+
+    public void loadTrainerData() throws FileNotFoundException {
+        fileHandler.loadTrainerData(database.getAllTrainers());
+    }
+
     public void editSwimmer(int index, String firstName, String lastName, boolean gender, int age,
                             boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent) {
         database.editSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
     }
 
+    public void editTrainer(int index, String trainerFirstName, String trainerLastName) {
+        database.editTrainer(index, trainerFirstName, trainerLastName);
+    }
+
     public void editCompetitiveSwimmer(int index, String firstName, String lastName, boolean gender,
                                        int age, boolean isActive, boolean isCompetitive,
                                        boolean hasPaid, boolean isStudent, boolean canButterfly,
-                                       boolean canCrawl, boolean canBackcrawl, boolean canBreastStroke) {
+                                       boolean canCrawl, boolean canBackCrawl, boolean canBreastStroke) {
 
         database.editCompetitiveSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive,
-                hasPaid, isStudent, canButterfly, canCrawl, canBackcrawl, canBreastStroke);
+                hasPaid, isStudent, canButterfly, canCrawl, canBackCrawl, canBreastStroke);
     }
 
     public void sortBy(String sortBy) {

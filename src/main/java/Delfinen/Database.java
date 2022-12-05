@@ -2,6 +2,7 @@ package Delfinen;
 
 import Delfinen.comparatorer.FlexibleComparator;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
@@ -41,6 +42,8 @@ public class Database {
         throw new NoSuchElementException("No trainer with id " + id);
     }
 
+    private ArrayList<Trainer> trainers = new ArrayList<>();
+    private ArrayList<CompetitiveSwimmer> compSwimmers = new ArrayList<>();
 
     public void addNormalMember(String firstName, String lastName, boolean gender, int age, boolean isActive, boolean isCompetetive, boolean hasPaid, boolean isStudent) {
         int id = members.size() + 1;
@@ -115,6 +118,10 @@ public class Database {
 
     public ArrayList<Member> getAllSwimmers() {
         return members;
+    }
+
+    public ArrayList<Trainer> getAllTrainers() {
+        return trainers;
     }
 
     public ArrayList<CompetitiveSwimmer> getJuniorMenButterfly() {
@@ -326,7 +333,6 @@ public class Database {
         member.setActive(isActive);
         member.setHasPaid(hasPaid);
         member.setStudent(isStudent);
-
     }
 
     public void editCompetitiveSwimmer(int index, String firstName, String lastName, boolean gender,
@@ -346,6 +352,22 @@ public class Database {
             ((CompetitiveSwimmer) member).setCanBreastStroke(canBreastStroke);
         }
 
+    }
+
+    public void editTrainer(int index, String trainerFirstName, String trainerLastName) {
+        Trainer trainer = trainers.get(index - 1);
+
+        if (!trainerFirstName.isEmpty()) {
+            trainer.setTrainerFirstName(trainerFirstName);
+        }
+        if (!trainers.isEmpty()) {
+            trainer.setTrainerLastName(trainerLastName);
+        }
+        }
+
+    public void deleteTrainer(int index, String trainerFirstName,String trainerLastName) {
+        Trainer trainer = trainers.get(index - 1);
+        trainers.remove(trainer);
     }
 
     public int getSubscriptionSum() {
