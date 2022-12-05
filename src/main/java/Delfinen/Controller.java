@@ -136,6 +136,10 @@ public class Controller {
         database.editTrainer(index, trainerFirstName, trainerLastName);
     }
 
+    public void setCompSwimmerScore(int index, double butterflyScore, double crawlScore, double backCrawlScore, double breastStroke) {
+        database.setCompSwimmerScore(index, butterflyScore, crawlScore, backCrawlScore, breastStroke);
+    }
+
     public void editCompetitiveSwimmer(int index, String firstName, String lastName, boolean gender,
                                        int age, boolean isActive, boolean isCompetitive,
                                        boolean hasPaid, boolean isStudent, boolean canButterfly,

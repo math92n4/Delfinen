@@ -25,7 +25,7 @@ public class FileHandler {
             output.print(member.isStudent() + ";");
             output.print(member.getSubscription() + ";");
 
-            if (member.isCompetitive()) {
+            if (member.isCompetitive() && member instanceof CompetitiveSwimmer) {
                 output.print(((CompetitiveSwimmer) member).canButterfly() + ";");
                 output.print(((CompetitiveSwimmer) member).canCrawl() + ";");
                 output.print(((CompetitiveSwimmer) member).canBackcrawl() + ";");
@@ -61,9 +61,9 @@ public class FileHandler {
         while (scanList.hasNextLine()) {
             String scan = scanList.nextLine();
 
-            Member member = splitLines(scan);
+           // Member member = splitLines(scan);
 
-            members.add(member);
+            members.add(splitLines(scan));
         }
     }
 
@@ -83,7 +83,7 @@ public class FileHandler {
 
     private Member splitLines(String scan) {
         String[] split = scan.split(";");
-        boolean isCompetitive = Boolean.parseBoolean(split[0]);
+        boolean isCompetitive = Boolean.parseBoolean(split[5]);
 
         if (isCompetitive) {
             CompetitiveSwimmer competitiveSwimmer = new CompetitiveSwimmer();

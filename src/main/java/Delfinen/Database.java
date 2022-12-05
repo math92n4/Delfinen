@@ -12,7 +12,6 @@ public class Database {
     private ArrayList<Member> members = new ArrayList<>();
     private ArrayList<Trainer> trainers = new ArrayList<>();
     private ArrayList<CompetitiveSwimmer> compSwimmers = new ArrayList<>();
-    private ArrayList<CompetitiveSwimmer> BestScores = new ArrayList<>();
 
     public void addNormalMember(String firstName, String lastName, boolean gender,
                                 int age, boolean isActive, boolean isCompetetive,
@@ -279,6 +278,26 @@ public class Database {
     public void deleteTrainer(int index) {
         Trainer trainer = trainers.get(index - 1);
         trainers.remove(trainer);
+    }
+
+    public void setCompSwimmerScore(int index, double butterflyScore, double crawlScore, double backCrawlScore, double breastStrokeScore) {
+        CompetitiveSwimmer compSwimmer = compSwimmers.get(index - 1);
+
+        if (butterflyScore != 0) {
+            compSwimmer.setButterflyScore(butterflyScore);
+        }
+
+        if (crawlScore != 0 ) {
+            compSwimmer.setCrawlScore(crawlScore);
+        }
+
+        if (backCrawlScore != 0) {
+            compSwimmer.setBackCrawlScore(backCrawlScore);
+        }
+
+        if (breastStrokeScore != 0) {
+            compSwimmer.setBreastStrokeScore(breastStrokeScore);
+        }
     }
 
     public int getSubscriptionSum() {
