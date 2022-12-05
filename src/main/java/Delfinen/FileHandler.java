@@ -15,6 +15,7 @@ public class FileHandler {
         for (Member member : members) {
             output.print("");
 
+            output.print(member.getId() + ";");
             output.print(member.getFirstName() + ";");
             output.print(member.getLastName() + ";");
             output.print(member.getGender() + ";");
@@ -44,8 +45,9 @@ public class FileHandler {
         for (Trainer trainer : trainers) {
             output.print("");
 
-            output.print(trainer.getTrainerFirstName() + ";");
-            output.print(trainer.getTrainerLastName() + ";");
+            output.print(trainer.getName() + ";");
+            output.print(trainer.getLastName() + ";");
+            output.print(trainer.getId() + ";");
 
             output.println("");
         }
@@ -122,11 +124,10 @@ public class FileHandler {
         String[] splitTrainer = scan.split(";");
 
         Trainer trainer = new Trainer();
-        trainer.setTrainerLastName(splitTrainer[0]);
-        trainer.setTrainerLastName(splitTrainer[1]);
+        trainer.setName(splitTrainer[0]);
+        trainer.setLastName(splitTrainer[1]);
+        trainer.setId(Integer.parseInt(splitTrainer[2]));
         return trainer;
     }
 
 }
-
-

@@ -42,9 +42,6 @@ public class Database {
         throw new NoSuchElementException("No trainer with id " + id);
     }
 
-    private ArrayList<Trainer> trainers = new ArrayList<>();
-    private ArrayList<CompetitiveSwimmer> compSwimmers = new ArrayList<>();
-
     public void addNormalMember(String firstName, String lastName, boolean gender, int age, boolean isActive, boolean isCompetetive, boolean hasPaid, boolean isStudent) {
         int id = members.size() + 1;
         NormalSwimmer member = new NormalSwimmer(id,firstName,lastName,gender,age,isActive,hasPaid,isStudent);
@@ -358,17 +355,13 @@ public class Database {
         Trainer trainer = trainers.get(index - 1);
 
         if (!trainerFirstName.isEmpty()) {
-            trainer.setTrainerFirstName(trainerFirstName);
+            trainer.setName(trainerFirstName);
         }
         if (!trainers.isEmpty()) {
-            trainer.setTrainerLastName(trainerLastName);
+            trainer.setLastName(trainerLastName);
         }
         }
 
-    public void deleteTrainer(int index, String trainerFirstName,String trainerLastName) {
-        Trainer trainer = trainers.get(index - 1);
-        trainers.remove(trainer);
-    }
 
     public int getSubscriptionSum() {
         int total = 0;
@@ -392,7 +385,6 @@ public class Database {
     }
 
     public void deleteTrainer(int index) {
-
         Trainer trainer = getTrainerById(index);
         trainers.remove(trainer);
     }

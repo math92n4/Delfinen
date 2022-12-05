@@ -6,9 +6,8 @@ import java.util.ArrayList;
 public class Controller {
 
     Delfinen.Database database = new Database();
-    MemberFileHandler memberFileHandler = new MemberFileHandler();
+    FileHandler fileHandler = new FileHandler();
     TeamFileHandler teamFileHandler = new TeamFileHandler();
-    TrainerFileHandler trainerFileHandler = new TrainerFileHandler();
 
     public void createNormalMember(String firstName, String lastName, boolean gender, int age,
                              boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent) {
@@ -24,10 +23,6 @@ public class Controller {
 
     public void createTeam(String name) {
         database.addTeam(name);
-    }
-
-    public void createTrainer(String firstName, String lastName) {
-        database.addTrainer(firstName,lastName);
     }
 
     public void editTeam(int teamId, String name, int swimmerId) {
@@ -151,19 +146,11 @@ public class Controller {
     }
 
     public void saveData() throws FileNotFoundException {
-        memberFileHandler.saveData(database.getAllSwimmers());
+        fileHandler.saveData(database.getAllSwimmers());
     }
 
     public void loadData() throws FileNotFoundException {
-        memberFileHandler.loadData(database.getAllSwimmers());
-    }
-
-    public void saveTrainerData() throws FileNotFoundException {
-        trainerFileHandler.saveTrainerData(database.getTrainers());
-    }
-
-    public void loadTrainerData() throws FileNotFoundException {
-        trainerFileHandler.loadTrainerData(database.getTrainers());
+        fileHandler.loadData(database.getAllSwimmers());
     }
 
     public void saveTeamData() throws FileNotFoundException {
@@ -187,9 +174,6 @@ public class Controller {
         database.editSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
     }
 
-    public void editTrainer(int index, String trainerFirstName, String trainerLastName) {
-        database.editTrainer(index, trainerFirstName, trainerLastName);
-    }
 
     public void editCompetitiveSwimmer(int index, String firstName, String lastName, boolean gender,
                                        int age, boolean isActive, boolean isCompetitive,

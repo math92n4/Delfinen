@@ -84,7 +84,7 @@ public class UserInterface {
                     registerTrainer();
                     break;
                 case 6:
-                    listofAllTrainers();
+                    listOfAllTrainers();
                     break;
                 case 7:
                     editTrainer();
@@ -100,7 +100,7 @@ public class UserInterface {
                     break;
                 case 11:
                     deleteTeam();
-                    break
+                    break;
                 case 12:
                     System.out.println("1) List of all swimmers\n" +
                             "2) Sorted lists of all swimmers\n" +
@@ -145,6 +145,7 @@ public class UserInterface {
         } while (chairmanChoice != 0);
 
     }
+
 
     private void registerMember() throws FileNotFoundException {
 
@@ -291,61 +292,10 @@ public class UserInterface {
 
         System.out.println("-------------------");
         for (Trainer trainer : controller.getAllTrainers()) {
-            System.out.println("Trainers first name: " + trainer.getTrainerFirstName() +
-                    "\nTrainers last name: " + trainer.getTrainerLastName());
+            System.out.println("Trainers first name: " + trainer.getName() +
+                    "\nTrainers last name: " + trainer.getLastName());
             System.out.println("-------------------");
         }
-    }
-
-    private void editTrainer() throws FileNotFoundException {
-        int index = 1;
-
-        System.out.println("-------------------");
-        for (Trainer trainer : controller.getAllTrainers()) {
-            System.out.println("# " + index++);
-            System.out.println("Trainer first name: " + trainer.getTrainerFirstName() +
-                    "\nTrainer last name: " + trainer.getTrainerLastName());
-        }
-
-        System.out.println("Choose the trainer you wish to edit by number");
-
-        int swimmerChoice = scanner.nextInt();
-        String trainerFirstName = "";
-        String trainerLastName = "";
-
-
-        System.out.println("Choose the field you wish to edit\n" +
-                "1) First name\n" +
-                "2) Last name\n");
-
-        int attributeChoice = scanner.nextInt();
-        scanner.nextLine();                         // Scanner bug
-
-
-        if (attributeChoice == 1) {
-            System.out.println("Enter trainer first name: ");
-            trainerFirstName = scanner.nextLine();
-
-        } else if (attributeChoice == 2) {
-            System.out.println("Enter trainer last name: ");
-            trainerLastName = scanner.nextLine();
-
-
-            controller.editTrainer(swimmerChoice, trainerFirstName, trainerLastName);
-            controller.saveTrainerData();
-
-        }
-    }
-
-    private void deleteTrainer() throws FileNotFoundException {
-        int index = 1;
-        for (Trainer trainer : controller.getAllTrainers()) {
-            System.out.println(index++ + ". Name: " + trainer.getTrainerFirstName() + " " + trainer.getTrainerFirstName());
-        }
-
-        int choice = scanner.nextInt();
-        controller.deleteSwimmer(choice);
-        controller.saveTrainerData();
     }
 
     private void registerTrainer() throws FileNotFoundException {
@@ -362,7 +312,7 @@ public class UserInterface {
 
     }
 
-    private void addTeam() throws FileNotFoundException {
+    private void registerTeam() throws FileNotFoundException {
 
         System.out.println("Enter the name of the team: ");
         scanner.nextLine(); // scanner bug
@@ -419,7 +369,7 @@ public class UserInterface {
         }
                 controller.editTrainer(trainerId, firstName, lastName, teamId);
                 controller.saveTrainerData();
-                controller.saveTeamData();
+                //controller.saveTeamData();
 
                 for (Trainer trainer : controller.getTrainers()) {
                     System.out.println("Trainer: " + trainer.getName() + " " + trainer.getLastName() + " is training team: "
@@ -1052,6 +1002,8 @@ public class UserInterface {
     private void cashierUI() throws FileNotFoundException {
 
         controller.loadData();
+        controller.loadTeamData();
+        controller.loadTrainerData();
 
         int cashierChoice;
         System.out.println("Cashier password identified!");
@@ -1101,6 +1053,8 @@ public class UserInterface {
 
         do {
             controller.loadData();
+            controller.loadTrainerData();
+            controller.loadTeamData();
 
             // trainer menu
             System.out.println("1) Overview over teams \n" +
