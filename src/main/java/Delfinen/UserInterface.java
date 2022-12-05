@@ -104,12 +104,13 @@ public class UserInterface {
                 case 12:
                     System.out.println("1) List of all swimmers\n" +
                             "2) Sorted lists of all swimmers\n" +
-                            "3) List of competetive swimmers\n" +
-                            "4) List of normal swimmers\n" +
-                            "5) List of active swimmers\n" +
-                            "6) List of inactive swimmers\n" +
-                            "7) List of junior swimmers\n" +
-                            "8) List of senior swimmers");
+                            "3) List of competitive swimmers\n" +
+                            "4) List of student swimmers\n" +
+                            "5) List of normal swimmers\n" +
+                            "6) List of active swimmers\n" +
+                            "7) List of inactive swimmers\n" +
+                            "8) List of junior swimmers\n" +
+                            "9) List of senior swimmers");
                     int listChoice;
                     listChoice = scanner.nextInt();
                     switch (listChoice) {
@@ -145,7 +146,6 @@ public class UserInterface {
         } while (chairmanChoice != 0);
 
     }
-
 
     private void registerMember() throws FileNotFoundException {
 
@@ -280,7 +280,6 @@ public class UserInterface {
                 canBreastswim = true;
             }
 
-
             controller.createCompetitiveMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent,
                     canButterfly, canCrawl, canBackCrawl, canBreastswim);
         }
@@ -288,15 +287,6 @@ public class UserInterface {
     }
 
 
-    private void listOfAllTrainers() {
-
-        System.out.println("-------------------");
-        for (Trainer trainer : controller.getAllTrainers()) {
-            System.out.println("Trainers first name: " + trainer.getName() +
-                    "\nTrainers last name: " + trainer.getLastName());
-            System.out.println("-------------------");
-        }
-    }
 
     private void registerTrainer() throws FileNotFoundException {
 
@@ -312,15 +302,24 @@ public class UserInterface {
 
     }
 
-    private void registerTeam() throws FileNotFoundException {
 
+    private void registerTeam() throws FileNotFoundException {
         System.out.println("Enter the name of the team: ");
         scanner.nextLine(); // scanner bug
         String teamName = scanner.nextLine();
 
         controller.createTeam(teamName);
         controller.saveTeamData();
+    }
 
+    private void listOfAllTrainers() {
+
+        System.out.println("-------------------");
+        for (Trainer trainer : controller.getAllTrainers()) {
+            System.out.println("Trainers first name: " + trainer.getName() +
+                    "\nTrainers last name: " + trainer.getLastName());
+            System.out.println("-------------------");
+        }
     }
 
     private void editTrainer() throws FileNotFoundException {
@@ -425,9 +424,6 @@ public class UserInterface {
 
     }
 
-
-
-
     private void searchForSwimmer() {
         ArrayList<Member> swimmerFound;
         System.out.println("Search for a member: ");
@@ -447,7 +443,7 @@ public class UserInterface {
 
     private void sort() {
         System.out.println("--------------------" + "\n");
-        System.out.println("Sort the list by: " + "\n" +
+        System.out.println("Sort the list by:\n" +
                 "1) first name" + "\n" +
                 "2) last name " + "\n" +
                 "3) Gender " + "\n" +
@@ -770,8 +766,6 @@ public class UserInterface {
         }
     }
 
-    // TODO: print list of student swimmers
-
     private void deleteSwimmer() throws FileNotFoundException {
         int index = 1;
         for (Member member : controller.getAllSwimmers()) {
@@ -849,7 +843,7 @@ public class UserInterface {
                 "9) Butterfly\n" +
                 "10) Crawl\n" +
                 "11) Back crawl\n" +
-                "12) Breast stroke\n");
+                "12) Breast stroke");
 
         int attributeChoice = scanner.nextInt();
         scanner.nextLine();                         // Scanner bug
@@ -959,7 +953,6 @@ public class UserInterface {
         }
 
 
-
         //TODO: USE EDITCOMPETITIVESWIMMER SOMEHOW
 
 
@@ -1043,13 +1036,18 @@ public class UserInterface {
 
     private void trainerUI() throws FileNotFoundException {
 
-
         System.out.println("Trainer password identified! ");
-
 
         int choice;
         int secondChoice;
         int thirdChoice;
+        int index = 1;
+
+        double butterfly = 0;
+        double crawl = 0;
+        double backCrawl = 0;
+        double breastStroke = 0;
+
 
         do {
             controller.loadData();
@@ -1277,6 +1275,80 @@ public class UserInterface {
                         System.out.println("-------------------");
                     }
                 }
+            }
+
+            if (choice == 2) {
+                System.out.println("""
+                        Who do you wish to register a score for: 
+                        1) Junior men
+                        2) Junior women
+                        3) Senior men
+                        4) Senior women
+                        ---------------------""");
+                secondChoice = scanner.nextInt();
+
+                // junior men
+                if (secondChoice == 1) {
+                    for (Member member : controller.getAllSwimmers()) {
+                        if (member.isCompetitive() && member.getAge() < 18 && member.getGender()) {
+                            System.out.println("#" + index++ + "\nFirst name: " + member.getFirstName() +
+                                    "\nLast name: " + member.getLastName() +
+                                    "\nGender: " + member.getGender() +
+                                    "\nAge: " + member.getAge());
+                            System.out.println("-------------------");
+                            System.out.println("Choose the swimmer you wish to set a score for: ");
+                            scanner.nextLine();                         // Scanner bug
+
+                            int number = scanner.nextInt();
+
+                            controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
+                            controller.saveTrainerData();
+
+                        }
+                    }
+
+                }
+
+                // junior women
+                if (secondChoice == 2) {
+                    for (Member member : controller.getAllSwimmers()) {
+                        if (member.isCompetitive() && member.getAge() < 18 && !member.getGender()) {
+                            System.out.println("First name: " + member.getFirstName() +
+                                    "\nLast name: " + member.getLastName() +
+                                    "\nGender: " + member.getGender() +
+                                    "\nAge: " + member.getAge());
+                            System.out.println("-------------------");
+                        }
+                    }
+                }
+
+                // senior men
+                if (secondChoice == 3) {
+                    for (Member member : controller.getAllSwimmers()) {
+                        if (member.isCompetitive() && member.getAge() >= 18 && member.getGender()) {
+                            System.out.println("First name: " + member.getFirstName() +
+                                    "\nLast name: " + member.getLastName() +
+                                    "\nGender: " + member.getGender() +
+                                    "\nAge: " + member.getAge());
+                            System.out.println("-------------------");
+                        }
+                    }
+                }
+
+                // senior women
+                if (secondChoice == 4) {
+                    for (Member member : controller.getAllSwimmers()) {
+                        if (member.isCompetitive() && member.getAge() >= 18 && !member.getGender()) {
+                            System.out.println("First name: " + member.getFirstName() +
+                                    "\nLast name: " + member.getLastName() +
+                                    "\nGender: " + member.getGender() +
+                                    "\nAge: " + member.getAge());
+                            System.out.println("-------------------");
+                        }
+                    }
+                }
+
+
             }
 
         } while (choice != 0);

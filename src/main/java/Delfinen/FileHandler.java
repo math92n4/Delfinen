@@ -26,7 +26,7 @@ public class FileHandler {
             output.print(member.isStudent() + ";");
             output.print(member.getSubscription() + ";");
 
-            if (member.isCompetitive()) {
+            if (member.isCompetitive() && member instanceof CompetitiveSwimmer) {
                 output.print(((CompetitiveSwimmer) member).canButterfly() + ";");
                 output.print(((CompetitiveSwimmer) member).canCrawl() + ";");
                 output.print(((CompetitiveSwimmer) member).canBackcrawl() + ";");
@@ -45,9 +45,9 @@ public class FileHandler {
         for (Trainer trainer : trainers) {
             output.print("");
 
+            output.print(trainer.getId() + ";");
             output.print(trainer.getName() + ";");
             output.print(trainer.getLastName() + ";");
-            output.print(trainer.getId() + ";");
 
             output.println("");
         }
@@ -63,9 +63,9 @@ public class FileHandler {
         while (scanList.hasNextLine()) {
             String scan = scanList.nextLine();
 
-            Member member = splitLines(scan);
+           // Member member = splitLines(scan);
 
-            members.add(member);
+            members.add(splitLines(scan));
         }
     }
 
@@ -124,10 +124,16 @@ public class FileHandler {
         String[] splitTrainer = scan.split(";");
 
         Trainer trainer = new Trainer();
-        trainer.setName(splitTrainer[0]);
-        trainer.setLastName(splitTrainer[1]);
-        trainer.setId(Integer.parseInt(splitTrainer[2]));
+
+        trainer.setId(Integer.parseInt(splitTrainer[0]));
+        trainer.setName(splitTrainer[1]);
+        trainer.setLastName(splitTrainer[2]);
+
         return trainer;
     }
 
 }
+
+
+
+
