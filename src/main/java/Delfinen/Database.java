@@ -78,39 +78,42 @@ public class Database {
         return teams;
     }
 
-    public void editTrainer(int trainerId, String firstName, String lastName, int teamId) {
+    public void editTrainer(int trainerId, String firstName, String lastName) {
+
+        Trainer trainer = getTrainerById(trainerId);
+
+
+        if (!firstName.isEmpty()) {
+            trainer.setName(firstName);
+        }
+        if (!lastName.isEmpty()) {
+            trainer.setLastName(lastName);
+        }
+
+    }
+
+    public void setTrainerToTeam(int trainerId, int teamId) {
+        Trainer trainer = getTrainerById(trainerId);
+        Team team = getTeamById(teamId);
+
+        trainer.setTeam(team);
+    }
+
+    public void editTeam(int teamId, String name) {
 
         Team team = getTeamById(teamId);
 
-        for (Trainer trainer : trainers) {
-            if (trainer.getId() == trainerId) {
-                if(!firstName.isEmpty()) {
-                    trainer.setName(firstName);
-                }
-                if (!lastName.isEmpty()) {
-                    trainer.setLastName(lastName);
-                }
-                 if (teamId != -1) {
-                    trainer.setTeam(team);
-                }
-            }
+        if (!team.getName().isEmpty()) {
+            team.setName(name);
         }
     }
 
-    public void editTeam(int teamId, String name, int swimmerId) {
+    public void setMemberToTeam(int teamId,int memberId) {
 
-        Member member = getMemberById(swimmerId);
+        Team team = getTeamById(teamId);
+        Member member = getMemberById(memberId);
 
-        for (Team team : teams) {
-            if (team.getId() == teamId) {
-                if (!name.isEmpty()) {
-                    team.setName(name);
-                }
-                if (swimmerId != -1) {
-                    team.setMember(member);
-                }
-            }
-        }
+        member.setTeam(team);
     }
 
 
@@ -344,16 +347,6 @@ public class Database {
 
     }
 
-    public void editTrainer(int index, String trainerFirstName, String trainerLastName) {
-        Trainer trainer = trainers.get(index - 1);
-
-        if (!trainerFirstName.isEmpty()) {
-            trainer.setName(trainerFirstName);
-        }
-        if (!trainerLastName.isEmpty()) {
-            trainer.setLastName(trainerLastName);
-        }
-        }
 
 
     public void setCompSwimmerScore(int index, double butterflyScore, double crawlScore, double backCrawlScore, double breastStrokeScore) {
@@ -406,6 +399,7 @@ public class Database {
         Comparator comparator = new FlexibleComparator(sortBy);
         members.sort(comparator);
     }
+
 }
 
 

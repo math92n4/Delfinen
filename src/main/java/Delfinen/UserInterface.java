@@ -348,10 +348,12 @@ public class UserInterface {
         switch (choice) {
             case 1:
                 System.out.println("Enter first name");
+                scanner.nextLine();                             //scanner bug
                 firstName = scanner.nextLine();
                 break;
             case 2:
                 System.out.println("Enter last name");
+                scanner.nextLine();                             // scanner bug
                 lastName = scanner.nextLine();
                 break;
             case 3:
@@ -366,14 +368,24 @@ public class UserInterface {
 
                 break;
         }
-        controller.editTrainer(trainerId, firstName, lastName, teamId);
+
+
+        controller.editTrainer(trainerId, firstName, lastName);
+
+        if (teamId > 0) {
+            controller.setTrainerToTeam(trainerId,teamId);
+        }
+
         controller.saveTrainerData();
-        //controller.saveTeamData();
 
         for (Trainer trainer : controller.getTrainers()) {
-            System.out.println("Trainer: " + trainer.getName() + " " + trainer.getLastName() + " is training team: "
-                    + trainer.getTeamName());
+            if (trainer.getTeam() != null) {
+                System.out.println(trainer.getName() + trainer.getTeam());
+            }
         }
+
+        //controller.saveTeamData();
+
 
     }
 
@@ -385,7 +397,8 @@ public class UserInterface {
 
 
         for (Team team : controller.getTeams()) {
-            System.out.println("ID: " + team.getId() + ") " + team.getName());
+            System.out.println("ID: " + team.getId() +
+                    "\nName: " + team.getName());
         }
 
         System.out.println("Choose the team you wish to edit by ID number");
@@ -401,13 +414,14 @@ public class UserInterface {
         switch (choice) {
             case 1:
                 System.out.println("Enter new name: ");
+                scanner.nextLine();                                     //Scanner bug
                 name = scanner.nextLine();
                 break;
             case 2:
                 for (Member member : controller.getAllSwimmers()) {
                     System.out.println("ID: " + member.getId() +
-                            "Name: " + member.getFirstName() +
-                            "Last name: " + member.getLastName());
+                            "\nName: " + member.getFirstName() +
+                            "\nLast name: " + member.getLastName());
                 }
 
                 System.out.println("Choose the member you wish to set to the team");
@@ -416,8 +430,19 @@ public class UserInterface {
                 break;
         }
 
-        controller.editTeam(teamId, name, swimmerId);
+        controller.editTeam(teamId, name);
+
+        if (swimmerId > 0) {
+            controller.setMemberToTeam(teamId,swimmerId);
+        }
+
         controller.saveTeamData();
+
+        /*for (Member member : controller.getAllSwimmers()) {
+            if (member.getTeam() != null) {
+                System.out.println(member.getFirstName() + member.getTeam());
+            }
+        }*/
 
 
     }

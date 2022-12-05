@@ -15,6 +15,7 @@ public abstract class Member {
     private boolean isStudent;
     private int subscription;
     private ArrayList<Team> teams = new ArrayList<>();
+    private Team team;
 
 
     public Member(int id, String firstName, String lastName, boolean gender, int age,
@@ -78,7 +79,15 @@ public abstract class Member {
         return subscription;
     }
 
+    public Team getTeam() {
+        return team;
+    }
+
     //SETTERS
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
 
     public void setId(int id) {
         this.id = id;

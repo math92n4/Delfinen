@@ -24,8 +24,8 @@ public class Controller {
         database.addTeam(name);
     }
 
-    public void editTeam(int teamId, String name, int swimmerId) {
-        database.editTeam(teamId,name,swimmerId);
+    public void editTeam(int teamId, String name) {
+        database.editTeam(teamId,name);
     }
 
     public Team getTeamById(int id) {
@@ -44,8 +44,16 @@ public class Controller {
         return database.getTeams();
     }
 
-    public void editTrainer(int trainerId, String firstName, String lastName, int teamId) {
-        database.editTrainer(trainerId,firstName,lastName,teamId);
+    public void editTrainer(int trainerId, String firstName, String lastName) {
+        database.editTrainer(trainerId,firstName,lastName);
+    }
+
+    public void setTrainerToTeam(int trainerId,int teamId) {
+        database.setTrainerToTeam(trainerId,teamId);
+    }
+
+    public void setMemberToTeam(int teamId, int swimmerId) {
+        database.setMemberToTeam(teamId, swimmerId);
     }
 
     public void createTrainer(String trainerFirstName, String trainerLastName) {

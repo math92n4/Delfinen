@@ -52,7 +52,4 @@ public class Trainer {
         this.team = team;
     }
 
-    public String getTeamName() {
-        return team.getName();
-    }
 }
