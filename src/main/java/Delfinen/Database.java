@@ -4,36 +4,127 @@ import Delfinen.comparatorer.FlexibleComparator;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.NoSuchElementException;
 
 public class Database {
 
 
     private ArrayList<Member> members = new ArrayList<>();
-    ArrayList<CompetitiveSwimmer> compSwimmers = new ArrayList<>();
+    private ArrayList<Team> teams = new ArrayList<>();
+    private ArrayList<Trainer> trainers = new ArrayList<>();
+
+
+    public Team getTeamById(int id) {
+        for (Team team : teams) {
+            if(team.getId() == id) {
+                return team;
+            }
+        }
+        throw new NoSuchElementException("No team with id " + id);
+    }
+
+    public Member getMemberById(int id) {
+        for (Member member : members) {
+            if (member.getId() == id) {
+                return member;
+            }
+        }
+        throw new NoSuchElementException("No member with id " + id);
+    }
+
+    public Trainer getTrainerById(int id) {
+        for (Trainer trainer : trainers) {
+            if(trainer.getId() == id) {
+                return trainer;
+            }
+        }
+        throw new NoSuchElementException("No trainer with id " + id);
+    }
+
 
     public void addNormalMember(String firstName, String lastName, boolean gender, int age, boolean isActive, boolean isCompetetive, boolean hasPaid, boolean isStudent) {
-        NormalSwimmer member = new NormalSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent);
+        int id = members.size() + 1;
+        NormalSwimmer member = new NormalSwimmer(id,firstName,lastName,gender,age,isActive,hasPaid,isStudent);
         members.add(member);
     }
 
-    public void addCompetitiveSwimmer(String firstName, String lastName, boolean gender, int age, boolean isActive,boolean isCompetitive,boolean hasPaid, boolean isStudent,
-                                      boolean canButterfly, boolean canCrawl, boolean canBackcrawl,
-                                      boolean canBreastswimming) {
-        CompetitiveSwimmer member = new CompetitiveSwimmer(firstName,lastName,gender,age,isActive,hasPaid,isStudent,canButterfly,canCrawl,canBackcrawl,canBreastswimming);
+    public void addCompetitiveSwimmer(String firstName,String lastName,boolean gender, int age, boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent,
+                                      boolean canButterfly,boolean canCrawl, boolean canBackCrawl, boolean canBreastStroke) {
+        int id = members.size() + 1;
+        CompetitiveSwimmer member = new CompetitiveSwimmer(id, firstName,lastName,gender,age,isActive,hasPaid,isStudent,canButterfly,canCrawl,canBackCrawl,canBreastStroke);
         members.add(member);
     }
+
+    public void addTrainer(String firstName, String lastName) {
+
+        int id = trainers.size() + 1;
+        Trainer trainer = new Trainer(id, firstName,lastName);
+        trainers.add(trainer);
+    }
+
+    public void addTeam(String name) {
+
+        int id = teams.size() + 1;
+        Team team = new Team(id, name);
+        teams.add(team);
+    }
+
+    public ArrayList<Trainer> getTrainers() {
+        return trainers;
+    }
+
+    public ArrayList<Team> getTeams() {
+        return teams;
+    }
+
+    public void editTrainer(int trainerId, String firstName, String lastName, int teamId) {
+
+        Team team = getTeamById(teamId);
+
+        for (Trainer trainer : trainers) {
+            if (trainer.getId() == trainerId) {
+                if(!firstName.isEmpty()) {
+                    trainer.setName(firstName);
+                }
+                if (!lastName.isEmpty()) {
+                    trainer.setLastName(lastName);
+                }
+                if (teamId != -1) {
+                    trainer.setTeam(team);
+                }
+            }
+        }
+    }
+
+    public void editTeam(int teamId, String name, int swimmerId) {
+
+        Member member = getMemberById(swimmerId);
+
+        for (Team team : teams) {
+            if (team.getId() == teamId) {
+                if (!name.isEmpty()) {
+                    team.setName(name);
+                }
+                if (swimmerId != -1) {
+                    team.setMember(member);
+                }
+            }
+        }
+    }
+
 
     public ArrayList<Member> getAllSwimmers() {
         return members;
     }
 
     public ArrayList<CompetitiveSwimmer> getJuniorMenButterfly() {
+        ArrayList<CompetitiveSwimmer> juniorMenButterfly = new ArrayList<>();
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() < 18 && member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
+                juniorMenButterfly.add((CompetitiveSwimmer) member);
             }
         }
-        return compSwimmers;
+        return juniorMenButterfly;
     }
 
     public ArrayList<CompetitiveSwimmer> getJuniorMenCrawl() {
@@ -121,74 +212,82 @@ public class Database {
     }
 
     public ArrayList<CompetitiveSwimmer> getSeniorMenButterfly() {
+        ArrayList<CompetitiveSwimmer> seniorMenButterfly = new ArrayList<>();
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() >= 18 && member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
+                seniorMenButterfly.add((CompetitiveSwimmer) member);
             }
         }
-        return compSwimmers;
+        return seniorMenButterfly;
     }
 
     public ArrayList<CompetitiveSwimmer> getSeniorMenCrawl() {
+        ArrayList<CompetitiveSwimmer> seniorMenCrawl = new ArrayList<>();
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canCrawl() && member.getAge() >= 18 && member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
+                seniorMenCrawl.add((CompetitiveSwimmer) member);
             }
         }
-        return compSwimmers;
+        return seniorMenCrawl;
     }
 
     public ArrayList<CompetitiveSwimmer> getSeniorMenBackCrawl() {
+        ArrayList<CompetitiveSwimmer> seniorMenBackCrawl = new ArrayList<>();
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBackcrawl() && member.getAge() >= 18 && member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
+                seniorMenBackCrawl.add((CompetitiveSwimmer) member);
             }
         }
-        return compSwimmers;
+        return seniorMenBackCrawl;
     }
 
     public ArrayList<CompetitiveSwimmer> getSeniorMenBreastStroke() {
+        ArrayList<CompetitiveSwimmer> seniorMenBreastStroke = new ArrayList<>();
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBreastswimming() && member.getAge() >= 18 && member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
+                seniorMenBreastStroke.add((CompetitiveSwimmer) member);
             }
         }
-        return compSwimmers;
+        return seniorMenBreastStroke;
     }
     public ArrayList<CompetitiveSwimmer> getSeniorWomenButterfly() {
+        ArrayList<CompetitiveSwimmer> seniorWomenButterfly = new ArrayList<>();
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() >= 18 && !member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
+                seniorWomenButterfly.add((CompetitiveSwimmer) member);
             }
         }
-        return compSwimmers;
+        return seniorWomenButterfly;
     }
 
     public ArrayList<CompetitiveSwimmer> getSeniorWomenCrawl() {
+        ArrayList<CompetitiveSwimmer> seniorWomenCrawl = new ArrayList<>();
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canCrawl() && member.getAge() >= 18 && !member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
+                seniorWomenCrawl.add((CompetitiveSwimmer) member);
             }
         }
-        return compSwimmers;
+        return seniorWomenCrawl;
     }
 
     public ArrayList<CompetitiveSwimmer> getSeniorWomenBackCrawl() {
+        ArrayList<CompetitiveSwimmer> seniorWomenBackCrawl = new ArrayList<>();
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBackcrawl() && member.getAge() >= 18 && !member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
+                seniorWomenBackCrawl.add((CompetitiveSwimmer) member);
             }
         }
-        return compSwimmers;
+        return seniorWomenBackCrawl;
     }
 
     public ArrayList<CompetitiveSwimmer> getSeniorWomenBreastStroke() {
+        ArrayList<CompetitiveSwimmer> seniorWomenBreastStroke = new ArrayList<>();
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBreastswimming() && member.getAge() >= 18 && !member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
+                seniorWomenBreastStroke.add((CompetitiveSwimmer) member);
             }
         }
-        return compSwimmers;
+        return seniorWomenBreastStroke;
     }
 
     public ArrayList<Member> getSearchForSwimmer(String firstName) {
@@ -227,6 +326,7 @@ public class Database {
         member.setActive(isActive);
         member.setHasPaid(hasPaid);
         member.setStudent(isStudent);
+
     }
 
     public void editCompetitiveSwimmer(int index, String firstName, String lastName, boolean gender,
@@ -261,6 +361,18 @@ public class Database {
         Member member = members.get(index - 1);
         members.remove(member);
 
+    }
+
+    public void deleteTeam(int index) {
+
+        Team team = getTeamById(index);
+        teams.remove(team);
+    }
+
+    public void deleteTrainer(int index) {
+
+        Trainer trainer = getTrainerById(index);
+        trainers.remove(trainer);
     }
 
     public void sortBy(String sortBy) {

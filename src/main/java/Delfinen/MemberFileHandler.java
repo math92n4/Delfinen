@@ -6,7 +6,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FileHandler {
+public class MemberFileHandler {
 
     public void saveData(ArrayList<Member> members) throws FileNotFoundException {
         PrintStream output = new PrintStream(new File("Data/SwimmerData.csv"));
@@ -14,6 +14,7 @@ public class FileHandler {
         for (Member member : members) {
             output.print("");
 
+            output.print(member.getId() + ";");
             output.print(member.getFirstName() + ";");
             output.print(member.getLastName() + ";");
             output.print(member.getGender() + ";");
@@ -53,35 +54,37 @@ public class FileHandler {
 
     private Member splitLines(String scan) {
         String[] split = scan.split(";");
-        boolean isCompetitive = Boolean.parseBoolean(split[5]);
+        boolean isCompetitive = Boolean.parseBoolean(split[6]);
 
         if(isCompetitive) {
             CompetitiveSwimmer competitiveSwimmer = new CompetitiveSwimmer();
-            competitiveSwimmer.setFirstName(split[0]);
-            competitiveSwimmer.setLastName(split[1]);
-            competitiveSwimmer.setGender(Boolean.parseBoolean(split[2]));
-            competitiveSwimmer.setAge(Integer.parseInt(split[3]));
-            competitiveSwimmer.setActive(Boolean.parseBoolean(split[4]));
-            competitiveSwimmer.setCompetitive(Boolean.parseBoolean(split[5]));
-            competitiveSwimmer.setHasPaid(Boolean.parseBoolean(split[6]));
-            competitiveSwimmer.setStudent(Boolean.parseBoolean(split[7]));
-            competitiveSwimmer.setSubscription(Integer.parseInt(split[8]));
-            competitiveSwimmer.setCanButterfly(Boolean.parseBoolean(split[9]));
-            competitiveSwimmer.setCanCrawl(Boolean.parseBoolean(split[10]));
-            competitiveSwimmer.setCanBackcrawl(Boolean.parseBoolean(split[11]));
-            competitiveSwimmer.setCanBreastStroke(Boolean.parseBoolean(split[12]));
+            competitiveSwimmer.setId(Integer.parseInt(split[0]));
+            competitiveSwimmer.setFirstName(split[1]);
+            competitiveSwimmer.setLastName(split[2]);
+            competitiveSwimmer.setGender(Boolean.parseBoolean(split[3]));
+            competitiveSwimmer.setAge(Integer.parseInt(split[4]));
+            competitiveSwimmer.setActive(Boolean.parseBoolean(split[5]));
+            competitiveSwimmer.setCompetitive(Boolean.parseBoolean(split[6]));
+            competitiveSwimmer.setHasPaid(Boolean.parseBoolean(split[7]));
+            competitiveSwimmer.setStudent(Boolean.parseBoolean(split[8]));
+            competitiveSwimmer.setSubscription(Integer.parseInt(split[9]));
+            competitiveSwimmer.setCanButterfly(Boolean.parseBoolean(split[10]));
+            competitiveSwimmer.setCanCrawl(Boolean.parseBoolean(split[11]));
+            competitiveSwimmer.setCanBackcrawl(Boolean.parseBoolean(split[12]));
+            competitiveSwimmer.setCanBreastStroke(Boolean.parseBoolean(split[13]));
             return competitiveSwimmer;
         } else {
             NormalSwimmer normalSwimmer = new NormalSwimmer();
-            normalSwimmer.setFirstName(split[0]);
-            normalSwimmer.setLastName(split[1]);
-            normalSwimmer.setGender(Boolean.parseBoolean(split[2]));
-            normalSwimmer.setAge(Integer.parseInt(split[3]));
-            normalSwimmer.setActive(Boolean.parseBoolean(split[4]));
-            normalSwimmer.setCompetitive(Boolean.parseBoolean(split[5]));
-            normalSwimmer.setHasPaid(Boolean.parseBoolean(split[6]));
-            normalSwimmer.setStudent(Boolean.parseBoolean(split[7]));
-            normalSwimmer.setSubscription(Integer.parseInt(split[8]));
+            normalSwimmer.setId(Integer.parseInt(split[0]));
+            normalSwimmer.setFirstName(split[1]);
+            normalSwimmer.setLastName(split[2]);
+            normalSwimmer.setGender(Boolean.parseBoolean(split[3]));
+            normalSwimmer.setAge(Integer.parseInt(split[4]));
+            normalSwimmer.setActive(Boolean.parseBoolean(split[5]));
+            normalSwimmer.setCompetitive(Boolean.parseBoolean(split[6]));
+            normalSwimmer.setHasPaid(Boolean.parseBoolean(split[7]));
+            normalSwimmer.setStudent(Boolean.parseBoolean(split[8]));
+            normalSwimmer.setSubscription(Integer.parseInt(split[9]));
             return normalSwimmer;
         }
     }

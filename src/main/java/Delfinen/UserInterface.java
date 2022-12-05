@@ -46,12 +46,20 @@ public class UserInterface {
 
         do {
             controller.loadData();
+            controller.loadTrainerData();
+            controller.loadTeamData();
 
             System.out.println("1) Register swimmer\n" +
                     "2) Search for swimmer\n" +
                     "3) Edit swimmer\n" +
                     "4) Delete swimmer\n" +
-                    "5) Lists \n");
+                    "5) Register trainer\n" +
+                    "6) Edit trainer\n" +
+                    "7) Delete trainer\n" +
+                    "8) Register team\n" +
+                    "9) Edit team\n" +
+                    "10) Delete team\n" +
+                    "11) Lists \n");
 
             chairmanChoice = scanner.nextInt();
 
@@ -69,6 +77,23 @@ public class UserInterface {
                     deleteSwimmer();
                     break;
                 case 5:
+                    registerTrainer();
+                    break;
+                case 6:
+                    editTrainer();
+                    break;
+                case 7:
+                    deleteTrainer();
+                    break;
+                case 8:
+                    addTeam();
+                    break;
+                case 9:
+                    editTeam();
+                    break;
+                case 10:
+                    deleteTeam();
+                case 11:
                     System.out.println("1) List of all swimmers\n" +
                             "2) Sorted lists of all swimmers\n" +
                             "3) List of competetive swimmers\n" +
@@ -214,10 +239,10 @@ public class UserInterface {
             char crawl;
 
             System.out.println("Can the swimmer crawl?");
-            butterfly = scanner.next().charAt(0);
-            if (butterfly == 'n') {
+            crawl = scanner.next().charAt(0);
+            if (crawl == 'n') {
                 canCrawl = false;
-            } else if (butterfly == 'y') {
+            } else if (crawl == 'y') {
                 canCrawl = true;
             }
 
@@ -244,11 +269,142 @@ public class UserInterface {
             }
 
 
+
             controller.createCompetitiveMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent,
                     canButterfly, canCrawl, canBackCrawl, canBreastswim);
         }
         controller.saveData();
     }
+
+    private void registerTrainer() throws FileNotFoundException {
+
+        scanner.nextLine(); //scanner bug
+
+        System.out.println("Enter trainer's first name: ");
+        String firstName = scanner.nextLine();
+        System.out.println("Enter trainer's last name: ");
+        String lastName = scanner.nextLine();
+
+        controller.createTrainer(firstName,lastName);
+        controller.saveTrainerData();
+
+    }
+
+    private void addTeam() throws FileNotFoundException {
+
+        System.out.println("Enter the name of the team: ");
+        scanner.nextLine(); // scanner bug
+        String teamName = scanner.nextLine();
+
+        controller.createTeam(teamName);
+        controller.saveTeamData();
+
+    }
+
+    private void editTrainer() throws FileNotFoundException {
+
+        for (Trainer trainer : controller.getTrainers()) {
+            System.out.println("ID: " + trainer.getId() +
+                    "\n First name: " + trainer.getName() +
+                    "\n Last name: " + trainer.getLastName());
+        }
+
+        System.out.println("Which trainer should be edited?");
+
+        int trainerId = scanner.nextInt();
+
+        System.out.println("Choose the field you wish to edit by number\n" +
+                "1) First name\n" +
+                "2) Last name\n" +
+                "3) Team");
+
+        int choice = scanner.nextInt();
+
+        String firstName = "";
+        String lastName = "";
+        int teamId = -1;
+
+        switch (choice) {
+            case 1:
+                System.out.println("Enter first name");
+                firstName = scanner.nextLine();
+                break;
+            case 2:
+                System.out.println("Enter last name");
+                lastName = scanner.nextLine();
+                break;
+            case 3:
+                System.out.println("Set team to trainer by id");
+                for (Team team : controller.getTeams()) {
+                    System.out.println("ID: " + team.getId() +
+                            "\n Team: " + team.getName());
+                }
+
+                System.out.println("What team should the trainer coach? Enter ID");
+                teamId = scanner.nextInt();
+
+                break;
+        }
+                controller.editTrainer(trainerId, firstName, lastName, teamId);
+                controller.saveTrainerData();
+                controller.saveTeamData();
+
+                for (Trainer trainer : controller.getTrainers()) {
+                    System.out.println("Trainer: " + trainer.getName() + " " + trainer.getLastName() + " is training team: "
+                            + trainer.getTeamName());
+                }
+
+        }
+
+    private void editTeam() throws FileNotFoundException {
+
+        int teamId = -1;
+        String name = "";
+        int swimmerId = -1;
+
+
+        for (Team team : controller.getTeams()) {
+            System.out.println("ID: " + team.getId() + ") " + team.getName());
+        }
+
+        System.out.println("Choose the team you wish to edit by ID number");
+
+        teamId = scanner.nextInt();
+
+        System.out.println("Choose the field you wish to edit by number\n" +
+                "1) Name\n" +
+                "2) Member");
+
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Enter new name: ");
+                name = scanner.nextLine();
+                break;
+            case 2:
+                for (Member member : controller.getAllSwimmers()) {
+                    System.out.println("ID: " + member.getId() +
+                            "Name: " + member.getFirstName() +
+                            "Last name: " + member.getLastName());
+                }
+
+                System.out.println("Choose the member you wish to set to the team");
+
+                swimmerId = scanner.nextInt();
+                break;
+        }
+
+        controller.editTeam(teamId,name,swimmerId);
+        controller.saveTeamData();
+
+
+
+
+    }
+
+
+
 
     private void searchForSwimmer() {
         ArrayList<Member> swimmerFound;
@@ -600,7 +756,7 @@ public class UserInterface {
                 "9) Butterfly\n" +
                 "10) Crawl\n" +
                 "11) Back crawl\n" +
-                "12) Breast stroke");
+                "12) Breast stroke\n");
 
         int attributeChoice = scanner.nextInt();
         scanner.nextLine();                         // Scanner bug
@@ -707,6 +863,7 @@ public class UserInterface {
             } else if (breastStroke == 'n') {
                 canBreastStoke = false;
             }
+
         }
 
 
@@ -718,6 +875,37 @@ public class UserInterface {
         controller.editSwimmer(swimmerChoice, firstName, lastName, gender, age, isActive, isActive, hasPaid, isStudent);
         controller.saveData();
 
+    }
+
+    private void deleteTrainer() throws FileNotFoundException {
+
+        System.out.println("Choose the trainer you wish to delete by number");
+        for (Trainer trainer : controller.getTrainers()) {
+            System.out.println("ID: " + trainer.getId());
+            System.out.println(trainer.getName() + " " + trainer.getLastName());
+            System.out.println("-------------------");
+        }
+
+        int index = scanner.nextInt();
+
+        controller.deleteTrainer(index);
+        controller.saveTrainerData();
+
+    }
+
+    private void deleteTeam() throws FileNotFoundException {
+
+        System.out.println("Choose the team you wish to delete by number");
+        for (Team team : controller.getTeams()) {
+            System.out.println("ID:" + team.getId());
+            System.out.println("Name: " + team.getName());
+            System.out.println("-------------------");
+        }
+
+        int index = scanner.nextInt();
+
+        controller.deleteTeam(index);
+        controller.saveTeamData();
     }
 
     private void cashierUI() throws FileNotFoundException {

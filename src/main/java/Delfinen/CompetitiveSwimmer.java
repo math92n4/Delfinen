@@ -11,11 +11,11 @@ public class CompetitiveSwimmer extends Member {
 
     public CompetitiveSwimmer() {
     }
-    public CompetitiveSwimmer(String firstName,String lastName, boolean gender, int age,
+    public CompetitiveSwimmer(int id, String firstName,String lastName, boolean gender, int age,
                               boolean isActive, boolean hasPaid, boolean isStudent,
                               boolean canButterfly, boolean canCrawl, boolean canBackcrawl,
                               boolean canBreastStroke) {
-        super(firstName, lastName, gender, age, isActive, hasPaid, isStudent);
+        super(id, firstName, lastName, gender, age, isActive, hasPaid, isStudent);
         setCompetitive(true);
         this.canButterfly = canButterfly;
         this.canCrawl = canCrawl;

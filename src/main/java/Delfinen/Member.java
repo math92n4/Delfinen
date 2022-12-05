@@ -1,7 +1,10 @@
 package Delfinen;
 
+import java.util.ArrayList;
+
 public abstract class Member {
 
+    private int id;
     private String firstName;
     private String lastName;
     private boolean gender;
@@ -11,10 +14,12 @@ public abstract class Member {
     private boolean hasPaid;
     private boolean isStudent;
     private int subscription;
+    private ArrayList<Team> teams = new ArrayList<>();
 
 
-    public Member(String firstName, String lastName, boolean gender, int age,
+    public Member(int id, String firstName, String lastName, boolean gender, int age,
                   boolean isActive, boolean hasPaid, boolean isStudent) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -29,7 +34,13 @@ public abstract class Member {
 
     }
 
+
+
     //GETTERS
+
+    public int getId() {
+        return id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -70,6 +81,10 @@ public abstract class Member {
 
     //SETTERS
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -105,6 +120,12 @@ public abstract class Member {
     public void setSubscription(int subscription) {
         this.subscription = subscription;
     }
+
+    public void addTeam(Team team) {
+        teams.add(team);
+        team.addMember((CompetitiveSwimmer) this);
+    }
+
 
     //CALCULATE SUBSRCIPTION BASED ON MEMBER INFO
 
