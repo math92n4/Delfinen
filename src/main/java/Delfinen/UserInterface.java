@@ -1283,7 +1283,9 @@ public class UserInterface {
                         3) Senior men
                         4) Senior women
                         ---------------------""");
+
                 secondChoice = scanner.nextInt();
+
                 // junior men
                 if (secondChoice == 1) {
                     for (Member member : controller.getAllSwimmers()) {
@@ -1296,26 +1298,37 @@ public class UserInterface {
                             System.out.println("Choose the swimmer you wish to set a score for: ");
                             scanner.nextLine();                         // Scanner bug
 
+                            int swimmerChoice = 0;
+                            swimmerChoice = scanner.nextInt();
+
+                            System.out.println("Choose the field you wish to edit\n" +
+                                    "1) Butterfly\n" +
+                                    "2) Crawl\n" +
+                                    "3) Back crawl\n" +
+                                    "4) Breast stroke");
+
                             int attributeChoice = scanner.nextInt();
 
-                            if (secondChoice == 1 && attributeChoice == 1) {
+                            if (attributeChoice == 1) {
                                 System.out.println("Type in butterfly time: ");
                                 butterfly = scanner.nextDouble();
+                                controller.saveData();
 
-                            } else if (secondChoice == 1 && attributeChoice == 2) {
+                            } else if (attributeChoice == 2) {
                                 System.out.println("Type in crawl time: ");
                                 crawl = scanner.nextDouble();
 
-                            } else if (secondChoice == 1 && attributeChoice == 3) {
+                            } else if (attributeChoice == 3) {
                                 System.out.println("Type in backCrawl time: ");
                                 backCrawl = scanner.nextDouble();
 
-                            } else if (secondChoice == 1 && attributeChoice == 4) {
+                            } else if (attributeChoice == 4) {
                                 System.out.println("Type in breastStroke time: ");
                                 breastStroke = scanner.nextInt();
 
                                 controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
                                 controller.saveTrainerData();
+                                controller.saveData();
 
                             }
                         }
@@ -1353,6 +1366,7 @@ public class UserInterface {
 
                                     controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
                                     controller.saveTrainerData();
+                                    controller.saveData();
 
                                 }
                             }
@@ -1390,6 +1404,7 @@ public class UserInterface {
 
                                         controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
                                         controller.saveTrainerData();
+                                        controller.saveData();
                                     }
                                 }
                             }
@@ -1426,6 +1441,7 @@ public class UserInterface {
 
                                             controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
                                             controller.saveTrainerData();
+                                            controller.saveData();
                                         }
                                     }
                                 }

@@ -31,6 +31,10 @@ public class FileHandler {
                 output.print(((CompetitiveSwimmer) member).canCrawl() + ";");
                 output.print(((CompetitiveSwimmer) member).canBackcrawl() + ";");
                 output.print(((CompetitiveSwimmer) member).canBreastswimming() + ";");
+                output.print(((CompetitiveSwimmer) member).getButterflyScore() + ";");
+                output.print(((CompetitiveSwimmer) member).getCrawlScore() + ";");
+                output.print(((CompetitiveSwimmer) member).getBackCrawlScore() + ";");
+                output.print(((CompetitiveSwimmer) member).getBreastStrokeScore() + ";");
             }
 
             output.println("");
@@ -103,6 +107,10 @@ public class FileHandler {
             competitiveSwimmer.setCanCrawl(Boolean.parseBoolean(split[11]));
             competitiveSwimmer.setCanBackcrawl(Boolean.parseBoolean(split[12]));
             competitiveSwimmer.setCanBreastStroke(Boolean.parseBoolean(split[13]));
+            competitiveSwimmer.setButterflyScore(Double.parseDouble(split[14]));
+            competitiveSwimmer.setCrawlScore(Double.parseDouble(split[15]));
+            competitiveSwimmer.setBackCrawlScore(Double.parseDouble(split[16]));
+            competitiveSwimmer.setBackCrawlScore(Double.parseDouble(split[17]));
             return competitiveSwimmer;
         } else {
             NormalSwimmer normalSwimmer = new NormalSwimmer();
@@ -131,7 +139,6 @@ public class FileHandler {
 
         return trainer;
     }
-
 
     public void saveTeamData(ArrayList<Team> teams) throws FileNotFoundException {
         PrintStream output = new PrintStream(new File("Data/TeamData.csv"));

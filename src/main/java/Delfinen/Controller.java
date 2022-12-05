@@ -7,7 +7,6 @@ public class Controller {
 
     Delfinen.Database database = new Database();
     FileHandler fileHandler = new FileHandler();
-    TeamFileHandler teamFileHandler = new TeamFileHandler();
 
     public void createNormalMember(String firstName, String lastName, boolean gender, int age,
                              boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent) {

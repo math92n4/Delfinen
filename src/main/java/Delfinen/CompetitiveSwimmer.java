@@ -10,7 +10,6 @@ public class CompetitiveSwimmer extends Member {
     private double crawlScore;
     private double backCrawlScore;
     private double breastStrokeScore;
-    private String TrainerName;
 
     public CompetitiveSwimmer() {
 
