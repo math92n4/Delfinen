@@ -18,7 +18,7 @@ public class Database {
 
     public Team getTeamById(int id) {
         for (Team team : teams) {
-            if(team.getId() == id) {
+            if (team.getId() == id) {
                 return team;
             }
         }
@@ -36,7 +36,7 @@ public class Database {
 
     public Trainer getTrainerById(int id) {
         for (Trainer trainer : trainers) {
-            if(trainer.getId() == id) {
+            if (trainer.getId() == id) {
                 return trainer;
             }
         }
@@ -45,21 +45,21 @@ public class Database {
 
     public void addNormalMember(String firstName, String lastName, boolean gender, int age, boolean isActive, boolean isCompetetive, boolean hasPaid, boolean isStudent) {
         int id = members.size() + 1;
-        NormalSwimmer member = new NormalSwimmer(id,firstName,lastName,gender,age,isActive,hasPaid,isStudent);
+        NormalSwimmer member = new NormalSwimmer(id, firstName, lastName, gender, age, isActive, hasPaid, isStudent);
         members.add(member);
     }
 
-    public void addCompetitiveSwimmer(String firstName,String lastName,boolean gender, int age, boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent,
-                                      boolean canButterfly,boolean canCrawl, boolean canBackCrawl, boolean canBreastStroke) {
+    public void addCompetitiveSwimmer(String firstName, String lastName, boolean gender, int age, boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent,
+                                      boolean canButterfly, boolean canCrawl, boolean canBackCrawl, boolean canBreastStroke) {
         int id = members.size() + 1;
-        CompetitiveSwimmer member = new CompetitiveSwimmer(id, firstName,lastName,gender,age,isActive,hasPaid,isStudent,canButterfly,canCrawl,canBackCrawl,canBreastStroke);
+        CompetitiveSwimmer member = new CompetitiveSwimmer(id, firstName, lastName, gender, age, isActive, hasPaid, isStudent, canButterfly, canCrawl, canBackCrawl, canBreastStroke);
         members.add(member);
     }
 
     public void addTrainer(String firstName, String lastName) {
 
         int id = trainers.size() + 1;
-        Trainer trainer = new Trainer(id, firstName,lastName);
+        Trainer trainer = new Trainer(id, firstName, lastName);
         trainers.add(trainer);
     }
 
@@ -109,7 +109,7 @@ public class Database {
         }
     }
 
-    public void setMemberToTeam(int teamId,int memberId) {
+    public void setMemberToTeam(int teamId, int memberId) {
 
         Team team = getTeamById(teamId);
         Member member = getMemberById(memberId);
@@ -137,39 +137,30 @@ public class Database {
     }
 
     public ArrayList<CompetitiveSwimmer> getJuniorMenCrawl() {
-
-        ArrayList<CompetitiveSwimmer> juniorMenCrawl = new ArrayList<>();
-
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canCrawl() && member.getAge() < 18 && member.getGender()) {
-                juniorMenCrawl.add((CompetitiveSwimmer) member);
+                compSwimmers.add((CompetitiveSwimmer) member);
             }
         }
-        return juniorMenCrawl;
+        return compSwimmers;
     }
 
     public ArrayList<CompetitiveSwimmer> getJuniorMenBackCrawl() {
-
-        ArrayList<CompetitiveSwimmer> juniorMenBackCrawl = new ArrayList<>();
-
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBackcrawl() && member.getAge() < 18 && member.getGender()) {
-                juniorMenBackCrawl.add((CompetitiveSwimmer) member);
+                compSwimmers.add((CompetitiveSwimmer) member);
             }
         }
-        return juniorMenBackCrawl;
+        return compSwimmers;
     }
 
     public ArrayList<CompetitiveSwimmer> getJuniorMenBreastStroke() {
-
-        ArrayList<CompetitiveSwimmer> juniorMenBreastStroke = new ArrayList<>();
-
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBreastswimming() && member.getAge() < 18 && member.getGender()) {
-                juniorMenBreastStroke.add((CompetitiveSwimmer) member);
+                compSwimmers.add((CompetitiveSwimmer) member);
             }
         }
-        return juniorMenBreastStroke;
+        return compSwimmers;
     }
 
     public ArrayList<CompetitiveSwimmer> getJuniorWomenButterfly() {
@@ -178,46 +169,37 @@ public class Database {
 
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() < 18 && !member.getGender()) {
-                juniorWomenButterfly.add((CompetitiveSwimmer) member);
+                compSwimmers.add((CompetitiveSwimmer) member);
             }
         }
-        return juniorWomenButterfly;
+        return compSwimmers;
     }
 
     public ArrayList<CompetitiveSwimmer> getJuniorWomenCrawl() {
-
-        ArrayList<CompetitiveSwimmer> juniorWomenCrawl = new ArrayList<>();
-
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canCrawl() && member.getAge() < 18 && !member.getGender()) {
-                juniorWomenCrawl.add((CompetitiveSwimmer) member);
+                compSwimmers.add((CompetitiveSwimmer) member);
             }
         }
-        return juniorWomenCrawl;
+        return compSwimmers;
     }
 
     public ArrayList<CompetitiveSwimmer> getJuniorWomenBackCrawl() {
-
-        ArrayList<CompetitiveSwimmer> juniorWomenBackCrawl = new ArrayList<>();
-
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBackcrawl() && member.getAge() < 18 && !member.getGender()) {
-                juniorWomenBackCrawl.add((CompetitiveSwimmer) member);
+                compSwimmers.add((CompetitiveSwimmer) member);
             }
         }
-        return juniorWomenBackCrawl;
+        return compSwimmers;
     }
 
     public ArrayList<CompetitiveSwimmer> getJuniorWomenBreastStroke() {
-
-        ArrayList<CompetitiveSwimmer> juniorWomenBreastStroke = new ArrayList<>();
-
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBreastswimming() && member.getAge() < 18 && !member.getGender()) {
-                juniorWomenBreastStroke.add((CompetitiveSwimmer) member);
+                compSwimmers.add((CompetitiveSwimmer) member);
             }
         }
-        return juniorWomenBreastStroke;
+        return compSwimmers;
     }
 
     public ArrayList<CompetitiveSwimmer> getSeniorMenButterfly() {
@@ -350,23 +332,22 @@ public class Database {
     }
 
 
-
     public void setCompSwimmerScore(int index, double butterflyScore, double crawlScore, double backCrawlScore, double breastStrokeScore) {
         CompetitiveSwimmer compSwimmer = compSwimmers.get(index - 1);
 
-        if (butterflyScore != 0) {
+        if (butterflyScore != 999) {
             compSwimmer.setButterflyScore(butterflyScore);
         }
 
-        if (crawlScore != 0 ) {
+        if (crawlScore != 999) {
             compSwimmer.setCrawlScore(crawlScore);
         }
 
-        if (backCrawlScore != 0) {
+        if (backCrawlScore != 999) {
             compSwimmer.setBackCrawlScore(backCrawlScore);
         }
 
-        if (breastStrokeScore != 0) {
+        if (breastStrokeScore != 999) {
             compSwimmer.setBreastStrokeScore(breastStrokeScore);
         }
     }

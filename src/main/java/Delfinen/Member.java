@@ -36,7 +36,6 @@ public abstract class Member {
     }
 
 
-
     //GETTERS
 
     public int getId() {
