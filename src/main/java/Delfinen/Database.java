@@ -34,6 +34,7 @@ public class Database {
         throw new NoSuchElementException("No member with id " + id);
     }
 
+
     public Trainer getTrainerById(int id) {
         for (Trainer trainer : trainers) {
             if (trainer.getId() == id) {
@@ -336,19 +337,19 @@ public class Database {
 
         CompetitiveSwimmer compSwimmer = (CompetitiveSwimmer) getMemberById(memberId);
 
-        if (butterflyScore != 999) {
+        if (butterflyScore != 0) {
             compSwimmer.setButterflyScore(butterflyScore);
         }
 
-        if (crawlScore != 999) {
+        if (crawlScore != 0) {
             compSwimmer.setCrawlScore(crawlScore);
         }
 
-        if (backCrawlScore != 999) {
+        if (backCrawlScore != 0) {
             compSwimmer.setBackCrawlScore(backCrawlScore);
         }
 
-        if (breastStrokeScore != 999) {
+        if (breastStrokeScore != 0) {
             compSwimmer.setBreastStrokeScore(breastStrokeScore);
         }
     }
@@ -384,7 +385,7 @@ public class Database {
         members.sort(comparator);
     }
 
-    public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men) {
+    public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men, Discipline discipline) {
         ArrayList<CompetitiveSwimmer> csw = new ArrayList<>();
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer swimmer) {
