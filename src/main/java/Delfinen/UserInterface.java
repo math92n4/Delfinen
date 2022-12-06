@@ -380,7 +380,7 @@ public class UserInterface {
 
         for (Trainer trainer : controller.getTrainers()) {
             if (trainer.getTeam() != null) {
-                System.out.println(trainer.getName() + trainer.getTeam());
+                System.out.println(trainer.getName() + " " + trainer.getLastName() + " is training " + trainer.getTeamName());
             }
         }
 
@@ -391,7 +391,6 @@ public class UserInterface {
 
     private void editTeam() throws FileNotFoundException {
 
-        int teamId = -1;
         String name = "";
         int swimmerId = -1;
 
@@ -403,7 +402,7 @@ public class UserInterface {
 
         System.out.println("Choose the team you wish to edit by ID number");
 
-        teamId = scanner.nextInt();
+        int teamId = scanner.nextInt();
 
         System.out.println("Choose the field you wish to edit by number\n" +
                 "1) Name\n" +
@@ -438,11 +437,11 @@ public class UserInterface {
 
         controller.saveTeamData();
 
-        /*for (Member member : controller.getAllSwimmers()) {
+        for (Member member : controller.getAllSwimmers()) {
             if (member.getTeam() != null) {
                 System.out.println(member.getFirstName() + member.getTeam());
             }
-        }*/
+        }
 
 
     }

@@ -48,6 +48,10 @@ public class Trainer {
         return team;
     }
 
+    public String getTeamName() {
+        return team.getName();
+    }
+
     public void setTeam(Team team) {
         this.team = team;
     }

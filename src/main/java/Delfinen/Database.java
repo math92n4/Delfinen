@@ -113,7 +113,7 @@ public class Database {
         Team team = getTeamById(teamId);
         Member member = getMemberById(memberId);
 
-        member.setTeam(team);
+        team.setMember(member);
     }
 
 
