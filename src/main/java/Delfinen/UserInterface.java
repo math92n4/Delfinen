@@ -1081,7 +1081,8 @@ public class UserInterface {
                     "2) Register new score\n" +
                     "3) Se best scores\n" +
                     "4) Edit scores\n" +
-                    "5) Delete scores");
+                    "5) Delete scores\n" +
+                    "6) Save data");
             System.out.println("---------------------");
 
             choice = scanner.nextInt();
@@ -1336,7 +1337,6 @@ public class UserInterface {
                             if (attributeChoice == 1) {
                                 System.out.println("Type in butterfly time: ");
                                 butterfly = scanner.nextDouble();
-                                controller.saveData();
 
                             } else if (attributeChoice == 2) {
                                 System.out.println("Type in crawl time: ");
@@ -1349,12 +1349,11 @@ public class UserInterface {
                             } else if (attributeChoice == 4) {
                                 System.out.println("Type in breastStroke time: ");
                                 breastStroke = scanner.nextInt();
-
-                                controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
-                                controller.saveTrainerData();
-                                controller.saveData();
-
                             }
+
+                            controller.setCompSwimmerScore(swimmerChoice, butterfly, crawl, backCrawl, breastStroke);
+                            controller.saveTrainerData();
+                            controller.saveData();
                         }
                     }
 
@@ -1387,12 +1386,10 @@ public class UserInterface {
                                 } else if (secondChoice == 1 && attributeChoice == 4) {
                                     System.out.println("Type in breastStroke time: ");
                                     breastStroke = scanner.nextInt();
-
-                                    controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
-                                    controller.saveTrainerData();
-                                    controller.saveData();
-
                                 }
+                                controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
+                                controller.saveTrainerData();
+                                controller.saveData();
                             }
                         }
 
@@ -1425,11 +1422,10 @@ public class UserInterface {
                                     } else if (secondChoice == 1 && attributeChoice == 4) {
                                         System.out.println("Type in breastStroke time: ");
                                         breastStroke = scanner.nextInt();
-
-                                        controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
-                                        controller.saveTrainerData();
-                                        controller.saveData();
                                     }
+                                    controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
+                                    controller.saveTrainerData();
+                                    controller.saveData();
                                 }
                             }
 
@@ -1462,11 +1458,10 @@ public class UserInterface {
                                         } else if (secondChoice == 1 && attributeChoice == 4) {
                                             System.out.println("Type in breastStroke time: ");
                                             breastStroke = scanner.nextInt();
-
-                                            controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
-                                            controller.saveTrainerData();
-                                            controller.saveData();
                                         }
+                                        controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
+                                        controller.saveTrainerData();
+                                        controller.saveData();
                                     }
                                 }
 
@@ -1483,6 +1478,14 @@ public class UserInterface {
             if (choice == 3) {
 
             }
+
+            if (choice == 6) {
+                controller.saveData();
+                controller.saveTrainerData();
+                controller.saveTeamData();
+            }
+
+
         } while (choice != 0);
     }
 }
