@@ -385,7 +385,7 @@ public class Database {
         members.sort(comparator);
     }
 
-    public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men, Discipline discipline) {
+    public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men) {
         ArrayList<CompetitiveSwimmer> csw = new ArrayList<>();
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer swimmer) {
