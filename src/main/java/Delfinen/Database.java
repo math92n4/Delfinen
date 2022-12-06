@@ -333,6 +333,7 @@ public class Database {
 
 
     public void setCompSwimmerScore(int index, double butterflyScore, double crawlScore, double backCrawlScore, double breastStrokeScore) {
+
         CompetitiveSwimmer compSwimmer = compSwimmers.get(index - 1);
 
         if (butterflyScore != 999) {
