@@ -55,7 +55,7 @@ public class CompetitiveSwimmer extends Member {
         return crawlScore;
     }
 
-    public void setCrawlScore(double butterflyScore) {
+    public void setCrawlScore(double crawlScore) {
         this.crawlScore = crawlScore;
     }
 

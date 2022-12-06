@@ -788,6 +788,58 @@ public class UserInterface {
         }
     }
 
+    private void listOfButterfly() {
+        System.out.println("-------------------");
+        for (Member member : controller.getAllSwimmers())
+            if (member instanceof CompetitiveSwimmer swimmer) {
+                System.out.println("ID " + swimmer.getId() +
+                        "\nFirst Name: " + swimmer.getFirstName() +
+                        "\nLast name: " + swimmer.getLastName() +
+                        "\nAge: " + swimmer.getAge() +
+                        "\nButterfly time: " + ((CompetitiveSwimmer) swimmer).getButterflyScore());
+                System.out.println("-------------------");
+            }
+    }
+
+    private void listOfCrawl() {
+        System.out.println("-------------------");
+        for (Member member : controller.getAllSwimmers())
+            if (member instanceof CompetitiveSwimmer swimmer) {
+                System.out.println("ID: " + swimmer.getId() +
+                        "\nFirst Name: " + swimmer.getFirstName() +
+                        "\nLast name: " + swimmer.getLastName() +
+                        "\nAge: " + swimmer.getAge() +
+                        "\nCrawl time: " + ((CompetitiveSwimmer) swimmer).getCrawlScore());
+                System.out.println("-------------------");
+            }
+    }
+
+    private void listOfBackCrawl() {
+        for (Member member : controller.getAllSwimmers()) {
+            if (member instanceof CompetitiveSwimmer swimmer) {
+                System.out.println("ID: " + swimmer.getId() +
+                        "\n Name: " + swimmer.getFirstName() +
+                        "\n Last name" + swimmer.getLastName() +
+                        "\n Age: " + swimmer.getAge() +
+                        "\n Back crawl time: " + swimmer.getBackCrawlScore());
+            }
+            System.out.println("------------------");
+        }
+    }
+
+    private void listOfBreastStroke() {
+        for (Member member : controller.getAllSwimmers()) {
+            if (member instanceof CompetitiveSwimmer swimmer) {
+                System.out.println("ID: " + swimmer.getId() +
+                        "\n Name: " + swimmer.getFirstName() +
+                        "\n Last name" + swimmer.getLastName() +
+                        "\n Age: " + member.getAge() +
+                        "\n Breast stroke time: " + swimmer.getBreastStrokeScore());
+            }
+            System.out.println("------------------");
+        }
+    }
+
     private void deleteSwimmer() throws FileNotFoundException {
         int index = 1;
         for (Member member : controller.getAllSwimmers()) {
@@ -1199,21 +1251,21 @@ public class UserInterface {
                     discipline = Discipline.BREASTSTROKE;
                 }
 
-                for (CompetitiveSwimmer competitiveSwimmer : controller.getCompetitiveSwimmersWithDiscipline(junior,men,discipline)) {
+                for (CompetitiveSwimmer competitiveSwimmer : controller.getCompetitiveSwimmersWithDiscipline(junior, men, discipline)) {
                     System.out.println("First name: " + competitiveSwimmer.getFirstName() +
                             "\nLast name: " + competitiveSwimmer.getLastName() +
                             "\nGender: " + competitiveSwimmer.getGender() +
                             "\nAge: " + competitiveSwimmer.getAge());
-                            if (competitiveSwimmer.canButterfly()) {
-                                System.out.println("Can butterfly: Yes");
-                            } else if (competitiveSwimmer.canCrawl()) {
-                                System.out.println("Can crawl: Yes");
-                            } else if (competitiveSwimmer.canBackcrawl()) {
-                                System.out.println("Can backcrawl: Yes");
-                            } else if (competitiveSwimmer.canBreastswimming()) {
-                                System.out.println("Can breaststroke: Yes");
-                            }
-                            System.out.println("-------------------");
+                    if (competitiveSwimmer.canButterfly()) {
+                        System.out.println("Can butterfly: Yes");
+                    } else if (competitiveSwimmer.canCrawl()) {
+                        System.out.println("Can crawl: Yes");
+                    } else if (competitiveSwimmer.canBackcrawl()) {
+                        System.out.println("Can backcrawl: Yes");
+                    } else if (competitiveSwimmer.canBreastswimming()) {
+                        System.out.println("Can breaststroke: Yes");
+                    }
+                    System.out.println("-------------------");
                 }
             }
 
@@ -1238,7 +1290,6 @@ public class UserInterface {
                 if (secondChoice == 1 || secondChoice == 3) {
                     men = true;
                 }
-
 
                 for (Member member : controller.getCompetitiveSwimmers(junior, men)) {
                     System.out.println("-------------------");
@@ -1298,7 +1349,6 @@ public class UserInterface {
     }
 
     private void sortScore() {
-        System.out.println("--------------------" + "\n");
         System.out.println("Sort the list by:\n" +
                 "1) Butterfly" + "\n" +
                 "2) Crawl " + "\n" +
@@ -1309,15 +1359,18 @@ public class UserInterface {
 
         if (choice == 1) {
             controller.sortByScore("butterfly");
+            listOfButterfly();
         } else if (choice == 2) {
             controller.sortByScore("crawl");
+            listOfCrawl();
         } else if (choice == 3) {
             controller.sortByScore("backcrawl");
+            listOfBackCrawl();
         } else if (choice == 4) {
             controller.sortByScore("breaststroke");
+            listOfBreastStroke();
         }
 
-        controller.getAllSwimmers();
 
     }
 }

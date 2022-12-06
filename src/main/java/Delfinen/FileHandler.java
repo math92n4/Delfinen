@@ -34,7 +34,8 @@ public class FileHandler {
                 output.print(((CompetitiveSwimmer) member).getButterflyScore() + ";");
                 output.print(((CompetitiveSwimmer) member).getCrawlScore() + ";");
                 output.print(((CompetitiveSwimmer) member).getBackCrawlScore() + ";");
-                output.print(((CompetitiveSwimmer) member).getBreastStrokeScore() + ";");
+                output.print(((CompetitiveSwimmer) member).getBreastStrokeScore());
+
             }
 
             output.println("");
@@ -110,7 +111,7 @@ public class FileHandler {
             competitiveSwimmer.setButterflyScore(Double.parseDouble(split[14]));
             competitiveSwimmer.setCrawlScore(Double.parseDouble(split[15]));
             competitiveSwimmer.setBackCrawlScore(Double.parseDouble(split[16]));
-            competitiveSwimmer.setBackCrawlScore(Double.parseDouble(split[17]));
+            competitiveSwimmer.setBreastStrokeScore(Double.parseDouble(split[17]));
             return competitiveSwimmer;
         } else {
             NormalSwimmer normalSwimmer = new NormalSwimmer();

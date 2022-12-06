@@ -245,7 +245,7 @@ public class Database {
 
     public void sortByScore(String discipline) {
         Comparator scoreComparator = new ScoreComparator(discipline);
-        compSwimmers.sort(scoreComparator);
+        members.sort(scoreComparator);
     }
 
     public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men) {

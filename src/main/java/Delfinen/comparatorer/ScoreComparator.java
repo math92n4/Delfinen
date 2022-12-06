@@ -28,6 +28,7 @@ public class ScoreComparator implements Comparator<CompetitiveSwimmer> {
             case "breaststroke" -> {
                 return Double.compare(o1.getBreastStrokeScore(), o2.getBreastStrokeScore());
             }
+
         }
         return 0;
     }
