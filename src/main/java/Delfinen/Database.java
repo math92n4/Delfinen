@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 
+import static Delfinen.Discipline.*;
+
 public class Database {
 
 
@@ -128,152 +130,7 @@ public class Database {
         return trainers;
     }
 
-    public ArrayList<CompetitiveSwimmer> getJuniorMenButterfly() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() < 18 && member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
 
-    public ArrayList<CompetitiveSwimmer> getJuniorMenCrawl() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canCrawl() && member.getAge() < 18 && member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getJuniorMenBackCrawl() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBackcrawl() && member.getAge() < 18 && member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getJuniorMenBreastStroke() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBreastswimming() && member.getAge() < 18 && member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getJuniorWomenButterfly() {
-
-        ArrayList<CompetitiveSwimmer> juniorWomenButterfly = new ArrayList<>();
-
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() < 18 && !member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getJuniorWomenCrawl() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canCrawl() && member.getAge() < 18 && !member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getJuniorWomenBackCrawl() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBackcrawl() && member.getAge() < 18 && !member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getJuniorWomenBreastStroke() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBreastswimming() && member.getAge() < 18 && !member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorMenButterfly() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() >= 18 && member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorMenCrawl() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canCrawl() && member.getAge() >= 18 && member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorMenBackCrawl() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBackcrawl() && member.getAge() >= 18 && member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorMenBreastStroke() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBreastswimming() && member.getAge() >= 18 && member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorWomenButterfly() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canButterfly() && member.getAge() >= 18 && !member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorWomenCrawl() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canCrawl() && member.getAge() >= 18 && !member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorWomenBackCrawl() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBackcrawl() && member.getAge() >= 18 && !member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorWomenBreastStroke() {
-        for (Member member : members) {
-            if (member instanceof CompetitiveSwimmer && ((CompetitiveSwimmer) member).canBreastswimming() && member.getAge() >= 18 && !member.getGender()) {
-                compSwimmers.add((CompetitiveSwimmer) member);
-            }
-        }
-        return compSwimmers;
-    }
 
     public ArrayList<Member> getSearchForSwimmer(String firstName) {
         ArrayList<Member> swimmerFound = new ArrayList<>();
@@ -385,7 +242,7 @@ public class Database {
         members.sort(comparator);
     }
 
-    public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men, Discipline discipline) {
+    public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men) {
         ArrayList<CompetitiveSwimmer> csw = new ArrayList<>();
         for (Member member : members) {
             if (member instanceof CompetitiveSwimmer swimmer) {
@@ -400,6 +257,53 @@ public class Database {
 
         }
         return csw;
+    }
+
+    public ArrayList<CompetitiveSwimmer> getCompSwimmersWithDiscipline(boolean junior, boolean men, Discipline discipline) {
+        ArrayList<CompetitiveSwimmer> newList = new ArrayList<>();
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer swimmer) {
+                    //juniorMenButterfly
+                if ((junior && swimmer.getAge() < 18 && men && swimmer.getGender() && discipline == BUTTERFLY)
+                    //juniorMenCrawl
+                    || (junior && swimmer.getAge() < 18 && men && swimmer.getGender() && discipline == CRAWL)
+                    //juniorMenBackCrawl
+                    || (junior && swimmer.getAge() < 18 && men && swimmer.getGender() && discipline == BACKCRAWL)
+                    //juniorMenBreastStroke
+                    || (junior && swimmer.getAge() < 18 && men && swimmer.getGender() && discipline == BREASTSTROKE)
+
+                    //juniorWomenButterfly
+                    || (junior && swimmer.getAge() < 18 && !men && !swimmer.getGender() && discipline == BUTTERFLY)
+                    //juniorWomenCrawl
+                    || (junior && swimmer.getAge() < 18 && !men && !swimmer.getGender() && discipline == CRAWL)
+                    //juniorWomenBackCrawl
+                    || (junior && swimmer.getAge() < 18 && !men && !swimmer.getGender() && discipline == BACKCRAWL)
+                    //juniorWomenBreastStroke
+                    || (junior && swimmer.getAge() < 18 && !men && !swimmer.getGender() && discipline == BREASTSTROKE)
+
+                    //seniorMenButterfly
+                    || (!junior && swimmer.getAge() >= 18 && men && swimmer.getGender() && discipline == BUTTERFLY)
+                    //seniorMenCrawl
+                    || (!junior && swimmer.getAge() >= 18 && men && swimmer.getGender() && discipline == CRAWL)
+                    //seniorMenBackCrawl
+                    || (!junior && swimmer.getAge() >= 18 && men && swimmer.getGender() && discipline == BACKCRAWL)
+                    //seniorMenBreastStroke
+                    || (!junior && swimmer.getAge() >= 18 && men && swimmer.getGender() && discipline == BREASTSTROKE)
+
+                    //seniorWomenButterfly
+                    || (!junior && swimmer.getAge() >= 18 && !men && !swimmer.getGender() && discipline == BUTTERFLY)
+                    //seniorWomenCrawl
+                    || (!junior && swimmer.getAge() >= 18 && !men && !swimmer.getGender() && discipline == CRAWL)
+                    //seniorWomenBackCrawl
+                    || (!junior && swimmer.getAge() >= 18 && !men && !swimmer.getGender() && discipline == BACKCRAWL)
+                    //seniorWomenBreastStroke
+                    || (!junior && swimmer.getAge() >= 18 && !men && !swimmer.getGender() && discipline == BREASTSTROKE)) {
+
+                    newList.add(swimmer);
+                }
+            }
+        }
+        return newList;
     }
 }
 

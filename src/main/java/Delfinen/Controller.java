@@ -68,70 +68,6 @@ public class Controller {
         return database.getAllTrainers();
     }
 
-    public ArrayList<CompetitiveSwimmer> getJuniorMenButterfly() {
-        return database.getJuniorMenButterfly();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getJuniorMenCrawl() {
-        return database.getJuniorMenCrawl();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getJuniorMenBackCrawl() {
-        return database.getJuniorMenBackCrawl();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getJuniorMenBreastStroke() {
-        return database.getJuniorMenBreastStroke();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getJuniorWomenButterfly() {
-        return database.getJuniorWomenButterfly();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getJuniorWomenCrawl() {
-        return getJuniorWomenCrawl();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getJuniorWomenBackCrawl() {
-        return database.getJuniorWomenBackCrawl();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getJuniorWomenBreastStroke() {
-        return database.getJuniorWomenBreastStroke();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorMenButterfly() {
-        return database.getSeniorMenButterfly();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorMenCrawl() {
-        return database.getSeniorMenCrawl();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorMenBackCrawl() {
-        return database.getSeniorMenBackCrawl();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorMenBreastStroke() {
-        return database.getSeniorMenBreastStroke();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorWomenButterfly() {
-        return database.getSeniorWomenButterfly();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorWomenCrawl() {
-        return database.getSeniorWomenCrawl();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorWomenBackCrawl() {
-        return database.getSeniorWomenBackCrawl();
-    }
-
-    public ArrayList<CompetitiveSwimmer> getSeniorWomenBreastStroke() {
-        return database.getSeniorWomenBreastStroke();
-    }
-
     public ArrayList<Member> SearchForSwimmer(String firstName) {
         return database.getSearchForSwimmer(firstName);
     }
@@ -199,7 +135,11 @@ public class Controller {
         database.sortBy(sortBy);
     }
 
-    public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men, Discipline discipline) {
-        return database.getCompetitiveSwimmers(junior,men,discipline);
+    public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men) {
+        return database.getCompetitiveSwimmers(junior,men);
+    }
+
+    public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmersWithDiscipline(boolean junior, boolean men, Discipline discipline) {
+        return database.getCompSwimmersWithDiscipline(junior,men,discipline);
     }
 }
