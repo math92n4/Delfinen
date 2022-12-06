@@ -9,7 +9,7 @@ public class Controller {
     FileHandler fileHandler = new FileHandler();
 
     public void createNormalMember(String firstName, String lastName, boolean gender, int age,
-                                   boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent) {
+                             boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent) {
         database.addNormalMember(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
     }
 
@@ -17,7 +17,7 @@ public class Controller {
                                         boolean hasPaid, boolean isStudent, boolean canButterfly, boolean canCrawl, boolean canBackcrawl,
                                         boolean canBreastswim) {
 
-        database.addCompetitiveSwimmer(firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent, canButterfly, canCrawl, canBackcrawl, canBreastswim);
+        database.addCompetitiveSwimmer(firstName,lastName,gender,age,isActive,isCompetitive,hasPaid,isStudent,canButterfly,canCrawl,canBackcrawl,canBreastswim);
     }
 
     public void createTeam(String name) {
@@ -25,7 +25,7 @@ public class Controller {
     }
 
     public void editTeam(int teamId, String name) {
-        database.editTeam(teamId, name);
+        database.editTeam(teamId,name);
     }
 
     public Team getTeamById(int id) {
@@ -135,15 +135,15 @@ public class Controller {
         database.sortBy(sortBy);
     }
 
+    public void sortByScore(String discipline) {
+        database.sortByScore(discipline);
+    }
+
     public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men) {
         return database.getCompetitiveSwimmers(junior, men);
     }
 
     public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmersWithDiscipline(boolean junior, boolean men, Discipline discipline) {
         return database.getCompSwimmersWithDiscipline(junior, men, discipline);
-
-        public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers ( boolean junior, boolean men){
-            return database.getCompetitiveSwimmers(junior, men);
-        }
     }
 }
