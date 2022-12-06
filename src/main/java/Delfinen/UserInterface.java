@@ -429,7 +429,9 @@ public class UserInterface {
                 break;
         }
 
-        controller.editTeam(teamId, name);
+        if (!name.isEmpty()) {
+            controller.editTeam(teamId, name);
+        }
 
         if (swimmerId > 0) {
             controller.setMemberToTeam(teamId,swimmerId);
@@ -439,11 +441,9 @@ public class UserInterface {
 
         for (Member member : controller.getAllSwimmers()) {
             if (member.getTeam() != null) {
-                System.out.println(member.getFirstName() + member.getTeam());
+                System.out.println(member.getFirstName() + " is on " + member.getTeamName());
             }
         }
-
-
     }
 
     private void searchForSwimmer() {

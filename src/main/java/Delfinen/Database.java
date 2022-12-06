@@ -97,6 +97,7 @@ public class Database {
         Team team = getTeamById(teamId);
 
         trainer.setTeam(team);
+        team.setTrainer(trainer);
     }
 
     public void editTeam(int teamId, String name) {
@@ -114,6 +115,7 @@ public class Database {
         Member member = getMemberById(memberId);
 
         team.setMember(member);
+        member.setTeam(team);
     }
 
 

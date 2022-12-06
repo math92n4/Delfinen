@@ -83,6 +83,10 @@ public abstract class Member {
         return team;
     }
 
+    public String getTeamName() {
+        return team.getName();
+    }
+
     //SETTERS
 
     public void setTeam(Team team) {
