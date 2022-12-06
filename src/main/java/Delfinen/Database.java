@@ -332,9 +332,9 @@ public class Database {
     }
 
 
-    public void setCompSwimmerScore(int index, double butterflyScore, double crawlScore, double backCrawlScore, double breastStrokeScore) {
+    public void setCompSwimmerScore(int memberId, double butterflyScore, double crawlScore, double backCrawlScore, double breastStrokeScore) {
 
-        CompetitiveSwimmer compSwimmer = compSwimmers.get(index - 1);
+        CompetitiveSwimmer compSwimmer = (CompetitiveSwimmer) getMemberById(memberId);
 
         if (butterflyScore != 999) {
             compSwimmer.setButterflyScore(butterflyScore);
@@ -384,6 +384,22 @@ public class Database {
         members.sort(comparator);
     }
 
+    public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men) {
+        ArrayList<CompetitiveSwimmer> csw = new ArrayList<>();
+        for (Member member : members) {
+            if (member instanceof CompetitiveSwimmer swimmer) {
+                if ((junior && swimmer.getAge() < 18 && men && swimmer.getGender())
+                  || (junior && swimmer.getAge() < 18 && !men && !swimmer.getGender())
+                    || (!junior && swimmer.getAge() >= 18 && men && swimmer.getGender())
+                || (!junior && swimmer.getAge() >= 18 && !men & !swimmer.getGender())) {
+                    csw.add(swimmer);
+                }
+            }
+
+
+        }
+        return csw;
+    }
 }
 
 

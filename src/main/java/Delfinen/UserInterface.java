@@ -373,7 +373,7 @@ public class UserInterface {
         controller.editTrainer(trainerId, firstName, lastName);
 
         if (teamId > 0) {
-            controller.setTrainerToTeam(trainerId,teamId);
+            controller.setTrainerToTeam(trainerId, teamId);
         }
 
         controller.saveTrainerData();
@@ -434,7 +434,7 @@ public class UserInterface {
         }
 
         if (swimmerId > 0) {
-            controller.setMemberToTeam(teamId,swimmerId);
+            controller.setMemberToTeam(teamId, swimmerId);
         }
 
         controller.saveTeamData();
@@ -1311,181 +1311,69 @@ public class UserInterface {
 
                 secondChoice = scanner.nextInt();
 
-                // junior men
-                if (secondChoice == 1) {
-                    for (Member member : controller.getAllSwimmers()) {
-                        if (member.isCompetitive() && member.getAge() < 18 && member.getGender()) {
-                            System.out.println("-------------------");
-                            System.out.println("# " + index++ + "\nFirst name: " + member.getFirstName() +
-                                    "\nLast name: " + member.getLastName() +
-                                    "\nAge: " + member.getAge());
-                            System.out.println("-------------------");
-                            System.out.println("Choose the swimmer you wish to set a score for: ");
-                            scanner.nextLine();                         // Scanner bug
 
-                            int swimmerChoice = 0;
-                            swimmerChoice = scanner.nextInt();
-
-                            System.out.println("Choose the field you wish to edit\n" +
-                                    "1) Butterfly\n" +
-                                    "2) Crawl\n" +
-                                    "3) Back crawl\n" +
-                                    "4) Breast stroke");
-
-                            int attributeChoice = scanner.nextInt();
-
-                            if (attributeChoice == 1) {
-                                System.out.println("Type in butterfly time: ");
-                                butterfly = scanner.nextDouble();
-
-                            } else if (attributeChoice == 2) {
-                                System.out.println("Type in crawl time: ");
-                                crawl = scanner.nextDouble();
-
-                            } else if (attributeChoice == 3) {
-                                System.out.println("Type in backCrawl time: ");
-                                backCrawl = scanner.nextDouble();
-
-                            } else if (attributeChoice == 4) {
-                                System.out.println("Type in breastStroke time: ");
-                                breastStroke = scanner.nextInt();
-                            }
-
-                            controller.setCompSwimmerScore(swimmerChoice, butterfly, crawl, backCrawl, breastStroke);
-                            controller.saveTrainerData();
-                            controller.saveData();
-                        }
-                    }
-
-                    // junior women
-                    if (secondChoice == 2) {
-                        for (Member member : controller.getAllSwimmers()) {
-                            if (member.isCompetitive() && member.getAge() < 18 && !member.getGender()) {
-                                System.out.println("First name: " + member.getFirstName() +
-                                        "\nLast name: " + member.getLastName() +
-                                        "\nGender: " + member.getGender() +
-                                        "\nAge: " + member.getAge());
-                                System.out.println("-------------------");
-                                System.out.println("Choose the swimmer you wish to set a score for: ");
-                                scanner.nextLine();                         // Scanner bug
-
-                                int attributeChoice = scanner.nextInt();
-
-                                if (secondChoice == 1 && attributeChoice == 1) {
-                                    System.out.println("Type in butterfly time: ");
-                                    butterfly = scanner.nextDouble();
-
-                                } else if (secondChoice == 1 && attributeChoice == 2) {
-                                    System.out.println("Type in crawl time: ");
-                                    crawl = scanner.nextDouble();
-
-                                } else if (secondChoice == 1 && attributeChoice == 3) {
-                                    System.out.println("Type in backCrawl time: ");
-                                    backCrawl = scanner.nextDouble();
-
-                                } else if (secondChoice == 1 && attributeChoice == 4) {
-                                    System.out.println("Type in breastStroke time: ");
-                                    breastStroke = scanner.nextInt();
-                                }
-                                controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
-                                controller.saveTrainerData();
-                                controller.saveData();
-                            }
-                        }
-
-                        // senior men
-                        if (secondChoice == 3) {
-                            for (Member member : controller.getAllSwimmers()) {
-                                if (member.isCompetitive() && member.getAge() >= 18 && member.getGender()) {
-                                    System.out.println("First name: " + member.getFirstName() +
-                                            "\nLast name: " + member.getLastName() +
-                                            "\nGender: " + member.getGender() +
-                                            "\nAge: " + member.getAge());
-                                    System.out.println("-------------------");
-                                    System.out.println("Choose the swimmer you wish to set a score for: ");
-                                    scanner.nextLine();                         // Scanner bug
-
-                                    int attributeChoice = scanner.nextInt();
-
-                                    if (secondChoice == 1 && attributeChoice == 1) {
-                                        System.out.println("Type in butterfly time: ");
-                                        butterfly = scanner.nextDouble();
-
-                                    } else if (secondChoice == 1 && attributeChoice == 2) {
-                                        System.out.println("Type in crawl time: ");
-                                        crawl = scanner.nextDouble();
-
-                                    } else if (secondChoice == 1 && attributeChoice == 3) {
-                                        System.out.println("Type in backCrawl time: ");
-                                        backCrawl = scanner.nextDouble();
-
-                                    } else if (secondChoice == 1 && attributeChoice == 4) {
-                                        System.out.println("Type in breastStroke time: ");
-                                        breastStroke = scanner.nextInt();
-                                    }
-                                    controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
-                                    controller.saveTrainerData();
-                                    controller.saveData();
-                                }
-                            }
-
-                            // senior women
-                            if (secondChoice == 4) {
-                                for (Member member : controller.getAllSwimmers()) {
-                                    if (member.isCompetitive() && member.getAge() >= 18 && !member.getGender()) {
-                                        System.out.println("First name: " + member.getFirstName() +
-                                                "\nLast name: " + member.getLastName() +
-                                                "\nGender: " + member.getGender() +
-                                                "\nAge: " + member.getAge());
-                                        System.out.println("-------------------");
-                                        System.out.println("Choose the swimmer you wish to set a score for: ");
-                                        scanner.nextLine();                         // Scanner bug
-
-                                        int attributeChoice = scanner.nextInt();
-
-                                        if (secondChoice == 1 && attributeChoice == 1) {
-                                            System.out.println("Type in butterfly time: ");
-                                            butterfly = scanner.nextDouble();
-
-                                        } else if (secondChoice == 1 && attributeChoice == 2) {
-                                            System.out.println("Type in crawl time: ");
-                                            crawl = scanner.nextDouble();
-
-                                        } else if (secondChoice == 1 && attributeChoice == 3) {
-                                            System.out.println("Type in backCrawl time: ");
-                                            backCrawl = scanner.nextDouble();
-
-                                        } else if (secondChoice == 1 && attributeChoice == 4) {
-                                            System.out.println("Type in breastStroke time: ");
-                                            breastStroke = scanner.nextInt();
-                                        }
-                                        controller.setCompSwimmerScore(index, butterfly, crawl, backCrawl, breastStroke);
-                                        controller.saveTrainerData();
-                                        controller.saveData();
-                                    }
-                                }
-
-
-                            }
-
-                        }
-
-                    }
-
+                boolean junior = false;
+                if (secondChoice == 1 || secondChoice == 2) {
+                    junior = true;
                 }
-            }
+                boolean men = false;
+                if (secondChoice == 1 || secondChoice == 3) {
+                    men = true;
+                }
 
-            if (choice == 3) {
+                for (Member member : controller.getCompetitiveSwimmers(junior, men)) {
+                    System.out.println("-------------------");
+                    System.out.println("# " + member.getId() + "\nFirst name: " + member.getFirstName() +
+                            "\nLast name: " + member.getLastName() +
+                            "\nAge: " + member.getAge());
+                    System.out.println("-------------------");
+                }
+                System.out.println("Choose the swimmer you wish to set a score for: ");
+                scanner.nextLine();                         // Scanner bug
 
-            }
+                int swimmerChoice = 0;
+                swimmerChoice = scanner.nextInt();
 
-            if (choice == 6) {
-                controller.saveData();
+                System.out.println("Choose the field you wish to edit\n" +
+                        "1) Butterfly\n" +
+                        "2) Crawl\n" +
+                        "3) Back crawl\n" +
+                        "4) Breast stroke");
+
+                int attributeChoice = scanner.nextInt();
+
+                if (attributeChoice == 1) {
+                    System.out.println("Type in butterfly time: ");
+                    butterfly = scanner.nextDouble();
+
+                } else if (attributeChoice == 2) {
+                    System.out.println("Type in crawl time: ");
+                    crawl = scanner.nextDouble();
+
+                } else if (attributeChoice == 3) {
+                    System.out.println("Type in backCrawl time: ");
+                    backCrawl = scanner.nextDouble();
+
+                } else if (attributeChoice == 4) {
+                    System.out.println("Type in breastStroke time: ");
+                    breastStroke = scanner.nextDouble();
+                }
+
+                controller.setCompSwimmerScore(swimmerChoice, butterfly, crawl, backCrawl, breastStroke);
                 controller.saveTrainerData();
-                controller.saveTeamData();
+                controller.saveData();
             }
-
 
         } while (choice != 0);
+
+
+        if (choice == 6) {
+            controller.saveData();
+            controller.saveTrainerData();
+            controller.saveTeamData();
+        }
+
+
     }
 }
+

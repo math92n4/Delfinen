@@ -182,8 +182,8 @@ public class Controller {
     }
 
 
-    public void setCompSwimmerScore(int index, double butterflyScore, double crawlScore, double backCrawlScore, double breastStroke) {
-        database.setCompSwimmerScore(index, butterflyScore, crawlScore, backCrawlScore, breastStroke);
+    public void setCompSwimmerScore(int memberId, double butterflyScore, double crawlScore, double backCrawlScore, double breastStroke) {
+        database.setCompSwimmerScore(memberId, butterflyScore, crawlScore, backCrawlScore, breastStroke);
     }
 
     public void editCompetitiveSwimmer(int index, String firstName, String lastName, boolean gender,
@@ -199,4 +199,7 @@ public class Controller {
         database.sortBy(sortBy);
     }
 
+    public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men) {
+        return database.getCompetitiveSwimmers( junior,  men);
+    }
 }
