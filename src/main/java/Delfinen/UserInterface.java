@@ -41,7 +41,7 @@ public class UserInterface {
 
     private void chairmanUI() throws FileNotFoundException {
 
-        int chairmanChoice;
+        int chairmanChoice = 0;
         System.out.println("Chairman password identified!");
 
         do {
@@ -143,8 +143,8 @@ public class UserInterface {
                             break;
                     }
             }
-        } while (chairmanChoice != 0);
 
+        } while (chairmanChoice != 0);
     }
 
     private void registerMember() throws FileNotFoundException {
@@ -1364,6 +1364,10 @@ public class UserInterface {
                 controller.saveData();
             }
 
+            if (choice == 3) {
+                sortScore();
+            }
+
         } while (choice != 0);
 
 
@@ -1372,7 +1376,29 @@ public class UserInterface {
             controller.saveTrainerData();
             controller.saveTeamData();
         }
+    }
 
+    private void sortScore() {
+        System.out.println("--------------------" + "\n");
+        System.out.println("Sort the list by:\n" +
+                "1) Butterfly" + "\n" +
+                "2) Crawl " + "\n" +
+                "3) BackCrawl " + "\n" +
+                "4) BreastStroke ");
+
+        int choice = scanner.nextInt();
+
+        if (choice == 1) {
+            controller.sortByScore("butterfly");
+        } else if (choice == 2) {
+            controller.sortByScore("crawl");
+        } else if (choice == 3) {
+            controller.sortByScore("backcrawl");
+        } else if (choice == 4) {
+            controller.sortByScore("breaststroke");
+        }
+
+        controller.getAllSwimmers();
 
     }
 }

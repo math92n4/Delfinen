@@ -43,6 +43,7 @@ public class FlexibleComparator implements Comparator<Member> {
             case "subscription" -> {
                 return Integer.compare(o1.getSubscription(), o2.getSubscription());
             }
+
         }
         return 0;
     }

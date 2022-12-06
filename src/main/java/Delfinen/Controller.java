@@ -199,7 +199,11 @@ public class Controller {
         database.sortBy(sortBy);
     }
 
+    public void sortByScore(String discipline) {
+        database.sortByScore(discipline);
+    }
+
     public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men) {
-        return database.getCompetitiveSwimmers(junior,men);
+        return database.getCompetitiveSwimmers(junior, men);
     }
 }

@@ -1,6 +1,7 @@
 package Delfinen;
 
 import Delfinen.comparatorer.FlexibleComparator;
+import Delfinen.comparatorer.ScoreComparator;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -383,6 +384,11 @@ public class Database {
     public void sortBy(String sortBy) {
         Comparator comparator = new FlexibleComparator(sortBy);
         members.sort(comparator);
+    }
+
+    public void sortByScore(String discipline) {
+        Comparator scoreComparator = new ScoreComparator(discipline);
+        compSwimmers.sort(scoreComparator);
     }
 
     public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmers(boolean junior, boolean men) {
