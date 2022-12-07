@@ -125,15 +125,6 @@ public class Controller {
         database.setCompSwimmerScore(memberId, butterflyScore, crawlScore, backCrawlScore, breastStroke);
     }
 
-    /*public void editCompetitiveSwimmer(int index, String firstName, String lastName, boolean gender,
-                                       int age, boolean isActive, boolean isCompetitive,
-                                       boolean hasPaid, boolean isStudent, boolean canButterfly,
-                                       boolean canCrawl, boolean canBackCrawl, boolean canBreastStroke) {
-
-        database.editCompetitiveSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive,
-                hasPaid, isStudent, canButterfly, canCrawl, canBackCrawl, canBreastStroke);
-    }*/
-
     public void sortBy(String sortBy) {
         database.sortBy(sortBy);
     }

@@ -169,7 +169,6 @@ public class UserInterface {
         } while (chairmanChoice != 0);
     }
 
-
     private void registerMember() throws FileNotFoundException {
 
         System.out.println("You have selected register member\n" +
@@ -1007,9 +1006,6 @@ public class UserInterface {
         controller.editSwimmer(swimmerChoice, firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent,
                 canButterfly,canCrawl,canBackcrawl,canBreastStroke);
 
-        //controller.editCompetitiveSwimmer(swimmerChoice,firstName,lastName,gender,age,isActive,isCompetitive,hasPaid,isStudent,
-        //        canButterfly,canCrawl,canBackcrawl,canBreastStoke);
-
         controller.saveData();
 
     }
@@ -1091,7 +1087,6 @@ public class UserInterface {
         System.out.println("Expected income from subscriptions: " + controller.getSubscriptionSum());
     }
 
-
     private void trainerUI() throws FileNotFoundException {
 
         System.out.println("Trainer password identified! ");
@@ -1115,7 +1110,7 @@ public class UserInterface {
             // trainer menu
             System.out.println("1) Overview over teams \n" +
                     "2) Register new score\n" +
-                    "3) Se best scores\n" +
+                    "3) See best scores\n" +
                     "4) Edit scores\n" +
                     "5) Delete scores\n" +
                     "6) Save data\n" +
