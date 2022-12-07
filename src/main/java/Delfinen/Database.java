@@ -146,11 +146,12 @@ public class Database {
         return swimmerFound;
     }
 
-    public void editSwimmer(int index, String firstName, String lastName, boolean gender,
-                            int age, boolean isActive, boolean isCompetitive,
-                            boolean hasPaid, boolean isStudent) {
+    public void editSwimmer(int index, String firstName, String lastName, char gender,
+                            int age, char isActive, char isCompetitive,
+                            char hasPaid, char isStudent, char canButterfly, char canCrawl,
+                            char canBackCrawl, char canBreastStroke) {
 
-        Member member = members.get(index - 1);
+        Member member = getMemberById(index);
 
         if (!firstName.isEmpty()) {
             member.setFirstName(firstName);
@@ -159,33 +160,63 @@ public class Database {
             member.setLastName(lastName);
         }
 
-        member.setGender(gender);
+        if (gender == 'm') {
+            member.setGender(true);
+        } else if (gender == 'f') {
+            member.setGender(false);
+        }
 
         if (age != 0) {
             member.setAge(age);
         }
 
-        member.setCompetitive(isCompetitive);
-        member.setActive(isActive);
-        member.setHasPaid(hasPaid);
-        member.setStudent(isStudent);
-    }
+        if (isActive == 'y') {
+            member.setActive(true);
+        } else if (isActive == 'n') {
+            member.setActive(false);
+        }
 
-    public void editCompetitiveSwimmer(int index, String firstName, String lastName, boolean gender,
-                                       int age, boolean isActive, boolean isCompetitive,
-                                       boolean hasPaid, boolean isStudent, boolean canButterfly,
-                                       boolean canCrawl, boolean canBackcrawl, boolean canBreastStroke) {
+        if (isCompetitive == 'y') {
+            member.setCompetitive(true);
+        } else if (isCompetitive == 'n')
 
-        Member member = members.get(index - 1);
+        if (hasPaid == 'y') {
+            member.setHasPaid(true);
+        } else if (hasPaid == 'n') {
+            member.setHasPaid(false);
+        }
 
-        if (member instanceof CompetitiveSwimmer) {
+        if (isStudent == 'y') {
+            member.setStudent(true);
+        } else if (isStudent == 'n') {
+            member.setStudent(false);
+        }
 
-            editSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
+        if (member instanceof CompetitiveSwimmer swimmer) {
 
-            ((CompetitiveSwimmer) member).setCanButterfly(canButterfly);
-            ((CompetitiveSwimmer) member).setCanCrawl(canCrawl);
-            ((CompetitiveSwimmer) member).setCanBackcrawl(canBackcrawl);
-            ((CompetitiveSwimmer) member).setCanBreastStroke(canBreastStroke);
+            if (canCrawl == 'y') {
+                swimmer.setCanCrawl(true);
+            } else if (canCrawl == 'n') {
+                swimmer.setCanCrawl(false);
+            }
+
+            if (canBackCrawl == 'y') {
+                swimmer.setCanBackcrawl(true);
+            } else if (canBackCrawl == 'n') {
+                swimmer.setCanBackcrawl(false);
+            }
+
+            if (canButterfly == 'y') {
+                swimmer.setCanButterfly(true);
+            } else if (canButterfly == 'n') {
+                swimmer.setCanButterfly(false);
+            }
+
+            if (canBreastStroke == 'y') {
+                swimmer.setCanBreastStroke(true);
+            } else if (canBreastStroke == 'n') {
+                swimmer.setCanBreastStroke(false);
+            }
         }
 
     }
@@ -264,6 +295,7 @@ public class Database {
         }
         return csw;
     }
+
 
     public ArrayList<CompetitiveSwimmer> getCompSwimmersWithDiscipline(boolean junior, boolean men, Discipline discipline) {
         ArrayList<CompetitiveSwimmer> newList = new ArrayList<>();
