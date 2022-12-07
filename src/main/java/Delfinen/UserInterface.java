@@ -2,6 +2,7 @@ package Delfinen;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -9,6 +10,17 @@ public class UserInterface {
     Controller controller = new Controller();
 
     Scanner scanner = new Scanner(System.in);
+    private int readChoice() {
+        int choice;
+        try {
+            choice = scanner.nextInt();
+        } catch (InputMismatchException ime) {
+            System.out.println("You have the wrong value");
+            scanner = new Scanner(System.in);
+            choice = readChoice();
+        }
+        return choice;
+    }
 
     public void start() throws FileNotFoundException {
 
@@ -63,9 +75,11 @@ public class UserInterface {
                     "10) Edit team\n" +
                     "11) Delete team\n" +
                     "----------------------\n" +
-                    "12) Lists \n");
+                    "12) Lists \n" +
+                    "----------------------\n"+
+                    "13) log out");
 
-            chairmanChoice = scanner.nextInt();
+            chairmanChoice = readChoice();
 
             switch (chairmanChoice) {
                 case 1:
@@ -110,9 +124,10 @@ public class UserInterface {
                             "6) List of active swimmers\n" +
                             "7) List of inactive swimmers\n" +
                             "8) List of junior swimmers\n" +
-                            "9) List of senior swimmers");
+                            "9) List of senior swimmers\n" +
+                            "10) return");
                     int listChoice;
-                    listChoice = scanner.nextInt();
+                    listChoice = readChoice();
                     switch (listChoice) {
                         case 1:
                             listOfAllSwimmers();
@@ -141,11 +156,19 @@ public class UserInterface {
                         case 9:
                             listOfSeniorSwimmers();
                             break;
+                        case 10:
+                            scanner = new Scanner(System.in);
+                            chairmanUI();
                     }
+                    break;
+                case 13:
+                    scanner = new Scanner(System.in);
+                    start();
             }
 
         } while (chairmanChoice != 0);
     }
+
 
     private void registerMember() throws FileNotFoundException {
 
@@ -330,14 +353,14 @@ public class UserInterface {
 
         System.out.println("Which trainer should be edited?");
 
-        int trainerId = scanner.nextInt();
+        int trainerId = readChoice();
 
         System.out.println("Choose the field you wish to edit by number\n" +
                 "1) First name\n" +
                 "2) Last name\n" +
                 "3) Team");
 
-        int choice = scanner.nextInt();
+        int choice = readChoice();
 
 
         String firstName = "";
@@ -364,7 +387,7 @@ public class UserInterface {
                 }
 
                 System.out.println("What team should the trainer coach? Enter ID");
-                teamId = scanner.nextInt();
+                teamId = readChoice();
 
                 break;
         }
@@ -476,7 +499,7 @@ public class UserInterface {
                 "8) Student status " + "\n" +
                 "9) Subscription - soon!!...");
 
-        int choice = scanner.nextInt();
+        int choice = readChoice();
 
 
         if (choice == 1) {
@@ -846,7 +869,7 @@ public class UserInterface {
             System.out.println(index++ + ". Name: " + member.getFirstName() + " " + member.getLastName());
         }
 
-        int choice = scanner.nextInt();
+        int choice = readChoice();
         controller.deleteSwimmer(choice);
         controller.saveData();
     }
@@ -919,7 +942,7 @@ public class UserInterface {
                 "11) Back crawl\n" +
                 "12) Breast stroke");
 
-        int attributeChoice = scanner.nextInt();
+        int attributeChoice = readChoice();
         scanner.nextLine();                         // Scanner bug
 
 
@@ -1044,7 +1067,7 @@ public class UserInterface {
             System.out.println("-------------------");
         }
 
-        int index = scanner.nextInt();
+        int index = readChoice();
 
         controller.deleteTrainer(index);
         controller.saveTrainerData();
@@ -1060,7 +1083,7 @@ public class UserInterface {
             System.out.println("-------------------");
         }
 
-        int index = scanner.nextInt();
+        int index = readChoice();
 
         controller.deleteTeam(index);
         controller.saveTeamData();
@@ -1078,9 +1101,10 @@ public class UserInterface {
         do {
 
             System.out.println("1) Expected income\n" +
-                    "2) List of people who hasn't paid");
+                    "2) List of people who hasn't paid\n"+
+                    "3) log out" );
 
-            cashierChoice = scanner.nextInt();
+            cashierChoice = readChoice();
 
             switch (cashierChoice) {
                 case 1:
@@ -1089,6 +1113,9 @@ public class UserInterface {
                 case 2:
                     listOfUnpaidSwimmers();
                     break;
+                case 3:
+                    scanner = new Scanner(System.in);
+                    start();
             }
 
         } while (cashierChoice != 0);
@@ -1107,6 +1134,7 @@ public class UserInterface {
     private void subscriptionSum() {
         System.out.println("Expected income from subscriptions: " + controller.getSubscriptionSum());
     }
+
 
     private void trainerUI() throws FileNotFoundException {
 
@@ -1134,10 +1162,12 @@ public class UserInterface {
                     "3) Se best scores\n" +
                     "4) Edit scores\n" +
                     "5) Delete scores\n" +
-                    "6) Save data");
+                    "6) Save data\n" +
+                    "---------------------\n" +
+                    "7)Log out");
             System.out.println("---------------------");
 
-            choice = scanner.nextInt();
+            choice = readChoice();
 
             // second menu UI for overview over teams junior/senior men & junior/senior women
             if (choice == 1) {
@@ -1148,7 +1178,7 @@ public class UserInterface {
                         4) Senior women
                         ---------------------""");
 
-                secondChoice = scanner.nextInt();
+                secondChoice = readChoice();
                 System.out.println("""
                         1) Butterfly
                         2) Crawl
@@ -1156,7 +1186,7 @@ public class UserInterface {
                         4) BreastStroke
                         ---------------------""");
 
-                thirdChoice = scanner.nextInt();
+                thirdChoice = readChoice();
 
                 boolean men = false;
                 boolean junior = false;
@@ -1279,7 +1309,7 @@ public class UserInterface {
                         4) Senior women
                         ---------------------""");
 
-                secondChoice = scanner.nextInt();
+                secondChoice = readChoice();
 
 
                 boolean junior = false;
@@ -1302,7 +1332,7 @@ public class UserInterface {
                 scanner.nextLine();                         // Scanner bug
 
                 int swimmerChoice = 0;
-                swimmerChoice = scanner.nextInt();
+                swimmerChoice = readChoice();
 
                 System.out.println("Choose the field you wish to edit\n" +
                         "1) Butterfly\n" +
@@ -1310,7 +1340,7 @@ public class UserInterface {
                         "3) Back crawl\n" +
                         "4) Breast stroke");
 
-                int attributeChoice = scanner.nextInt();
+                int attributeChoice = readChoice();
 
                 if (attributeChoice == 1) {
                     System.out.println("Type in butterfly time: ");
@@ -1346,6 +1376,11 @@ public class UserInterface {
             controller.saveTrainerData();
             controller.saveTeamData();
         }
+        if (choice == 7) {
+            scanner = new Scanner(System.in);
+            start();
+        }
+
     }
 
     private void sortScore() {
@@ -1355,7 +1390,7 @@ public class UserInterface {
                 "3) BackCrawl " + "\n" +
                 "4) BreastStroke ");
 
-        int choice = scanner.nextInt();
+        int choice = readChoice();
 
         if (choice == 1) {
             controller.sortByScore("butterfly");

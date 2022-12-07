@@ -2,11 +2,12 @@ package Delfinen;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
 public class Controller {
 
     Delfinen.Database database = new Database();
     FileHandler fileHandler = new FileHandler();
+
+
 
     public void createNormalMember(String firstName, String lastName, boolean gender, int age,
                              boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent) {
