@@ -296,7 +296,6 @@ public class Database {
         return csw;
     }
 
-
     public ArrayList<CompetitiveSwimmer> getCompSwimmersWithDiscipline(boolean junior, boolean men, Discipline discipline) {
         ArrayList<CompetitiveSwimmer> newList = new ArrayList<>();
         for (Member member : members) {

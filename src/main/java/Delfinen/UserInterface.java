@@ -10,6 +10,7 @@ public class UserInterface {
     Controller controller = new Controller();
 
     Scanner scanner = new Scanner(System.in);
+
     private int readChoice() {
         int choice;
         try {
@@ -76,7 +77,7 @@ public class UserInterface {
                     "11) Delete team\n" +
                     "----------------------\n" +
                     "12) Lists \n" +
-                    "----------------------\n"+
+                    "----------------------\n" +
                     "13) log out");
 
             chairmanChoice = readChoice();
@@ -475,13 +476,18 @@ public class UserInterface {
         swimmerFound = controller.SearchForSwimmer(firstName);
 
         for (Member member : swimmerFound) {
-            System.out.println("--------------------" + "\n" + "Delfinens medlemmer" + "\n" + "--------------------"
-                    + "\n" + "First name: " + member.getFirstName() + "\n" + "Last name: "
-                    + member.getLastName() + "\n" + "Age: " + member.getAge() + "\n"
-                    + ("Gender: " + member.getGender() + "\n" +
-                    ("Is active? " + member.isActive() + "\n" + ("Is competitive?: " + member.isCompetitive() + "\n"
-                            + ("Has paid? " + member.hasPaid() + "\n" + ("Subscription to pay in DDK: " + member.getSubscription() + ",-"
-                            + "\n--------------------"))))));
+            System.out.println("--------------------" + "\n" + "Delfinens medlemmer" + "\n" + "--------------------");
+            System.out.println("ID: " + member.getId());
+            System.out.println("First name: " + member.getFirstName() + "\nLast name: " + member.getLastName());
+            if (member.getGender()) {
+                System.out.println("Gender: Male");
+            } else {
+                System.out.println("Gender: Female");
+            }
+            System.out.println("Age: " + member.getAge() + ("Is active? " + member.isActive() + "\n"
+                    + ("Is competitive?: " + member.isCompetitive() + "\n" + ("Has paid? "
+                    + member.hasPaid() + "\n" + ("Subscription to pay in DDK: "
+                    + member.getSubscription() + ",-" + "\n--------------------")))));
         }
     }
 
@@ -527,10 +533,16 @@ public class UserInterface {
     private void listOfAllSwimmers() {
         System.out.println("-------------------");
         for (Member member : controller.getAllSwimmers()) {
+            System.out.println("ID: " + member.getId());
             System.out.println("First name: " + member.getFirstName() +
-                    "\nLast name: " + member.getLastName() +
-                    "\nGender: " + member.getGender() +
-                    "\nAge: " + member.getAge());
+                    "\nLast name: " + member.getLastName());
+            if (member.getGender()) {
+                System.out.println("Gender: Male");
+            } else {
+                System.out.println("Gender: Female");
+            }
+            System.out.println("Age: " + member.getAge());
+
             if (member.isStudent()) {
                 System.out.println("Is the swimmer a student: Yes");
             } else {
@@ -563,10 +575,16 @@ public class UserInterface {
         System.out.println("-------------------");
         for (Member member : controller.getAllSwimmers()) {
             if (member.isCompetitive()) {
+                System.out.println("ID: " + member.getId());
                 System.out.println("First name: " + member.getFirstName() +
-                        "\nLast name: " + member.getLastName() +
-                        "\nGender: " + member.getGender() +
-                        "\nAge: " + member.getAge());
+                        "\nLast name: " + member.getLastName());
+                if (member.getGender()) {
+                    System.out.println("Gender: Male");
+                } else {
+                    System.out.println("Gender: Female");
+                }
+                System.out.println("Age: " + member.getAge());
+
                 if (member.isStudent()) {
                     System.out.println("Is the swimmer a student: Yes");
                 } else {
@@ -599,10 +617,16 @@ public class UserInterface {
         System.out.println("-------------------");
         for (Member member : controller.getAllSwimmers()) {
             if (member.isStudent()) {
+                System.out.println("ID: " + member.getId());
                 System.out.println("First name: " + member.getFirstName() +
-                        "\nLast name: " + member.getLastName() +
-                        "\nGender: " + member.getGender() +
-                        "\nAge: " + member.getAge());
+                        "\nLast name: " + member.getLastName());
+                if (member.getGender()) {
+                    System.out.println("Gender: Male");
+                } else {
+                    System.out.println("Gender: Female");
+                }
+                System.out.println("Age: " + member.getAge());
+
                 if (member.isStudent()) {
                     System.out.println("Is the swimmer a student: Yes");
                 } else {
@@ -635,10 +659,15 @@ public class UserInterface {
         System.out.println("-------------------");
         for (Member member : controller.getAllSwimmers()) {
             if (!member.isCompetitive()) {
+                System.out.println("ID: " + member.getId());
                 System.out.println("First name: " + member.getFirstName() +
-                        "\nLast name: " + member.getLastName() +
-                        "\nGender: " + member.getGender() +
-                        "\nAge: " + member.getAge());
+                        "\nLast name: " + member.getLastName());
+                if (member.getGender()) {
+                    System.out.println("Gender: Male");
+                } else {
+                    System.out.println("Gender: Female");
+                }
+                System.out.println("Age: " + member.getAge());
                 if (member.isStudent()) {
                     System.out.println("Is the swimmer a student: Yes");
                 } else {
@@ -671,10 +700,16 @@ public class UserInterface {
         System.out.println("-------------------");
         for (Member member : controller.getAllSwimmers()) {
             if (member.isActive()) {
+                System.out.println("ID: " + member.getId());
                 System.out.println("First name: " + member.getFirstName() +
-                        "\nLast name: " + member.getLastName() +
-                        "\nGender: " + member.getGender() +
-                        "\nAge: " + member.getAge());
+                        "\nLast name: " + member.getLastName());
+                if (member.getGender()) {
+                    System.out.println("Gender: Male");
+                } else {
+                    System.out.println("Gender: Female");
+                }
+                System.out.println("Age: " + member.getAge());
+
                 if (member.isStudent()) {
                     System.out.println("Is the swimmer a student: Yes");
                 } else {
@@ -705,10 +740,16 @@ public class UserInterface {
         System.out.println("-------------------");
         for (Member member : controller.getAllSwimmers()) {
             if (!member.isActive()) {
+                System.out.println("ID: " + member.getId());
                 System.out.println("First name: " + member.getFirstName() +
-                        "\nLast name: " + member.getLastName() +
-                        "\nGender: " + member.getGender() +
-                        "\nAge: " + member.getAge());
+                        "\nLast name: " + member.getLastName());
+                if (member.getGender()) {
+                    System.out.println("Gender: Male");
+                } else {
+                    System.out.println("Gender: Female");
+                }
+                System.out.println("Age: " + member.getAge());
+
                 if (member.isStudent()) {
                     System.out.println("Is the swimmer a student: Yes");
                 } else {
@@ -741,10 +782,16 @@ public class UserInterface {
         System.out.println("-------------------");
         for (Member member : controller.getAllSwimmers()) {
             if (member.getAge() < 18) {
+                System.out.println("ID: " + member.getId());
                 System.out.println("First name: " + member.getFirstName() +
-                        "\nLast name: " + member.getLastName() +
-                        "\nGender: " + member.getGender() +
-                        "\nAge: " + member.getAge());
+                        "\nLast name: " + member.getLastName());
+                if (member.getGender()) {
+                    System.out.println("Gender: Male");
+                } else {
+                    System.out.println("Gender: Female");
+                }
+                System.out.println("Age: " + member.getAge());
+
                 if (member.isStudent()) {
                     System.out.println("Is the swimmer a student: Yes");
                 } else {
@@ -778,10 +825,17 @@ public class UserInterface {
         System.out.println("-------------------");
         for (Member member : controller.getAllSwimmers()) {
             if (member.getAge() >= 18) {
-                System.out.println("First name: " + member.getFirstName() +
-                        "\nLast name: " + member.getLastName() +
-                        "\nGender: " + member.getGender() +
-                        "\nAge: " + member.getAge());
+                System.out.println("ID: " + member.getId() +
+                        "First name: " + member.getFirstName() +
+                        "\nLast name: " + member.getLastName());
+                if (member.getGender()) {
+                    System.out.println("Gender: Male");
+                } else {
+                    System.out.println("Gender: Female");
+                }
+                System.out.println("Age: " + member.getAge());
+
+
                 if (member.isStudent()) {
                     System.out.println("Is the swimmer a student: Yes");
                 } else {
@@ -877,8 +931,8 @@ public class UserInterface {
 
         System.out.println("-------------------");
         for (Member member : controller.getAllSwimmers()) {
-            System.out.println("ID: " + member.getId());
-            System.out.println("First name: " + member.getFirstName() +
+            System.out.println("ID: " + member.getId() +
+                    "First name: " + member.getFirstName() +
                     "\nLast name: " + member.getLastName());
             if (member.getGender()) {
                 System.out.println("Gender: Male");
@@ -976,7 +1030,7 @@ public class UserInterface {
 
         } else if (attributeChoice == 7) {
             System.out.println("Has the member paid? (y/n)");
-             hasPaid = scanner.next().charAt(0);
+            hasPaid = scanner.next().charAt(0);
 
         } else if (attributeChoice == 8) {
             System.out.println("Is the member a student? (y/n)");
@@ -1004,7 +1058,7 @@ public class UserInterface {
 
 
         controller.editSwimmer(swimmerChoice, firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent,
-                canButterfly,canCrawl,canBackcrawl,canBreastStroke);
+                canButterfly, canCrawl, canBackcrawl, canBreastStroke);
 
         controller.saveData();
 
@@ -1053,8 +1107,8 @@ public class UserInterface {
         do {
 
             System.out.println("1) Expected income\n" +
-                    "2) List of people who hasn't paid\n"+
-                    "3) log out" );
+                    "2) List of people who hasn't paid\n" +
+                    "3) log out");
 
             cashierChoice = readChoice();
 
@@ -1111,11 +1165,10 @@ public class UserInterface {
             System.out.println("1) Overview over teams \n" +
                     "2) Register new score\n" +
                     "3) See best scores\n" +
-                    "4) Edit scores\n" +
-                    "5) Delete scores\n" +
-                    "6) Save data\n" +
+                    "4) See top 5 swimmers for discipline" +
+                    "5) Save data\n" +
                     "---------------------\n" +
-                    "7)Log out");
+                    "6) Log out");
             System.out.println("---------------------");
 
             choice = readChoice();
@@ -1316,10 +1369,16 @@ public class UserInterface {
             }
 
             if (choice == 3) {
+                // scoreComparator - used to sort fastest times for different 4 disciplines
                 sortScore();
             }
 
-            if (choice == 7) {
+            if (choice == 4) {
+                // TODO: Som træner vil jeg se de bedste 5 svømmere indenfor given disciplin
+
+            }
+
+            if (choice == 6) {
                 scanner = new Scanner(System.in);
                 start();
 
@@ -1333,7 +1392,6 @@ public class UserInterface {
             controller.saveTrainerData();
             controller.saveTeamData();
         }
-
 
     }
 
