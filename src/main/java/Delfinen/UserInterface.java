@@ -1319,6 +1319,12 @@ public class UserInterface {
                 sortScore();
             }
 
+            if (choice == 7) {
+                scanner = new Scanner(System.in);
+                start();
+
+            }
+
         } while (choice != 0);
 
 
@@ -1327,10 +1333,7 @@ public class UserInterface {
             controller.saveTrainerData();
             controller.saveTeamData();
         }
-        if (choice == 7) {
-            scanner = new Scanner(System.in);
-            start();
-        }
+
 
     }
 
