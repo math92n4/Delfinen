@@ -112,9 +112,11 @@ public class Controller {
         fileHandler.loadTrainerData(database.getAllTrainers());
     }
 
-    public void editSwimmer(int index, String firstName, String lastName, boolean gender, int age,
-                            boolean isActive, boolean isCompetitive, boolean hasPaid, boolean isStudent) {
-        database.editSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent);
+    public void editSwimmer(int index, String firstName, String lastName, char gender, int age,
+                            char isActive, char isCompetitive, char hasPaid, char isStudent, char canButterfly,
+                            char canCrawl, char canBackCrawl, char canBreastStroke) {
+        database.editSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent, canButterfly,
+                canCrawl,canBackCrawl,canBreastStroke);
     }
 
 
@@ -122,14 +124,14 @@ public class Controller {
         database.setCompSwimmerScore(memberId, butterflyScore, crawlScore, backCrawlScore, breastStroke);
     }
 
-    public void editCompetitiveSwimmer(int index, String firstName, String lastName, boolean gender,
+    /*public void editCompetitiveSwimmer(int index, String firstName, String lastName, boolean gender,
                                        int age, boolean isActive, boolean isCompetitive,
                                        boolean hasPaid, boolean isStudent, boolean canButterfly,
                                        boolean canCrawl, boolean canBackCrawl, boolean canBreastStroke) {
 
         database.editCompetitiveSwimmer(index, firstName, lastName, gender, age, isActive, isCompetitive,
                 hasPaid, isStudent, canButterfly, canCrawl, canBackCrawl, canBreastStroke);
-    }
+    }*/
 
     public void sortBy(String sortBy) {
         database.sortBy(sortBy);
@@ -146,4 +148,5 @@ public class Controller {
     public ArrayList<CompetitiveSwimmer> getCompetitiveSwimmersWithDiscipline(boolean junior, boolean men, Discipline discipline) {
         return database.getCompSwimmersWithDiscipline(junior, men, discipline);
     }
+
 }

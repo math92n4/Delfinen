@@ -853,15 +853,18 @@ public class UserInterface {
 
     private void editSwimmer() throws FileNotFoundException {
 
-        int index = 1;
-
         System.out.println("-------------------");
         for (Member member : controller.getAllSwimmers()) {
-            System.out.println("# " + index++);
+            System.out.println("ID: " + member.getId());
             System.out.println("First name: " + member.getFirstName() +
-                    "\nLast name: " + member.getLastName() +
-                    "\nGender: " + member.getGender() +
-                    "\nAge: " + member.getAge());
+                    "\nLast name: " + member.getLastName());
+            if (member.getGender()) {
+                System.out.println("Gender: Male");
+            } else {
+                System.out.println("Gender: Female");
+            }
+            System.out.println("Age: " + member.getAge());
+
             if (member.isActive()) {
                 System.out.println("Is the swimmer active: Yes");
             } else {
@@ -894,16 +897,17 @@ public class UserInterface {
         int swimmerChoice = scanner.nextInt();
         String firstName = "";
         String lastName = "";
-        boolean gender = false;
+        char gender = 0;
         int age = 0;
-        boolean isActive = false;
-        boolean isCompetitive = false;
-        boolean hasPaid = false;
-        boolean isStudent = false;
-        boolean canButterfly = false;
-        boolean canCrawl = false;
-        boolean canBackcrawl = false;
-        boolean canBreastStoke = false;
+        char isActive = 0;
+        char isCompetitive = 0;
+        char hasPaid = 0;
+        char isStudent = 0;
+        char canButterfly = 0;
+        char canCrawl = 0;
+        char canBackcrawl = 0;
+        char canBreastStroke = 0;
+
 
         System.out.println("Choose the field you wish to edit\n" +
                 "1) First name\n" +
@@ -933,12 +937,7 @@ public class UserInterface {
 
         } else if (attributeChoice == 3) {
             System.out.println("Enter gender male/female: ");
-            char genderAnswer = scanner.next().charAt(0);
-            if (genderAnswer == 'm') {
-                gender = true;
-            } else if (genderAnswer == 'f') {
-                gender = false;
-            }
+            gender = scanner.next().charAt(0);
 
         } else if (attributeChoice == 4) {
             System.out.println("Enter age: ");
@@ -946,91 +945,48 @@ public class UserInterface {
 
         } else if (attributeChoice == 5) {
             System.out.println("Is the member active? (y/n)");
-            char active = scanner.next().charAt(0);
-            if (active == 'y') {
-                isActive = true;
-            } else if (active == 'n') {
-                isActive = false;
-            }
+            isActive = scanner.next().charAt(0);
+
 
         } else if (attributeChoice == 6) {
             System.out.println("Is the member competitive? (y/n)");
-            char competitive = scanner.next().charAt(0);
-            if (competitive == 'y') {
-                isCompetitive = true;
-            } else if (competitive == 'n') {
-                isCompetitive = false;
-            }
+            isCompetitive = scanner.next().charAt(0);
 
         } else if (attributeChoice == 7) {
             System.out.println("Has the member paid? (y/n)");
-            char paid = scanner.next().charAt(0);
-            if (paid == 'y') {
-                hasPaid = true;
-            } else if (paid == 'n') {
-                hasPaid = false;
-            }
+             hasPaid = scanner.next().charAt(0);
 
         } else if (attributeChoice == 8) {
             System.out.println("Is the member a student? (y/n)");
-            char student = scanner.next().charAt(0);
-            if (student == 'y') {
-                isStudent = true;
-            } else if (student == 'n') {
-                isStudent = false;
-            }
+            isStudent = scanner.next().charAt(0);
+
         } else if (attributeChoice == 9) {
             System.out.println("Can the member butterfly?");
-
-            char butterfly = scanner.next().charAt(0);
-
-            if (butterfly == 'y') {
-                canButterfly = true;
-            } else if (butterfly == 'n') {
-                canButterfly = false;
-            }
-
+            canButterfly = scanner.next().charAt(0);
 
         } else if (attributeChoice == 10) {
             System.out.println("Can the member crawl?");
-
-            char crawl = scanner.next().charAt(0);
-
-            if (crawl == 'y') {
-                canCrawl = true;
-            } else if (crawl == 'n') {
-                canCrawl = false;
-            }
-
+            canCrawl = scanner.next().charAt(0);
 
         } else if (attributeChoice == 11) {
             System.out.println("Can the member back crawl?");
-
-            char backcrawl = scanner.next().charAt(0);
-
-            if (backcrawl == 'y') {
-                canBackcrawl = true;
-            } else if (backcrawl == 'n') {
-                canBackcrawl = false;
-            }
+            canBackcrawl = scanner.next().charAt(0);
 
         } else if (attributeChoice == 12) {
             System.out.println("Can the member breast stroke?");
-
-            char breastStroke = scanner.next().charAt(0);
-
-            if (breastStroke == 'y') {
-                canBreastStoke = true;
-            } else if (breastStroke == 'n') {
-                canBreastStoke = false;
-            }
+            canBreastStroke = scanner.next().charAt(0);
         }
 
 
         //TODO: USE EDITCOMPETITIVESWIMMER SOMEHOW
 
 
-        controller.editSwimmer(swimmerChoice, firstName, lastName, gender, age, isActive, isActive, hasPaid, isStudent);
+        controller.editSwimmer(swimmerChoice, firstName, lastName, gender, age, isActive, isCompetitive, hasPaid, isStudent,
+                canButterfly,canCrawl,canBackcrawl,canBreastStroke);
+
+        //controller.editCompetitiveSwimmer(swimmerChoice,firstName,lastName,gender,age,isActive,isCompetitive,hasPaid,isStudent,
+        //        canButterfly,canCrawl,canBackcrawl,canBreastStoke);
+
         controller.saveData();
 
     }
